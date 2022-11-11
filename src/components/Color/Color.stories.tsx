@@ -1,5 +1,5 @@
 import Color from './Color';
-import theme from 'styles/theme';
+import theme from 'theme/light';
 import styled from 'styled-components';
 import { Meta } from '@storybook/react';
 

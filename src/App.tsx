@@ -1,5 +1,5 @@
 import Component from './Component';
-import GlobalStyle from './styles/global-styles';
+import GlobalStyle from './theme/global-styles';
 
 function App() {
   return (
