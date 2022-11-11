@@ -1,16 +1,18 @@
-const ColorCode = {
+import { lightColorType } from 'types/color/light';
+
+export const lightColor: lightColorType = {
   common: {
     white: '#FFFFFF',
     black: '#000000', // 메인/블랙1
   },
   main: {
-    orange100: '#FFFFFF',
-    orange200: '#FFFFFF',
-    orange300: '#FFFFFF',
-    orange400: '#FFFFFF',
-    orange500: '#FFFFFF',
-    orange600: '#FFFFFF',
-    orange700: '#FFFFFF',
+    orange100: '#FEE8E6',
+    orange200: '#FFC7B4',
+    orange300: '#FF855B',
+    orange400: '#FF6C34',
+    orange500: '#FF4500',
+    orange600: '#E33400',
+    orange700: '#CC2200',
   },
   gray: {
     gray100: '#FFFAEE',
@@ -29,7 +31,3 @@ const ColorCode = {
     masuccessin: '#109867',
   },
 };
-
-export type ColorCode = typeof ColorCode;
-
-export default ColorCode;

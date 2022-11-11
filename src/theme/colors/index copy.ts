@@ -1,8 +1,9 @@
 import { DefaultTheme } from 'styled-components';
-import { ColorCode } from './colors';
+import { ligthColor, darkColor } from './light';
 
 // theme 저장
 const theme = {
-  ColorCode,
+  ligthColor,
+  darkColor,
 };
 export default theme;
