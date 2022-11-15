@@ -1,32 +1,66 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '../src/styles/global-styles';
-import theme from '../src/styles/theme';
 import { themes } from '@storybook/theming';
-import { useDarkMode } from 'storybook-dark-mode';
-import darkTheme from '../src/styles/darkTheme';
+import { DocsContainer } from './DocsContainer';
+import brandImageLight from './assets/logo_text_main.svg';
+import brandImageDark from './assets/logo_text_white.svg';
+import { ThemeSwitcher } from './components/ThemeSwitcher';
 
-const ThemeWrapper = (props) => {
-  console.log(useDarkMode());
-  return <ThemeProvider theme={useDarkMode() ? darkTheme : theme}>{props.children}</ThemeProvider>;
+import { WePlanWrapper } from '../src/components/Wrapper';
+const baseTheme = {
+  brandTitle: 'WePlan Storybook',
+  brandUrl: 'https://design.weplanner.me',
+  brandTarget: '_self',
 };
-
-export const decorators = [
-  (renderStory) => (
-    <ThemeWrapper>
-      <GlobalStyle />
-      {renderStory()}
-    </ThemeWrapper>
-  ),
-];
 
 export const parameters = {
-  actions: { argTypesRegex: '^on.*', handles: ['mouseover', 'click .btn'] },
-  backgrounds: {
-    default: 'dark',
-    values: [
-      { name: 'dark', value: '#000' },
-      { name: 'white', value: '#ffffff' },
-    ],
+  actions: { argTypesRegex: '^on[A-Z].*' },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+  darkMode: {
+    dark: {
+      ...themes.dark,
+      ...baseTheme,
+      appBg: '#252629',
+      appContentBg: '#1a1b1d',
+      barBg: '#252629',
+      inputBg: '#3c3e46',
+      brandImage: brandImageDark,
+    },
+    light: {
+      ...themes.normal,
+      ...baseTheme,
+      brandImage: brandImageLight,
+    },
+    stylePreview: false,
+  },
+  docs: {
+    container: DocsContainer,
   },
 };
+
+const Link = React.forwardRef((props, ref) => {
+  return (
+    <a href={props?.to} ref={ref} {...props}>
+      {props.children}
+    </a>
+  );
+});
+
+export const decorators = [
+  (Story) => {
+    return (
+      <>
+        <WePlanWrapper initLink={Link}>
+          <>
+            <ThemeSwitcher />
+            <Story />
+          </>
+        </WePlanWrapper>
+      </>
+    );
+  },
+];
