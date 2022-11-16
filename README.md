@@ -11,13 +11,10 @@
 ### Install Dependencies
 
 ```bash
-# yarn
-yarn
 # npm
 npm install
 ```
 
-- `yarn`을 설치 권장
 - 위 명령어를 입력하여 의존성 모듈을 설치
 
 ### Test
@@ -42,8 +39,6 @@ npm run build
 - 빌드 결과물은 `dist/`에 출력.
 
 ## Structure
-
-템플릿을 설치하면 다음과 같은 파일 및 디렉토리가 생성됩니다.
 
     .
     ├── .storybook
