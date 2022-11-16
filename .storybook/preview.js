@@ -5,9 +5,13 @@ import brandImageLight from './assets/logo_text_main.svg';
 import brandImageDark from './assets/logo_text_white.svg';
 import { ThemeSwitcher } from './components/ThemeSwitcher';
 
-import { WePlanWrapper } from '../src/components/Wrapper';
+import { WePlanWrapper } from '../src/components/wrapper';
 const baseTheme = {
-  brandTitle: 'WePlan Storybook',
+  colorPrimary: '#FF4500',
+  colorSecondary: '#009688',
+  fontBase: '"Pretendard", sans-serif',
+  fontCode: 'monospace',
+  brandTitle: 'WePlanner Storybook',
   brandUrl: 'https://design.weplanner.me',
   brandTarget: '_self',
 };
@@ -27,12 +31,32 @@ export const parameters = {
       appBg: '#252629',
       appContentBg: '#1a1b1d',
       barBg: '#252629',
-      inputBg: '#3c3e46',
+      inputBg: '#3c3e46', //controll 색상
       brandImage: brandImageDark,
     },
     light: {
       ...themes.normal,
       ...baseTheme,
+      // UI
+      appBg: '#FEEFE6',
+      appContentBg: '#FAF6EC',
+      appBorderColor: '#4A453C',
+      appBorderRadius: 4,
+
+      // Text colors
+      textColor: '#1A1712',
+      textInverseColor: 'rgba(255,255,255,0.9)',
+
+      // Form colors
+      inputBg: '#E0F2F1',
+      inputBorder: '#009688',
+      inputTextColor: '#009688',
+      inputBorderRadius: 4,
+
+      barSelectedColor: '#FF4500',
+      barTextColor: '#A8A297',
+      barBg: '#F4EFE3',
+
       brandImage: brandImageLight,
     },
     stylePreview: false,

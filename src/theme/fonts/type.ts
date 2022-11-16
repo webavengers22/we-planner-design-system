@@ -1,9 +1,8 @@
 interface FontsVariables {
   fontFamily: string;
-  fontFamilyMonospace: string;
-
-  fontWeightRegular: string;
-  fontWeightSemiBold: string;
+  fontDisplay: string;
+  fontWeightRegular: number;
+  fontWeightBold: number;
 
   fontSizeNormal: string;
   fontSize200: string;
