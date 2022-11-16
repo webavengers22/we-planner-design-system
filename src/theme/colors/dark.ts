@@ -1,5 +1,5 @@
 import { ColorVariables } from './type';
-import { ALL_COLORS } from './colors';
+import { ALL_COLORS } from './common';
 
 export const darkColor: ColorVariables = {
   white: ALL_COLORS.white,

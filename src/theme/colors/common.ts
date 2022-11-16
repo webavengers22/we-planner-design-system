@@ -2,7 +2,7 @@
 //0=>9
 export const ALL_COLORS = {
   white: '#FFFFFF',
-  black: '#000000', // 메인/블랙1
+  black: '#1A1712', // 메인/블랙1
   orange50: '#FEEFE6', //brand color
   orange100: '#FFE3DA',
   orange200: '#FFC7B4',

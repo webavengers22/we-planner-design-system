@@ -1,12 +1,10 @@
 import { FontsVariables } from './type';
 
 export const fontVariable: FontsVariables = {
-  fontFamily: `"Inter", 'Noto Sans KR', -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif`,
-  fontFamilyMonospace: `Consolas, 'Courier New', Courier, monospaceFont family fontFamilyMonospace`,
-
-  fontWeightRegular: 'regular',
-  fontWeightSemiBold: 'bold',
-
+  fontFamily: 'Pretendard',
+  fontDisplay: 'swap',
+  fontWeightBold: 700,
+  fontWeightRegular: 400,
   fontSizeNormal: 'var(--fontSize200)',
   fontSize200: '12px',
   fontSize300: '14px',
@@ -16,7 +14,6 @@ export const fontVariable: FontsVariables = {
   fontSize700: '32px',
   fontSize800: '40px',
   fontSize900: '48px',
-
   lineHeightNormal: 'var(--lineHeight200)',
   lineHeight200: '16.5px',
   lineHeight300: '18.7px',
