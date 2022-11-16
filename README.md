@@ -46,7 +46,5 @@ npm run build
     ├── public
     ├── src
     ├── .gitignore
-    ├── LICENSE
     ├── package.json
-    ├── yarn.lock
     └── README.md
