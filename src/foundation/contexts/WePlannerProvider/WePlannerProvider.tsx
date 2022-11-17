@@ -1,6 +1,6 @@
 import React from 'react';
-import ColorThemeProvider from '../hooks/useColorTheme/colorThemeContext';
-import LinkContextProvider from './linkContext';
+import ColorThemeProvider from '../../hooks/useColorTheme/colorThemeContext';
+import LinkContextProvider from '../linkContext/linkContext';
 export function WePlannerProvider({
   children,
   initLink,

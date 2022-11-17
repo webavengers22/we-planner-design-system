@@ -3,7 +3,6 @@ interface FontsVariables {
   fontDisplay: string;
   fontWeightRegular: number;
   fontWeightBold: number;
-
   fontSizeNormal: string;
   fontSize200: string;
   fontSize300: string;

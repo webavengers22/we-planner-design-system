@@ -1,31 +1,38 @@
 import {
-  ColorVariables,
+  CommonColorVariables,
+  ThemeColorVariables,
   ThemeMainType,
   ColorKeys,
   PaletteType,
   lightColor,
   darkColor,
+  commonColor,
 } from '../colors';
-import { cssVar } from 'util/index';
+import { cssVar, KeysOfUnion } from 'foundation/utils/index';
+import { Type } from 'typescript';
 
 // TODO: theme 저장
-const buildCssVariables = (variables: ColorVariables) => {
-  const keys = Object.keys(variables) as (keyof ColorVariables)[];
+const buildCssVariables = <T extends Object>(variables: T): string => {
+  const keys = Object.keys(variables) as KeysOfUnion<T>[];
   return keys.reduce(
     (acc, key) => acc.concat(`--${key.replace(/_/g, '-')}: ${variables[key]};`, '\n'),
     '',
   );
 };
 
-export const ThemeColorSets: Record<ThemeMainType, ColorVariables> = {
+export const ThemeColorSets: Record<ThemeMainType, ThemeColorVariables> = {
   light: { ...lightColor },
   dark: { ...darkColor },
 };
 
 export const colorThemes = {
-  light: buildCssVariables(ThemeColorSets.light),
-  dark: buildCssVariables(ThemeColorSets.dark),
+  light: buildCssVariables<ThemeColorVariables>(ThemeColorSets.light),
+  dark: buildCssVariables<ThemeColorVariables>(ThemeColorSets.dark),
+  common: buildCssVariables<CommonColorVariables>(commonColor),
 };
+
+console.log('colorThemes');
+console.log(colorThemes);
 
 const paletteKeys = Object.keys(ThemeColorSets.light) as ColorKeys[];
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { WePlannerProvider } from '../../context';
+import { WePlannerProvider } from 'foundation/contexts/WePlannerProvider/WePlannerProvider';
 import { GlobalStyles } from './style';
 
 interface WePlanWrapperProps {
