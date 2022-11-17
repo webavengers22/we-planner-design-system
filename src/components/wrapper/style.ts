@@ -7,8 +7,6 @@ export const GlobalStyles = createGlobalStyle`
     ${reset}
     * {
         margin: 0;
-        font-family: var(--fontFamily) !important;
-        font-weight: var(--fontWeightNomal);
         box-sizing: border-box;
         font-size: 16px;
     }

@@ -1,9 +1,7 @@
-import { ColorVariables } from './type';
-import { ALL_COLORS } from './common';
+import { ThemeColorVariables } from './type';
+import { ALL_COLORS } from './colors';
 
-export const lightColor: ColorVariables = {
-  white: ALL_COLORS.white,
-  black: ALL_COLORS.black,
+export const lightColor: ThemeColorVariables = {
   primary: ALL_COLORS.orange500,
   secondary: ALL_COLORS.teal500,
   tertiary: ALL_COLORS.gray500,

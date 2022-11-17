@@ -1,5 +1,5 @@
 import { FontsVariables, fontVariable, FontsKey, FontsType } from '../fonts';
-import { cssVar } from 'util/index';
+import { cssVar } from 'foundation/utils/index';
 
 // TODO: font 저장
 const buildfontVariable = (variables: FontsVariables) => {

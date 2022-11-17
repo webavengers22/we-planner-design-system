@@ -1,34 +1,32 @@
-//A => F
-//0=>9
-export const ALL_COLORS = {
-  white: '#FFFFFF',
-  black: '#1A1712', // 메인/블랙1
-  orange50: '#FEEFE6', //brand color
-  orange100: '#FFE3DA',
-  orange200: '#FFC7B4',
-  orange300: '#FF855B',
-  orange400: '#FF6C34',
-  orange500: '#FF4500',
-  orange600: '#E33400',
-  orange700: '#CC2200',
-  teal50: '#E0F2F1', //brand color
-  teal100: '#82DFDB',
-  teal200: '#80CBC4',
-  teal300: '#4DB6AC',
-  teal400: '#26A69A',
-  teal500: '#009688',
-  teal600: '#00796B',
-  teal700: '#00695C',
-  gray100: '#FAF6EC',
-  gray200: '#F4EFE3',
-  gray300: '#E9E3D7',
-  gray400: '#C6C1B5',
-  gray500: '#A8A297',
-  gray600: '#7E796E',
-  gray700: '#6A655A',
-  gray800: '#4A453C',
-  gray900: '#28241B',
-  error: '#CC2200',
-  info: '#127CB3',
-  success: '#109867',
+import { CommonColorVariables } from './type';
+import { ALL_COLORS } from './colors';
+
+export const commonColor: CommonColorVariables = {
+  white: ALL_COLORS.white,
+  black: ALL_COLORS.black, // 메인/블랙1
+  orange50: ALL_COLORS.orange50, //brand color
+  orange100: ALL_COLORS.orange100,
+  orange200: ALL_COLORS.orange200,
+  orange300: ALL_COLORS.orange300,
+  orange400: ALL_COLORS.orange400,
+  orange500: ALL_COLORS.orange500,
+  orange600: ALL_COLORS.orange600,
+  orange700: ALL_COLORS.orange700,
+  teal50: ALL_COLORS.teal50, //brand color
+  teal100: ALL_COLORS.teal100,
+  teal200: ALL_COLORS.teal200,
+  teal300: ALL_COLORS.teal300,
+  teal400: ALL_COLORS.teal400,
+  teal500: ALL_COLORS.teal500,
+  teal600: ALL_COLORS.teal600,
+  teal700: ALL_COLORS.teal700,
+  gray100: ALL_COLORS.gray100,
+  gray200: ALL_COLORS.gray200,
+  gray300: ALL_COLORS.gray300,
+  gray400: ALL_COLORS.gray400,
+  gray500: ALL_COLORS.gray500,
+  gray600: ALL_COLORS.gray600,
+  gray700: ALL_COLORS.gray700,
+  gray800: ALL_COLORS.gray800,
+  gray900: ALL_COLORS.gray900,
 };

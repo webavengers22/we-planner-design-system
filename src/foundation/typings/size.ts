@@ -1,4 +1,4 @@
-import { ValueOf } from 'constants/index';
+import { ValueOf } from 'foundation';
 
 //  사이즈 정의
 const Size = {
