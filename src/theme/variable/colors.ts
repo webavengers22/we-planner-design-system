@@ -9,7 +9,6 @@ import {
   commonColor,
 } from '../colors';
 import { cssVar, KeysOfUnion } from 'foundation/utils/index';
-import { Type } from 'typescript';
 
 // TODO: theme 저장
 const buildCssVariables = <T extends Object>(variables: T): string => {
@@ -31,12 +30,13 @@ export const colorThemes = {
   common: buildCssVariables<CommonColorVariables>(commonColor),
 };
 
-console.log('colorThemes');
-console.log(colorThemes);
+type ColorUniOnKey = CommonColorVariables | ThemeColorVariables;
+type ColorKeysOfUnion = KeysOfUnion<ColorUniOnKey>;
+type PaletteKeysOfUnion = Record<ColorKeysOfUnion, string>;
 
-const paletteKeys = Object.keys(ThemeColorSets.light) as ColorKeys[];
+const paletteKeys = Object.keys(ThemeColorSets.light) as ColorKeysOfUnion[];
 
-export const ColorPalette: Record<ColorKeys, string> = paletteKeys.reduce((acc, current) => {
+export const ColorPalette: Record<ColorKeysOfUnion, string> = paletteKeys.reduce((acc, current) => {
   acc[current] = cssVar(current);
   return acc;
-}, {} as PaletteType);
+}, {} as PaletteKeysOfUnion);

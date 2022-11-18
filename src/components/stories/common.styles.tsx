@@ -10,9 +10,9 @@ export const Paper = styled.div<{
   $maxWidth?: number;
 }>`
   background: ${theme.background};
-  padding: 30px;
-  border-radius: 5px;
-  box-shadow: 0 0px 16px 0 rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0px 16px 0 ${theme.gray100};
 
   ${({ $minWidth }) =>
     $minWidth &&
@@ -27,7 +27,8 @@ export const Paper = styled.div<{
 `;
 
 export const TitleContainer = styled.div`
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
+  color: ${theme.text};
 `;
 
 export const Table = styled.table`

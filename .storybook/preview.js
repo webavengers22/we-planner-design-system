@@ -4,6 +4,7 @@ import { DocsContainer } from './DocsContainer';
 import brandImageLight from './assets/logo_text_main.svg';
 import brandImageDark from './assets/logo_text_white.svg';
 import { ThemeSwitcher } from './components/ThemeSwitcher';
+import { style } from '../src/theme';
 
 import { WePlanWrapper } from '../src/components/wrapper';
 const baseTheme = {
@@ -16,6 +17,31 @@ const baseTheme = {
   brandTarget: '_self',
 };
 
+const viewportValues = style.viewport;
+const customViewports = {
+  responsive1: {
+    name: '반응형사이즈1',
+    styles: {
+      width: `${viewportValues.L.width}px`,
+      height: `${viewportValues.L.heigt}px`,
+    },
+  },
+  responsive2: {
+    name: '반응형사이즈2',
+    styles: {
+      width: `${viewportValues.M.width}px`,
+      height: `${viewportValues.M.heigt}px`,
+    },
+  },
+  responsive3: {
+    name: '반응형사이즈3',
+    styles: {
+      width: `${viewportValues.S.width}px`,
+      height: `${viewportValues.S.heigt}px`,
+    },
+  },
+};
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -24,6 +50,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  viewport: { viewports: customViewports },
   darkMode: {
     dark: {
       ...themes.dark,
