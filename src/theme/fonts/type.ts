@@ -4,23 +4,22 @@ interface FontsVariables {
   fontWeightRegular: number;
   fontWeightBold: number;
   fontSizeNormal: string;
-  fontSize200: string;
-  fontSize300: string;
-  fontSize400: string;
-  fontSize500: string;
-  fontSize600: string;
-  fontSize700: string;
-  fontSize800: string;
-  fontSize900: string;
-
+  fontSize200: number;
+  fontSize300: number;
+  fontSize400: number;
+  fontSize500: number;
+  fontSize600: number;
+  fontSize700: number;
+  fontSize800: number;
+  fontSize900: number;
   lineHeightNormal: string;
-  lineHeight200: string;
-  lineHeight300: string;
-  lineHeight400: string;
-  lineHeight500: string;
-  lineHeight600: string;
-  lineHeight700: string;
-  lineHeight800: string;
+  lineHeight200: number;
+  lineHeight300: number;
+  lineHeight400: number;
+  lineHeight500: number;
+  lineHeight600: number;
+  lineHeight700: number;
+  lineHeight800: number;
 }
 
 type FontsKey = keyof FontsVariables;

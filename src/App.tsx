@@ -1,10 +1,10 @@
 import Component from './Component';
-import GlobalStyle from './theme/global-styles';
+import { GlobalStyles } from 'components/wrapper/wrapper.style';
 
 function App() {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyles />
       <Component />
     </>
   );
