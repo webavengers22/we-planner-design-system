@@ -13,7 +13,7 @@ import { typographyStylesKey, TYPOGRAPHY_STYLES_STORYBOOK } from 'foundation';
 import { Typography } from '.';
 
 export default {
-  title: 'Typography/Typography',
+  title: 'Component/Typography',
   component: Typography,
 } as ComponentMeta<typeof Typography>;
 
