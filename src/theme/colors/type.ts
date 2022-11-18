@@ -1,3 +1,5 @@
+import { KeysOfUnion } from 'foundation/utils';
+
 interface ThemeColorVariables {
   primary: string;
   secondary: string;
@@ -40,7 +42,15 @@ interface CommonColorVariables {
 }
 
 type ThemeMainType = 'light' | 'dark';
-type ColorKeys = keyof ThemeColorVariables;
-type PaletteType = Record<ColorKeys, string>;
 
-export type { ThemeMainType, ColorKeys, PaletteType, ThemeColorVariables, CommonColorVariables };
+type ColorUniOnKey = CommonColorVariables | ThemeColorVariables;
+type ColorKeysOfUnion = KeysOfUnion<ColorUniOnKey>;
+type PaletteKeysOfUnion = Record<ColorKeysOfUnion, string>;
+
+export type {
+  ThemeMainType,
+  ColorKeysOfUnion,
+  PaletteKeysOfUnion,
+  ThemeColorVariables,
+  CommonColorVariables,
+};

@@ -4,60 +4,59 @@ import {
   typographyWeightType,
   typographyTagNamesType,
 } from 'foundation/typings';
-import { theme } from 'theme';
 import { fontVariable } from 'theme/fonts';
 const TYPOGRAPHY_FONT = 'Pretendard';
 
 const TYPOGRAPHY_STYLES = {
   display3: {
-    fontSize: theme.fontSize900,
-    lineHeight: theme.lineHeight800,
-    fontFamily: theme.fontWeightBold,
+    fontSize: fontVariable.fontSize900,
+    lineHeight: fontVariable.lineHeight800,
+    fontFamily: fontVariable.fontWeightBold,
   },
   display2: {
-    fontSize: theme.fontSize800,
-    lineHeight: theme.lineHeight700,
-    fontWeight: theme.fontWeightBold,
+    fontSize: fontVariable.fontSize800,
+    lineHeight: fontVariable.lineHeight700,
+    fontWeight: fontVariable.fontWeightBold,
   },
   display1: {
-    fontSize: theme.fontSize700,
-    lineHeight: theme.lineHeight600,
-    fontWeight: theme.fontWeightBold,
+    fontSize: fontVariable.fontSize700,
+    lineHeight: fontVariable.lineHeight600,
+    fontWeight: fontVariable.fontWeightBold,
   },
   headline1: {
-    fontSize: theme.fontSize600,
-    lineHeight: theme.lineHeight500,
-    fontWeight: theme.fontWeightRegular,
+    fontSize: fontVariable.fontSize600,
+    lineHeight: fontVariable.lineHeight500,
+    fontWeight: fontVariable.fontWeightRegular,
   },
   headline2: {
-    fontSize: theme.fontSize600,
-    lineHeight: theme.lineHeight500,
-    fontWeight: theme.fontWeightRegular,
+    fontSize: fontVariable.fontSize600,
+    lineHeight: fontVariable.lineHeight500,
+    fontWeight: fontVariable.fontWeightRegular,
   },
   title: {
-    fontSize: theme.fontSize500,
-    lineHeight: theme.lineHeight400,
-    fontWeight: theme.fontWeightRegular,
+    fontSize: fontVariable.fontSize500,
+    lineHeight: fontVariable.lineHeight400,
+    fontWeight: fontVariable.fontWeightRegular,
   },
   body1: {
-    fontSize: theme.fontSize400,
-    lineHeight: theme.lineHeight300,
-    fontWeight: theme.fontWeightRegular,
+    fontSize: fontVariable.fontSize400,
+    lineHeight: fontVariable.lineHeight300,
+    fontWeight: fontVariable.fontWeightRegular,
   },
   body2: {
-    fontSize: theme.fontSize300,
-    lineHeight: theme.lineHeight200,
-    fontWeight: theme.fontWeightRegular,
+    fontSize: fontVariable.fontSize300,
+    lineHeight: fontVariable.lineHeight200,
+    fontWeight: fontVariable.fontWeightRegular,
   },
   caption: {
-    fontSize: theme.fontSize200,
-    lineHeight: theme.lineHeight200,
-    fontWeight: theme.fontWeightRegular,
+    fontSize: fontVariable.fontSize200,
+    lineHeight: fontVariable.lineHeight200,
+    fontWeight: fontVariable.fontWeightRegular,
   },
   button: {
-    fontSize: theme.fontSize200,
-    lineHeight: theme.lineHeight200,
-    fontWeight: theme.fontWeightRegular,
+    fontSize: fontVariable.fontSize200,
+    lineHeight: fontVariable.lineHeight200,
+    fontWeight: fontVariable.fontWeightRegular,
   },
 };
 

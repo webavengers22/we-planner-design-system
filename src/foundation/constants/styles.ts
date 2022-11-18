@@ -1,10 +1,9 @@
 import { css } from 'styled-components';
 import { typographyStylesKey } from '../typings';
-
 import { TYPOGRAPHY_STYLES, TYPOGRAPHY_FONT } from '../constants';
 
 /**
- * 해당 스타일명에 해당하는 css 조각을 반환
+ * Typography 스타일 별 css 반환
  */
 export const getTypographyStyles = (typographyStyle: typographyStylesKey) => {
   const { fontSize, lineHeight } = TYPOGRAPHY_STYLES[typographyStyle];
