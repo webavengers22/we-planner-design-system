@@ -20,10 +20,9 @@ export const GlobalStyles = createGlobalStyle`
 
     :root {
         ${builtfontVariable}
-        ${colorThemes.light}
+        ${colorThemes.common}
         transition: 0.125s all ease-in;
         scroll-padding-top: 64px;
-
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         touch-action: manipulation;
@@ -42,7 +41,7 @@ export const GlobalStyles = createGlobalStyle`
 
         * {
             ::selection {
-                background: #74fde0;
+               // background: #74fde0;
             }
         }
     }
@@ -53,7 +52,7 @@ export const GlobalStyles = createGlobalStyle`
 
         * {
             ::selection {
-                background: #7270ff;
+               // background: #7270ff;
             }
         }
     }
