@@ -1,9 +1,7 @@
 import {
-  CommonColorVariables,
+  ColorUniOnKey,
   ThemeColorVariables,
   ThemeMainType,
-  ColorKeysOfUnion,
-  PaletteKeysOfUnion,
   lightColor,
   darkColor,
   commonColor,
@@ -25,14 +23,22 @@ export const ThemeColorSets: Record<ThemeMainType, ThemeColorVariables> = {
 };
 
 export const colorThemes = {
-  light: buildCssVariables<ThemeColorVariables>(ThemeColorSets.light),
-  dark: buildCssVariables<ThemeColorVariables>(ThemeColorSets.dark),
-  common: buildCssVariables<CommonColorVariables>(commonColor),
+  light: buildCssVariables<ColorUniOnKey>(ThemeColorSets.light),
+  dark: buildCssVariables<ColorUniOnKey>(ThemeColorSets.dark),
+  common: buildCssVariables<ColorUniOnKey>(commonColor),
 };
 
-const paletteKeys = Object.keys(ThemeColorSets.light) as ColorKeysOfUnion[];
+const buildColorPalette = <T extends Object>(variables: T) => {
+  const keys = Object.keys(variables) as KeysOfUnion<T>[];
+  return keys.reduce((acc, current) => {
+    acc[current] = cssVar(current);
+    return acc;
+  }, {} as Record<KeysOfUnion<T>, string>);
+};
+const themePalette = buildColorPalette<ColorUniOnKey>(ThemeColorSets.light);
+const commonPalette = buildColorPalette<ColorUniOnKey>(commonColor);
 
-export const ColorPalette: Record<ColorKeysOfUnion, string> = paletteKeys.reduce((acc, current) => {
-  acc[current] = cssVar(current);
-  return acc;
-}, {} as PaletteKeysOfUnion);
+export const ColorPalette: Record<KeysOfUnion<ColorUniOnKey>, string> = {
+  ...themePalette,
+  ...commonPalette,
+};

@@ -8,8 +8,8 @@ import { TYPOGRAPHY_STYLES, TYPOGRAPHY_FONT } from '../constants';
 export const getTypographyStyles = (typographyStyle: typographyStylesKey) => {
   const { fontSize, lineHeight } = TYPOGRAPHY_STYLES[typographyStyle];
   return css`
-    font-size: ${fontSize};
-    line-height: ${lineHeight};
+    font-size: ${fontSize}px;
+    line-height: ${lineHeight}px;
     font-family: ${TYPOGRAPHY_FONT};
     font-display: swap;
   `;
