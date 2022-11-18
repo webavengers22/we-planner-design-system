@@ -1,5 +1,5 @@
 import { ThemeColorVariables } from './type';
-import { ALL_COLORS } from './colors';
+import { ALL_COLORS } from 'foundation/constants';
 
 export const darkColor: ThemeColorVariables = {
   primary: ALL_COLORS.orange500,

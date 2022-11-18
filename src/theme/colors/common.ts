@@ -1,5 +1,5 @@
 import { CommonColorVariables } from './type';
-import { ALL_COLORS } from './colors';
+import { ALL_COLORS } from 'foundation';
 
 export const commonColor: CommonColorVariables = {
   white: ALL_COLORS.white,

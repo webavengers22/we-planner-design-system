@@ -1,6 +1,6 @@
-import { style } from 'theme';
+import { typography } from 'theme/styles';
 
-type typographyStylesKey = keyof typeof style.typography;
+type typographyStylesKey = keyof typeof typography;
 
 type typographyTagNamesType = keyof Pick<
   HTMLElementTagNameMap,

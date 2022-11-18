@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
   TitleContainer,
-} from 'components/stories/common.styles';
+} from 'storybook/styles/common.styles';
 import { typographyStylesKey, TYPOGRAPHY_STYLES_STORYBOOK } from 'foundation';
 import { Typography } from '.';
 

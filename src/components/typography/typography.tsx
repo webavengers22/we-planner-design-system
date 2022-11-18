@@ -1,6 +1,6 @@
 import { TypographyProps } from '.';
 import { TYPOGRAPHY_COMPONENT } from 'foundation/constants';
-import { getTypographyComponent } from './styles';
+import { getTypographyComponent } from './typography.styles';
 
 export function Typography({
   variant = 'body1',

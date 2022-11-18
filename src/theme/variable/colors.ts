@@ -2,8 +2,8 @@ import {
   CommonColorVariables,
   ThemeColorVariables,
   ThemeMainType,
-  ColorKeys,
-  PaletteType,
+  ColorKeysOfUnion,
+  PaletteKeysOfUnion,
   lightColor,
   darkColor,
   commonColor,
@@ -29,10 +29,6 @@ export const colorThemes = {
   dark: buildCssVariables<ThemeColorVariables>(ThemeColorSets.dark),
   common: buildCssVariables<CommonColorVariables>(commonColor),
 };
-
-type ColorUniOnKey = CommonColorVariables | ThemeColorVariables;
-type ColorKeysOfUnion = KeysOfUnion<ColorUniOnKey>;
-type PaletteKeysOfUnion = Record<ColorKeysOfUnion, string>;
 
 const paletteKeys = Object.keys(ThemeColorSets.light) as ColorKeysOfUnion[];
 
