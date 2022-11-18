@@ -52,42 +52,53 @@ const GlobalStyles = createGlobalStyle`
       line-height: ${theme.lineHeightNormal}rem;
     }
     
-    h1 {
+    p {
       margin: 0;
     }
-    
-    a {
-      color: inherit;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    
-    button,
-    input,
-    select,
-    textarea {
-      background-color: transparent;
-      border: 0;
-      &:focus {
-        outline: none;
-        box-shadow: none;
-      }
-    }
-    
-    a,
-    button {
-      cursor: pointer;
-    }
-    
-    button {
+    ul {
+      list-style: none;
+      margin: 0;
       padding: 0;
     }
-    
-    ul,
-    ol {
-      padding-left: 0;
-      list-style: none;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-size: 1rem;
+      margin: 0;
+      padding: 0;
     }
+    a {
+      text-decoration: none;
+      outline: none;
+      &:link,
+      &:visited,
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+    img {
+      object-fit: cover;
+    }
+    button {
+      font-family: inherit;
+      outline: none;  
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      background-color: transparent;
+    }
+    input, textarea {
+      font-family: inherit;
+    }
+
+    textarea {
+      resize: none;
+    }
+  
     .visually-hidden {
       position: absolute !important;
       width: 1px !important;
