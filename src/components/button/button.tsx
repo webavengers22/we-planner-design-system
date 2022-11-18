@@ -1,22 +1,19 @@
-import React from 'react';
-
 import type { ButtonProps } from './types';
-import { ButtonRoot } from './styles';
-import { Typography } from 'components/typography';
+import { Styled } from './styles';
 // import { Spinner } from 'components/Common/Spinner';
 
 export function Button({
   className,
   disabled = false,
   variants = 'primary',
-  size,
+  size = 'md',
   loading = false,
   block = false,
   children,
   ...props
 }: ButtonProps) {
   return (
-    <ButtonRoot
+    <Styled
       className={className}
       size={size}
       variants={variants}
@@ -24,7 +21,7 @@ export function Button({
       block={block}
       {...props}
     >
-      <Typography variant="button">{children}</Typography>
-    </ButtonRoot>
+      {children}
+    </Styled>
   );
 }
