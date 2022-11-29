@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Typography } from 'components/typography';
-import { Button } from './button';
+import { Button } from '.';
 
 export default {
   title: 'Component/Button',
@@ -8,17 +7,16 @@ export default {
   args: {
     disabled: false,
     variants: 'primary',
-    outline: false,
     size: 'md',
     loading: true,
-    block: false,
   },
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}>
-    <Typography variant="button">Button</Typography>
-  </Button>
-);
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
+Primary.args = {
+  children: 'text',
+  variants: 'primary',
+  disabled: false,
+};
