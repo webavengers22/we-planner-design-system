@@ -1,19 +1,22 @@
-import React, { useMemo, createContext, useState, useEffect, useCallback } from 'react';
-
+import React, { useMemo, createContext, useState, useEffect, useCallback, useContext } from 'react';
 type ColorTheme = 'light' | 'dark' | 'system';
 type NowColorTheme = 'light' | 'dark';
 
-export interface ColorThemeContextProps {
+export interface useColorTheme {
   colorTheme: ColorTheme; //유저가 선택한 색상 테마입니다.
   nowColorTheme: NowColorTheme; //실제 화면에 표시되는 색상 테마 입니다.
   setColorTheme: (theme: ColorTheme) => void;
 }
 
-export const ColorThemeContext = createContext<ColorThemeContextProps>({
+const ColorThemeContext = createContext<useColorTheme>({
   colorTheme: 'system',
   nowColorTheme: 'light',
   setColorTheme: () => null,
 });
+
+export function useColorTheme() {
+  return useContext(ColorThemeContext);
+}
 
 function ColorThemeProvider({ children }: { children: React.ReactNode }) {
   const [colorTheme, setColorTheme] = useState<ColorTheme>('system');

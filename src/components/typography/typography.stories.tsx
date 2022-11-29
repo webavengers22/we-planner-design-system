@@ -64,10 +64,10 @@ export const Overview: ComponentStory<typeof Typography> = () => (
 const Template: ComponentStory<typeof Typography> = (args) => (
   <Paper>
     <TitleContainer>
-      <Typography variant="body1">적용 스타일</Typography>
+      <Typography variant="headline2">적용 스타일</Typography>
       <Typography {...args}>{args.children || args.variant}</Typography>
     </TitleContainer>
-    <Typography variant="headline1">실제 마크업</Typography>
+    <Typography variant="headline2">실제 마크업</Typography>
     {renderToStaticMarkup(<Typography {...args}>{args.children || args.variant}</Typography>)}
   </Paper>
 );
