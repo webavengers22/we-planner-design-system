@@ -12,7 +12,7 @@ export const Paper = styled.div<{
   background: ${theme.background};
   padding: 2rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0px 16px 0 ${theme.gray100};
+  box-shadow: 0 0px 16px 0 ${theme.gray600};
 
   ${({ $minWidth }) =>
     $minWidth &&
@@ -28,7 +28,7 @@ export const Paper = styled.div<{
 
 export const TitleContainer = styled.div`
   margin-bottom: 2rem;
-  color: ${theme.text};
+color: ${theme.text};
 `;
 
 export const Table = styled.table`

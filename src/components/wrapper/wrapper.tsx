@@ -1,5 +1,5 @@
 import React from 'react';
-import { WePlannerProvider } from 'foundation/contexts/WePlannerProvider/WePlannerProvider';
+import ThemeProvider, { ThemeProviderProps } from 'providers/ThemeProvider';
 import { GlobalStyles } from './wrapper.style';
 
 interface WePlanWrapperProps {
@@ -10,11 +10,11 @@ interface WePlanWrapperProps {
 /**
  * weplanner의 Provider
  */
-export function WePlanWrapper({ children, initLink }: WePlanWrapperProps) {
+export function WePlanWrapper({ children }: ThemeProviderProps) {
   return (
     <>
       <GlobalStyles />
-      <WePlannerProvider initLink={initLink}>{children}</WePlannerProvider>
+      <ThemeProvider>{children}</ThemeProvider>
     </>
   );
 }
