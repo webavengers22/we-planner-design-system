@@ -14,7 +14,7 @@ import {
       DisableProps,
       LoadingProps,
       CommonAttrProps,
-      React.HTMLAttributes<HTMLButtonElement> { //??
+      React.HTMLAttributes<HTMLButtonElement> {
     variants: variantType;
     size: RadioSizeType;
   }
