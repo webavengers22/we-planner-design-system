@@ -1,5 +1,5 @@
 import {
-    ChildrenProps,
+    // ChildrenProps,
     DisableProps,
     LoadingProps,
     CommonAttrProps,
@@ -10,7 +10,8 @@ import {
   export type RadioSizeType = 'sm' | 'md' | 'lg';
   
   export interface RadioProps
-    extends ChildrenProps,
+    extends 
+        // ChildrenProps,
       DisableProps,
       LoadingProps,
       CommonAttrProps,
