@@ -24,6 +24,10 @@ interface CommonAttrProps {
   style?: React.CSSProperties;
 }
 
+interface LabelProps {
+  label?: string
+}
+
 type variantType = 'primary' | 'secondary';
 
 export type {
@@ -34,4 +38,5 @@ export type {
   OnClickProps,
   CommonAttrProps,
   variantType,
+  LabelProps,
 };
