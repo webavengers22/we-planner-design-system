@@ -1,9 +1,10 @@
 import {
-    // ChildrenProps,
+    ChildrenProps,
     DisableProps,
     LoadingProps,
     CommonAttrProps,
     variantType,
+    LabelProps,
   } from 'types/ComponentProps';
   
   // export type ButtonSizeType = 'xs' | 'sm' | 'md' | 'lg';
@@ -11,10 +12,11 @@ import {
   
   export interface RadioProps
     extends 
-        // ChildrenProps,
+        ChildrenProps,
       DisableProps,
       LoadingProps,
       CommonAttrProps,
+      LabelProps,
       React.HTMLAttributes<HTMLButtonElement> {
     variants: variantType;
     size: RadioSizeType;

@@ -39,13 +39,8 @@ const Colors: Color[] = [
 
 export const RadioStyled = styled.input.attrs({type:'radio'})<RadioProps>`
     display: inline-block;
-    padding: 0px 10px;
-    text-align: center;
-    height: 35px;
-    line-height: 33px;
-    font-weight: 500;
-    background: blue;
-    color: red;
+    padding: 10px;
+    accent-color: #FF4500; //컬러명으로 지정해야함
 `
 
 export const ColorSelectorContainer = styled.div`
@@ -55,6 +50,7 @@ export const ColorSelectorContainer = styled.div`
   margin-top: 8px;
   padding: 10px;
   border: 5px solid ${(props) => props.color};
+
 `;
 
 export const Label = styled.label`

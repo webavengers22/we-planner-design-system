@@ -14,11 +14,13 @@ export default {
 
 // Radio 컴포넌트 안의 인자들을 뿌려줌
 const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
+// const Template: ComponentStory<typeof RadioGroups> = (args) => <RadioGroups {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
   children: 'text',
   variants: 'primary',
   disabled: false,
+  label: 'text',
   
 };
