@@ -5,10 +5,10 @@ export default {
   title: 'Component/GoWithButton',
   component: GoWithButton,
   args: {
-    disabled: false,
-    variants: 'primary',
-    size: 'md',
-    loading: true,
+    // disabled: false,
+    // variants: 'primary',
+    // size: 'md',
+    // loading: true,
   },
 } as ComponentMeta<typeof GoWithButton>;
 
@@ -16,7 +16,7 @@ const Template: ComponentStory<typeof GoWithButton> = (args) => <GoWithButton {.
 
 export const Primary = Template.bind({});
 Primary.args = {
-  children: 'text',
-  variants: 'primary',
-  disabled: false,
+  children: '관심있는 동행을 입력해주세요',
+  // variants: 'primary',
+  // disabled: false,
 };

@@ -6,24 +6,21 @@ import { Typography } from 'components/typography';
 
 export function GoWithButton({
   className,
-  disabled = false,
+  // disabled = false,
   variants = 'primary',
-  size = 'md',
-  loading = false,
+  // size = 'md',
+  // loading = false,
   children,
-  ...props
+  // ...props
 }: ButtonProps) {
   return (
     <>
-    {/* <GoWithButton variants={'primary'} size={'sm'}></GoWithButton> */}
-    <Styled className={className} size={size} variants={variants} disabled={disabled} {...props}>
-      
-      {loading ? (
-        <LoadingDots variants="primary" />
-      ) : (
+      {/* <GoWithButton variants={'primary'} size={'sm'}></GoWithButton> */}
+      {/* <Styled className={className} size={size} variants={variants} disabled={disabled} {...props}> */}
+      <Styled className={className} variants={variants}>
         <Typography variant="button">{children}</Typography>
-      )}
-    </Styled>
+      </Styled>
+      
     </>
   );
 }

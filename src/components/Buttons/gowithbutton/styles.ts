@@ -7,11 +7,12 @@ export const Styled = styled.button<ButtonProps>`
   justify-content: center;
   align-items: center;
 
-  width: 100%;
-  height: 54px;
-  border-radius: 4px;
+  width: 108px;
+  height: 108px;
+  border-radius: 10px;
+  font-size: 16px;
+
   transition: 0.2s cubic-bezier(0.2, 0, 0, 1);
-  pointer-events: ${({ loading }) => (loading ? 'none' : 'auto')};
   cursor: pointer;
 
   ${({ variants }) => css`

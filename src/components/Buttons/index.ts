@@ -1,2 +1,1 @@
-export * from './button';
-// export * from './gowithbutton';
+export * from './gowithbutton';
