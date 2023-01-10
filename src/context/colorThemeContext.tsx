@@ -15,7 +15,7 @@ const ColorThemeContext = createContext<ColorThemeContextProps>({
   setColorTheme: () => null,
 });
 
-export default function ColorThemeProvider({ children }: { children: React.ReactNode }) {
+export function ColorThemeProvider({ children }: { children: React.ReactNode }) {
   const [colorTheme, setColorTheme] = useState<ColorTheme>('system');
   const [nowColorTheme, setNowColorTheme] = useState<NowColorTheme>('light');
 
