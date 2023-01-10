@@ -1,52 +1,53 @@
 export const common = {
   white: '#FFFFFF',
-  black: '#1A1712', // 메인/블랙1
+  black: '#15130E', // 메인/블랙1
 } as const;
 
 export const orange = {
-  orange50: '#FEEFE6', //brand color
-  orange100: '#FFE3DA',
-  orange200: '#FFC7B4',
-  orange300: '#FF855B',
-  orange400: '#FF6C34',
-  orange500: '#FF4500',
-  orange600: '#E33400',
-  orange700: '#CC2200',
+  50: '#FEEFE6', //brand color
+  100: '#FFE3DA',
+  200: '#FFC7B4',
+  300: '#FF855B',
+  400: '#FF6C34',
+  500: '#FF4500',
+  600: '#E33400',
+  700: '#CC2200',
 } as const;
 
 export const teal = {
-  teal50: '#E0F2F1', //brand color
-  teal100: '#82DFDB',
-  teal200: '#80CBC4',
-  teal300: '#4DB6AC',
-  teal400: '#26A69A',
-  teal500: '#009688',
-  teal600: '#00796B',
-  teal700: '#00695C',
+  50: '#E0F2F1', //brand color
+  100: '#82DFDB',
+  200: '#80CBC4',
+  300: '#4DB6AC',
+  400: '#26A69A',
+  500: '#009688',
+  600: '#00796B',
+  700: '#00695C',
 } as const;
 
 export const gray = {
-  gray100: '#FAF6EC',
-  gray200: '#F4EFE3',
-  gray300: '#E9E3D7',
-  gray400: '#C6C1B5',
-  gray500: '#A8A297',
-  gray600: '#7E796E',
-  gray700: '#6A655A',
-  gray800: '#4A453C',
-  gray900: '#28241B',
+  100: '#FAF6EC',
+  200: '#F4EFE3',
+  300: '#E9E3D7',
+  400: '#C6C1B5',
+  500: '#A8A297',
+  600: '#7E796E',
+  700: '#6A655A',
+  800: '#4A453C',
+  900: '#28241B',
 } as const;
 
 export const status = {
-  error: '#CC2200',
-  info: '#127CB3',
   success: '#109867',
+  info: '#127CB3',
+  warning: '#DC1B2C',
+  error: '#DC1B2C',
 } as const;
 
 export const allColors = {
-  ...common,
-  ...orange,
-  ...teal,
-  ...gray,
-  ...status,
+  common: { ...common },
+  orange: { ...orange },
+  gray: { ...gray },
+  teal: { ...teal },
+  status: { ...status },
 };
