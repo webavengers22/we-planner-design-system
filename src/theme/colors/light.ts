@@ -1,7 +1,9 @@
-const common = {
+import { colorType } from './type';
+
+const common: colorType<'white' | 'black'> = {
   white: '#FFFFFF',
   black: '#15130E', // 메인/블랙1
-} as const;
+};
 
 const orange = {
   orange50: '#FEEFE6', //brand color
@@ -45,9 +47,9 @@ const status = {
 } as const;
 
 export const color = {
-  ...common,
-  ...orange,
-  ...gray,
-  ...teal,
-  ...status,
+  common: { ...common },
+  orange: { ...orange },
+  gray: { ...gray },
+  teal: { ...teal },
+  status: { ...status },
 };

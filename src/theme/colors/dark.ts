@@ -45,9 +45,9 @@ const status = {
 } as const;
 
 export const color = {
-  ...common,
-  ...orange,
-  ...gray,
-  ...teal,
-  ...status,
+  common: { ...common },
+  orange: { ...orange },
+  gray: { ...gray },
+  teal: { ...teal },
+  status: { ...status },
 };
