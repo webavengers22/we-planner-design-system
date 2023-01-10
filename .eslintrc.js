@@ -3,15 +3,17 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
+      modules: true,
+      experimentalObjectRestSpread: true,
     },
     ecmaVersion: 13,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'react-hooks'],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'airbnb',
+    'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:storybook/recommended',
@@ -19,11 +21,13 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   rules: {
-    '@typescript-eslint/interface-name-prefix': 'on',
-    '@typescript-eslint/explicit-function-return-type': 'on',
-    '@typescript-eslint/explicit-module-boundary-types': 'on',
-    '@typescript-eslint/no-explicit-any': 'on',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 };

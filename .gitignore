@@ -23,6 +23,22 @@ dist-ssr
 *.sln
 *.sw?
 
+# production
+/dist
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+.env
+lib
+.idea
+storybook-static
+node_modules
+
 # unused Zero-Install
 .yarn/*
 !.yarn/patches
