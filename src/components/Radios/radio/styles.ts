@@ -38,9 +38,10 @@ const Colors: Color[] = [
 
 
 export const RadioStyled = styled.input.attrs({type:'radio'})<RadioProps>`
-    display: inline-block;
-    padding: 10px;
     accent-color: #FF4500; //컬러명으로 지정해야함
+    text-align: center;
+    margin: 3px;
+    
 `
 
 export const ColorSelectorContainer = styled.div`
