@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import svgr from 'vite-plugin-svgr';
-import env from 'vite-plugin-env-compatible';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -13,7 +12,6 @@ export default defineConfig({
         dimensions: false,
       },
     }),
-    env({ prefix: 'REACT_APP_' }),
   ],
   resolve: {
     alias: [
@@ -21,6 +19,7 @@ export default defineConfig({
       { find: '@components', replacement: resolve(__dirname, 'src/components') },
       { find: '@styles', replacement: resolve(__dirname, 'src/styles') },
       { find: '@hooks', replacement: resolve(__dirname, 'src/hooks') },
+      { find: '@utils', replacement: resolve(__dirname, 'src/utils') },
     ],
   },
 });
