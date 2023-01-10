@@ -1,11 +1,12 @@
 import { KeysOfUnion } from './../../utils/helper';
 import { buildColorPalette, buildCssVariables } from '@src/utils';
-import { allColors } from './constants';
-import { ThemeType, allColorsType } from './type';
+import { color as lightColor } from './light';
+import { color as darkColor } from './dark';
+import { allColorsType, ThemeType } from './type';
 
 export const ThemeColorSets: Record<ThemeType, allColorsType> = {
-  light: { ...allColors },
-  dark: { ...allColors },
+  light: { ...lightColor },
+  dark: { ...darkColor },
 };
 
 export const colorThemes = {
@@ -15,6 +16,8 @@ export const colorThemes = {
 
 const themePalette = buildColorPalette<allColorsType>(ThemeColorSets.light);
 
+console.log(colorThemes);
+console.log(themePalette);
 export const ColorPalette: Record<KeysOfUnion<allColorsType>, string> = {
   ...themePalette,
 };

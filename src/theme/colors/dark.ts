@@ -1,9 +1,9 @@
-export const common = {
+const common = {
   white: '#FFFFFF',
   black: '#15130E', // 메인/블랙1
 } as const;
 
-export const orange = {
+const orange = {
   orange50: '#FEEFE6', //brand color
   orange100: '#FFE3DA',
   orange200: '#FFC7B4',
@@ -14,7 +14,7 @@ export const orange = {
   orange700: '#CC2200',
 } as const;
 
-export const teal = {
+const teal = {
   teal50: '#E0F2F1', //brand color
   teal100: '#82DFDB',
   teal200: '#80CBC4',
@@ -25,7 +25,7 @@ export const teal = {
   teal700: '#00695C',
 } as const;
 
-export const gray = {
+const gray = {
   gray100: '#FAF6EC',
   gray200: '#F4EFE3',
   gray300: '#E9E3D7',
@@ -37,14 +37,14 @@ export const gray = {
   gray900: '#28241B',
 } as const;
 
-export const status = {
+const status = {
   success: '#109867',
   info: '#127CB3',
   warning: '#DC1B2C',
   error: '#DC1B2C',
 } as const;
 
-export const allColors = {
+export const color = {
   ...common,
   ...orange,
   ...gray,
