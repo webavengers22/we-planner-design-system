@@ -1,10 +1,9 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, forwardRef, useEffect, useMemo } from 'react';
 import { themes } from '@storybook/theming';
 import { DocsContainer } from './DocsContainer';
 import { WePlanWrapper } from '../src/components/wrapper';
-import { useDarkMode } from 'storybook-dark-mode';
-import { useColorTheme } from '../src/context/colorThemeContext';
-import { ChildrenProps } from '../src/types/ComponentProps';
+import { Theme } from '../src/theme/ThemeProvider';
+import { ThemeSwitcher } from './components/ThemeSwitcher';
 const baseTheme = {
   colorPrimary: '#FF4500',
   colorSecondary: '#009688',
@@ -58,23 +57,22 @@ export const parameters = {
     container: DocsContainer,
   },
 };
-
-const StyledWrapper: FC<ChildrenProps> = ({ children }) => {
-  const isDarkMode = useDarkMode();
-  const { setColorTheme } = useColorTheme();
-
-  useEffect(() => {
-    setColorTheme(isDarkMode ? 'dark' : 'light');
-  }, [isDarkMode]);
-
-  return <>{children}</>;
-};
+const Link = forwardRef((props: { to: string; children: React.ReactElement } & any, ref) => {
+  return (
+    <a ref={ref} href={props.to} {...props}>
+      {props.children}
+    </a>
+  );
+});
 
 export const decorators = [
-  (Story) => (
-    <WePlanWrapper>
-      <StyledWrapper />
-      <Story />
-    </WePlanWrapper>
-  ),
+  (Story) => {
+    return (
+      <Theme>
+        <WePlanWrapper>
+          <Story />
+        </WePlanWrapper>
+      </Theme>
+    );
+  },
 ];

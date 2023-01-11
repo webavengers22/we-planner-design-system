@@ -1,21 +1,16 @@
 import React from 'react';
 import { GlobalStyles } from './wrapper.style';
-import { ColorThemeProvider } from '@src/context/colorThemeContext';
-import { ChildrenProps } from '@src/types/ComponentProps';
+import { WePlanProvider } from '@contexts/index';
 
-interface WePlanWrapperProps {
+interface wrapperProps {
   children: React.ReactElement; // Link 사용 컴포넌트 ex. \<WePlanWrapper initLink={Link}\>
   initLink?: React.ElementType<any>;
 }
-
-/**
- * weplanner의 Provider
- */
-export function WePlanWrapper({ children }: ChildrenProps) {
+export function WePlanWrapper({ children, initLink }: wrapperProps) {
   return (
     <>
       <GlobalStyles />
-      <ColorThemeProvider>{children}</ColorThemeProvider>
+      <WePlanProvider initLink={initLink}>{children}</WePlanProvider>
     </>
   );
 }

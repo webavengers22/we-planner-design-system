@@ -17,18 +17,19 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@theme/*": ["src/theme/*"],
+      "@types/*": ["src/types/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@stories/*": ["src/stories/*"],
       "@src/*": [
         //@src로 시작하면 아래 줄의 디렉토리를 의미한다.
         "src/*" //baseUrl을 기준으로 src/ 하위 디렉토리를 @src로 표현
-      ],
-      "@assets/*": ["./src/assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@theme/*": ["./src/theme/*"],
-      "@types/*": ["./src/types/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@context/*": ["./src/context/*"]
+      ]
     }
   },
   "include": ["custom.d.ts", "src"],

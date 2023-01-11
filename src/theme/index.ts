@@ -1,10 +1,14 @@
-import { colorThemes, ColorPalette } from './colors';
-import { cssVar } from '@src/utils';
+import { darkPalette, lightPalette, standardPalette } from './colorPalettes';
 
-const theme = {
-  ...ColorPalette,
+const getAppTheme = (mode: 'light' | 'dark') => {
+  const isDark = mode === 'dark';
+  return {
+    palette: {
+      mode,
+      ...(isDark ? darkPalette : lightPalette),
+      ...standardPalette,
+    },
+  };
 };
 
-const style = {};
-
-export { theme, style, colorThemes, cssVar };
+export { getAppTheme };
