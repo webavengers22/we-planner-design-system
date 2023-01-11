@@ -1,14 +1,7 @@
-import { getAppTheme } from './../../theme';
-import { KeyOf } from './../../utils/helper';
 import { color } from './colors';
 import { KeysOfUnion, cssVar } from '@src/utils';
-import { useColorTheme } from '../../context/colorThemeContext';
-import { useDarkMode } from 'storybook-dark-mode';
-import { THEME_MODE } from './constant';
 import { light, dark } from './palettes';
-import { DefaultTheme } from 'styled-components';
-
-import { ThemeList, Theme, ThemeGroup, Color, ColorList, ColorGroup } from './type';
+import { Theme } from './type';
 
 export const ThemeColorSets: Theme = {
   dark: { ...dark },

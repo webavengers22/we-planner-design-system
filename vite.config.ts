@@ -4,8 +4,22 @@ import { resolve } from 'path';
 import svgr from 'vite-plugin-svgr';
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    sourcemap: true,
+  },
   plugins: [
-    react(),
+    react({
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: [
+          '@emotion/babel-plugin',
+          {
+            autoLabel: 'dev-only',
+            labelFormat: '[dirname]--[filename]--[local]___',
+          },
+        ],
+      },
+    }),
     svgr({
       exportAsDefault: true,
       svgrOptions: {

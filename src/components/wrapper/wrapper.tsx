@@ -1,5 +1,6 @@
 import React from 'react';
 import { GlobalStyles } from './wrapper.style';
+import { Global, ThemeProvider } from '@emotion/react';
 import { WePlanProvider } from '@contexts/index';
 
 interface wrapperProps {
@@ -9,7 +10,7 @@ interface wrapperProps {
 export function WePlanWrapper({ children, initLink }: wrapperProps) {
   return (
     <>
-      <GlobalStyles />
+      <Global styles={GlobalStyles} />
       <WePlanProvider initLink={initLink}>{children}</WePlanProvider>
     </>
   );
