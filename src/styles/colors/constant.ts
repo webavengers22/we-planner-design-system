@@ -1,7 +1,3 @@
-enum THEME_MODE {
-  'dark',
-  'light',
-}
 enum COLOR_GROUP {
   common,
   gray,
@@ -14,4 +10,4 @@ enum VARIANT_GROUP {
   background,
   text,
 }
-export { COLOR_GROUP, THEME_MODE, VARIANT_GROUP };
+export { COLOR_GROUP, VARIANT_GROUP };

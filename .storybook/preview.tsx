@@ -1,7 +1,8 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect } from 'react';
 import { themes } from '@storybook/theming';
 import { WePlanWrapper } from '../src/components/wrapper';
-import { Theme } from '../src/theme/ThemeProvider';
+import { useDarkMode } from 'storybook-dark-mode';
+import { useColorTheme } from '../src/contexts/themeContext';
 const baseTheme = {
   colorPrimary: '#FF4500',
   colorSecondary: '#009688',
@@ -55,12 +56,15 @@ export const parameters = {
 
 export const decorators = [
   (Story) => {
+    const isDarkMode = useDarkMode();
+    const { setColorTheme } = useColorTheme();
+    useEffect(() => {
+      setColorTheme(isDarkMode ? 'dark' : 'light');
+    }, [isDarkMode]);
     return (
-      <Theme>
-        <WePlanWrapper>
-          <Story />
-        </WePlanWrapper>
-      </Theme>
+      <WePlanWrapper>
+        <Story />
+      </WePlanWrapper>
     );
   },
 ];
