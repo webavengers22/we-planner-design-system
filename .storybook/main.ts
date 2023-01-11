@@ -1,22 +1,27 @@
-// .storybook/main.ts
-
+import react from '@vitejs/plugin-react';
 const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    'storybook-dark-mode',
-  ],
-  core: {
-    builder: '@storybook/builder-vite',
-  },
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions', 'storybook-dark-mode'],
   framework: {
     name: '@storybook/react-vite',
-    options: {},
+    options: {}
+  },
+  core: {
+    builder: '@storybook/builder-vite'
+  },
+  async viteFinal(config) {
+    config.plugins = config.plugins.filter(plugin => !(Array.isArray(plugin) && plugin[0]?.name.includes('vite:react')));
+    config.plugins.push(react({
+      exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: ['@emotion/babel-plugin']
+      }
+    }));
+    return config;
   },
   docs: {
-    autodocs: true,
-  },
+    autodocs: true
+  }
 };
 export default config;

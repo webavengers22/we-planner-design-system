@@ -1,6 +1,3 @@
-import { ValueOf } from '@src/utils';
-import { DefaultTheme } from 'styled-components';
-import { color } from './colors';
 import { COLOR_GROUP, THEME_MODE, VARIANT_GROUP } from './constant';
 
 type Color = {

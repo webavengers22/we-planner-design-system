@@ -1,9 +1,7 @@
-import React, { FC, forwardRef, useEffect, useMemo } from 'react';
+import React, { forwardRef } from 'react';
 import { themes } from '@storybook/theming';
-import { DocsContainer } from './DocsContainer';
 import { WePlanWrapper } from '../src/components/wrapper';
 import { Theme } from '../src/theme/ThemeProvider';
-import { ThemeSwitcher } from './components/ThemeSwitcher';
 const baseTheme = {
   colorPrimary: '#FF4500',
   colorSecondary: '#009688',
@@ -53,17 +51,7 @@ export const parameters = {
     },
     stylePreview: false,
   },
-  docs: {
-    container: DocsContainer,
-  },
 };
-const Link = forwardRef((props: { to: string; children: React.ReactElement } & any, ref) => {
-  return (
-    <a ref={ref} href={props.to} {...props}>
-      {props.children}
-    </a>
-  );
-});
 
 export const decorators = [
   (Story) => {

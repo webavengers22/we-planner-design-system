@@ -1,5 +1,5 @@
 import { FC, useEffect, useMemo, forwardRef } from 'react';
-import { ThemeProvider as ThemeProviderStyled } from 'styled-components';
+import { ThemeProvider as ThemeProviderStyled } from '@emotion/react';
 import { useDarkMode } from 'storybook-dark-mode';
 import { useColorTheme } from '@contexts/ThemeContext';
 import { getAppTheme } from '.';
