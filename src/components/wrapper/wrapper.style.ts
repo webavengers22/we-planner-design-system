@@ -1,13 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-import { colorThemes } from '@src/theme';
-import { theme } from '@src/theme';
+import { getAppTheme } from '@src/theme';
 import '@styles/fonts/css/pretendard.css';
 
 const GlobalStyles = createGlobalStyle`
     ${normalize}
     :root {
-      ${colorThemes.light}
+
       transition: 0.125s all ease-in;
       scroll-padding-top: 64px;
       text-rendering: optimizeLegibility;
@@ -17,18 +16,18 @@ const GlobalStyles = createGlobalStyle`
 
     @media (prefers-color-scheme: dark) {
       body {
-        ${colorThemes.dark};
+
         background-color: var(--background);
       }
     }
 
     body[data-theme='light'] {
-      ${colorThemes.light};
+
       background-color: var(--background);
     }
 
     body[data-theme='dark'] {
-      ${colorThemes.dark};
+
       background-color: var(--background);
     }
 

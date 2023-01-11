@@ -16,12 +16,15 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@src', replacement: resolve(__dirname, 'src') },
+      { find: '@assets', replacement: resolve(__dirname, 'src/assets') },
       { find: '@components', replacement: resolve(__dirname, 'src/components') },
       { find: '@theme', replacement: resolve(__dirname, 'src/theme') },
       { find: '@styles', replacement: resolve(__dirname, 'src/styles') },
       { find: '@hooks', replacement: resolve(__dirname, 'src/hooks') },
       { find: '@utils', replacement: resolve(__dirname, 'src/utils') },
-      { find: '@context', replacement: resolve(__dirname, 'src/context') },
+      { find: '@contexts', replacement: resolve(__dirname, 'src/contexts') },
+      { find: '@stories', replacement: resolve(__dirname, 'src/stories') },
+      { find: '@types', replacement: resolve(__dirname, 'src/types') },
     ],
   },
 });
