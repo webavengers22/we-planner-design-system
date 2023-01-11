@@ -1,9 +1,9 @@
 import { css } from '@emotion/react';
 
 import emotionNormalize from 'emotion-normalize';
-import { getAppTheme } from '@src/theme';
+import { cv } from '@/theme';
 import '@styles/fonts/css/pretendard.css';
-
+console.log(cv);
 const GlobalStyles = css`
   ${emotionNormalize}
   :root {

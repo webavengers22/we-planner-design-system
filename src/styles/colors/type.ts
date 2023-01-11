@@ -1,9 +1,11 @@
-import { COLOR_GROUP, THEME_MODE, VARIANT_GROUP } from './constant';
-
+import { COLOR_GROUP, VARIANT_GROUP } from './constant';
+import { ThemeMode } from '@/types/themeType';
 type Color = {
   [key: number | string]: string;
 };
 
+type ColorObj = Record<number | string, string>;
+type ColorGroupObj = Record<keyof typeof COLOR_GROUP, string>;
 type ColorGroup = {
   [key in keyof typeof COLOR_GROUP]: Color;
 };
@@ -13,7 +15,7 @@ type ThemeGroup = {
 };
 
 type Theme = {
-  [key in keyof typeof THEME_MODE]: ThemeGroup;
+  [key in ThemeMode]: ThemeGroup;
 };
 
 type getColorList<T> = {
@@ -30,4 +32,4 @@ export type ColorDefinition = keyof ColorGroup;
 
 type ColorArray = [ColorDefinition];
 
-export type { Color, Theme, ColorGroup, ThemeGroup };
+export type { Color, Theme, ColorGroup, ThemeGroup, ColorObj, ColorGroupObj };

@@ -1,4 +1,4 @@
-import { color } from '@src/styles/colors/colors';
+import { color } from '@/styles/colors/colors';
 
 export const lightPalette = {
   background: {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { ThemeProvider } from '@contexts/ThemeContext';
-import { LinkProvider } from '@contexts/linkContext';
+import { ThemeContextProvider } from '@/contexts/themeContext';
+import { LinkContextProvider } from '@/contexts/linkContextProvider';
 
 export function WePlanProvider({
   children,
@@ -10,8 +10,8 @@ export function WePlanProvider({
   initLink?: React.ElementType<any>;
 }) {
   return (
-    <ThemeProvider>
-      <LinkProvider initLink={initLink}>{children}</LinkProvider>
-    </ThemeProvider>
+    <ThemeContextProvider>
+      <LinkContextProvider initLink={initLink}>{children}</LinkContextProvider>
+    </ThemeContextProvider>
   );
 }

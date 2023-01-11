@@ -10,7 +10,7 @@ const LinkContext = createContext<LinkContextProps>({
   setLink: () => null,
 });
 
-export function LinkProvider({
+export function LinkContextProvider({
   children,
   initLink,
 }: {

@@ -1,4 +1,4 @@
-import { ThemeMode } from '@src/types/theme';
+import { ThemeMode } from '@types/themeType';
 import React, { useContext, useMemo, createContext, useState, useEffect, useCallback } from 'react';
 type SystemMode = 'light' | 'dark' | 'system';
 type UserThemeMode = ThemeMode;
@@ -15,7 +15,7 @@ const ThemeContext = createContext<ThemeContextProps>({
   setColorTheme: () => null,
 });
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeContextProvider({ children }: { children: React.ReactNode }) {
   const [colorTheme, setColorTheme] = useState<SystemMode>('system');
   const [nowColorTheme, setNowColorTheme] = useState<UserThemeMode>('light');
 
