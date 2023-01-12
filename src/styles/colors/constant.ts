@@ -1,13 +1,12 @@
-enum COLOR_GROUP {
-  common,
-  gray,
-  status,
-  orange,
-  teal,
-}
+import { color } from './common';
+import { dark } from './dark';
+import { light } from './light';
+import { Pallette } from './type';
 
-enum VARIANT_GROUP {
-  background,
-  text,
-}
-export { COLOR_GROUP, VARIANT_GROUP };
+const colorPalette: Pallette = {
+  common: { ...color },
+  light: { ...light },
+  dark: { ...dark },
+};
+
+export { colorPalette };

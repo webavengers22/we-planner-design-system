@@ -1,5 +1,4 @@
 import { colorThemes } from '@/styles/colors';
-import { darkPalette, lightPalette, standardPalette } from './colorPalettes';
 
 const theme = (() => {
   if (typeof window === 'undefined') return 'light';
@@ -11,6 +10,8 @@ const theme = (() => {
   }
   return bodyTheme;
 })();
+
+console.log(theme);
 
 console.log(colorThemes);
 const cv = {
