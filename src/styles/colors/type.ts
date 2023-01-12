@@ -1,38 +1,35 @@
-import { ThemeMode } from '@/types/themeType';
-import { ValueOf } from '@/utils';
+import { paletteColor, themeColor } from './constant';
+import { baseColor } from './colors';
+import { ThemeMode as ThemeColorType } from '@/types/themeType';
 
-type Color = {
+type PalletteType = 'common' | ThemeColorType;
+type BaseColorType = 'common' | 'gray' | 'status' | 'orange' | 'teal';
+type VariantColorType = 'background' | 'text';
+type AllColorType = BaseColorType | VariantColorType;
+
+type ColorObject = {
+  [key in BaseColorType]: ColorProperty;
+};
+type ColorProperty = {
   [key: number | string]: string;
 };
-
-type PalletteType = 'common' | ThemeMode;
-type ColorGroupType = 'common' | 'gray' | 'status' | 'orange' | 'teal';
-type VariantGroupType = 'background' | 'text';
-type PalletteGroupType = ColorGroupType & VariantGroupType;
-
-type ColorObj = Record<number | string, string>;
-type ColorGroupObj = Record<keyof ColorGroupType, Color>;
-type PalletteGroupObj = Record<keyof PalletteGroupType, Color>;
-
-type ColorGroup = {
-  [key in ColorGroupType]: Color;
+type ThemeObject = {
+  [key in VariantColorType]: ColorProperty;
 };
 
-type ThemeGroup = {
-  [key in VariantGroupType]: Color;
-};
+interface PalletteDefine {
+  light: ThemeObject;
+  dark: ThemeObject;
+  common: ColorObject;
+}
 
-type PalletteGroup = {
-  [key in PalletteGroupType]: Color;
-};
+type BaseColor = typeof baseColor;
+type ThemeColor = typeof themeColor.light;
+type PaletteColor = typeof paletteColor;
 
-type Pallette = {
-  [key in PalletteType]: PalletteGroup;
-};
-
-type Theme = {
-  [key in ThemeMode]: ThemeGroup;
-};
+type PickBaseColor = Record<BaseColorType, ColorObject>;
+type PickThemeColor = Record<VariantColorType, ThemeObject>;
+type PickPalletteColor = Record<AllColorType, ColorObject | ThemeObject>;
 
 type GetColorList<T> = {
   readonly [P in keyof T]: `${P extends number | string ? P : never}-${keyof T[P] extends
@@ -42,36 +39,32 @@ type GetColorList<T> = {
     : never}`;
 }[keyof T];
 
-type ColorList = GetColorList<ColorGroup>;
-type ThemeList = GetColorList<ThemeGroup>;
-type PaletteList = GetColorList<PalletteGroup>;
-type ColorDefine = ColorList & ThemeList;
+type BaseColorList = GetColorList<BaseColor>;
+type ThemeList = GetColorList<ThemeColor>;
+type PaletteList = GetColorList<PaletteColor>;
+
+type ColorDefine = BaseColorList | ThemeList;
 type ColorDefineKey = keyof ColorDefine;
+type GetColorDefine = Record<ColorDefine, string>;
+
+const colorListArray = Object.entries(baseColor)
+  // .map(color => Object.keys(color[1]).map(value => `${color[0]}-${value}`))
+  .flat() as BaseColorList[];
 
 type GetColorOptions<T> = {
   readonly [P in keyof T]: keyof T[P];
 };
-
 type ColorOptions = GetColorOptions<ColorDefine>;
-type Common = ColorOptions[keyof ColorList];
-type Others = ValueOf<Omit<ColorOptions, keyof ThemeList>>;
 
-type ColorArray = [ColorDefine, ThemeList | ColorList];
+/* type Common = ColorOptions['common'];
+type Others = ValueOf<Omit<ColorOptions, 'common'>>;
+type ColorArray = [ColorDefine, Common | Others]; */
 
 export type {
-  ColorGroupType,
-  VariantGroupType,
-  Color,
-  Theme,
-  Pallette,
-  PalletteGroup,
-  ColorGroup,
-  ThemeGroup,
-  ColorDefine,
-  ColorDefineKey,
-  ColorList,
-  ThemeList,
-  PaletteList,
-  PalletteGroupObj,
-  ColorArray,
+  ColorProperty,
+  ColorObject,
+  ThemeObject,
+  BaseColorType,
+  VariantColorType,
+  PalletteDefine,
 };
