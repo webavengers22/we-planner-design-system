@@ -1,37 +1,31 @@
 import { ThemeProvider } from '@emotion/react';
-import { colorPalette } from './constant';
-import {
-  Theme,
-  ColorList,
-  ThemeList,
-  ColorDefine,
-  PaletteList,
-  ColorDefineKey,
-  ColorArray,
-  PalletteGroup,
-  PalletteGroupObj,
-  Pallette,
-} from './type';
+import { paletteColor } from './constant';
+import { PalletteGroupObj, ColorGroup, ThemeGroup } from './type';
 
 const buildCssVariables = <T>(PalletteGroup: PalletteGroupObj) => {
   const colorListArray = Object.entries(PalletteGroup)
     .map(([colorTitle, colorGroup]) => {
       const color = Object.keys(colorGroup).map((data) => ({
-        name: `--${colorTitle}-${data}`,
+        title: `${colorTitle}-${data}`,
+        name: `--${colorTitle}-${data}\n`,
         value: colorGroup[data],
         css: `var(--${colorTitle}-${data})`,
       }));
       return color;
     })
     .flat() as T[];
-
   return colorListArray;
 };
 
+const generateColorCssVar = () =>
+  Object.entries(colors)
+    .map(([key, hex]) => `--${key}: ${hex}`)
+    .join(';');
+
 export const colorThemes = {
-  light: buildCssVariables(colorPalette.light),
-  dark: buildCssVariables(colorPalette.dark),
-  common: buildCssVariables(colorPalette.common),
+  light: buildCssVariables<ColorGroup>(paletteColor.light),
+  dark: buildCssVariables<ThemeGroup>(paletteColor.dark),
+  common: buildCssVariables<ThemeGroup>(paletteColor.common),
 };
 
 const buildColorPalette = <T extends Object, K>(variables: T) => {

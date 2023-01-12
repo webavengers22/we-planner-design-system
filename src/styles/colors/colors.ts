@@ -1,11 +1,11 @@
-import { Color, ColorGroup } from './type';
+import { ColorProperty, ColorObject, BaseColorType } from './type';
 
-const common: Color = {
+const common: ColorProperty = {
   white: '#FFFFFF',
   black: '#15130E', // 메인/블랙1
 };
 
-const orange: Color = {
+const orange: ColorProperty = {
   50: '#FEEFE6', //brand color
   100: '#FFE3DA',
   200: '#FFC7B4',
@@ -16,7 +16,7 @@ const orange: Color = {
   700: '#CC2200',
 } as const;
 
-const teal: Color = {
+const teal: ColorProperty = {
   50: '#E0F2F1', //brand color
   100: '#82DFDB',
   200: '#80CBC4',
@@ -27,7 +27,7 @@ const teal: Color = {
   700: '#00695C',
 } as const;
 
-const gray: Color = {
+const gray: ColorProperty = {
   100: '#FAF6EC',
   200: '#F4EFE3',
   300: '#E9E3D7',
@@ -39,17 +39,17 @@ const gray: Color = {
   900: '#28241B',
 } as const;
 
-const status: Color = {
+const status: ColorProperty = {
   success: '#109867',
   info: '#127CB3',
   warning: '#DC1B2C',
   error: '#DC1B2C',
 } as const;
 
-export const color: ColorGroup = {
+export const baseColor: ColorObject = {
   common: { ...common },
   orange: { ...orange },
   gray: { ...gray },
   teal: { ...teal },
   status: { ...status },
-} as const;
+};
