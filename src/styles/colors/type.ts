@@ -1,24 +1,40 @@
-import { COLOR_GROUP, VARIANT_GROUP } from './constant';
 import { ThemeMode } from '@/types/themeType';
+import { ValueOf } from '@/utils';
+
 type Color = {
   [key: number | string]: string;
 };
 
+type PalletteType = 'common' | ThemeMode;
+type ColorGroupType = 'common' | 'gray' | 'status' | 'orange' | 'teal';
+type VariantGroupType = 'background' | 'text';
+type PalletteGroupType = ColorGroupType & VariantGroupType;
+
 type ColorObj = Record<number | string, string>;
-type ColorGroupObj = Record<keyof typeof COLOR_GROUP, string>;
+type ColorGroupObj = Record<keyof ColorGroupType, Color>;
+type PalletteGroupObj = Record<keyof PalletteGroupType, Color>;
+
 type ColorGroup = {
-  [key in keyof typeof COLOR_GROUP]: Color;
+  [key in ColorGroupType]: Color;
 };
 
 type ThemeGroup = {
-  [key in keyof typeof VARIANT_GROUP]: Color;
+  [key in VariantGroupType]: Color;
+};
+
+type PalletteGroup = {
+  [key in PalletteGroupType]: Color;
+};
+
+type Pallette = {
+  [key in PalletteType]: PalletteGroup;
 };
 
 type Theme = {
   [key in ThemeMode]: ThemeGroup;
 };
 
-type getColorList<T> = {
+type GetColorList<T> = {
   readonly [P in keyof T]: `${P extends number | string ? P : never}-${keyof T[P] extends
     | string
     | number
@@ -26,10 +42,36 @@ type getColorList<T> = {
     : never}`;
 }[keyof T];
 
-export type ColorList = getColorList<ColorGroup>;
-export type ThemeList = getColorList<ThemeGroup>;
-export type ColorDefinition = keyof ColorGroup;
+type ColorList = GetColorList<ColorGroup>;
+type ThemeList = GetColorList<ThemeGroup>;
+type PaletteList = GetColorList<PalletteGroup>;
+type ColorDefine = ColorList & ThemeList;
+type ColorDefineKey = keyof ColorDefine;
 
-type ColorArray = [ColorDefinition];
+type GetColorOptions<T> = {
+  readonly [P in keyof T]: keyof T[P];
+};
 
-export type { Color, Theme, ColorGroup, ThemeGroup, ColorObj, ColorGroupObj };
+type ColorOptions = GetColorOptions<ColorDefine>;
+type Common = ColorOptions[keyof ColorList];
+type Others = ValueOf<Omit<ColorOptions, keyof ThemeList>>;
+
+type ColorArray = [ColorDefine, ThemeList | ColorList];
+
+export type {
+  ColorGroupType,
+  VariantGroupType,
+  Color,
+  Theme,
+  Pallette,
+  PalletteGroup,
+  ColorGroup,
+  ThemeGroup,
+  ColorDefine,
+  ColorDefineKey,
+  ColorList,
+  ThemeList,
+  PaletteList,
+  PalletteGroupObj,
+  ColorArray,
+};

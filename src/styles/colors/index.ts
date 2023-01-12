@@ -1,48 +1,60 @@
-import { color } from './colors';
-import { KeysOfUnion, cssVar } from '@/utils';
-import { light, dark } from './palettes';
-import { Theme, ColorObj, ColorGroup } from './type';
+import { ThemeProvider } from '@emotion/react';
+import { colorPalette } from './constant';
+import {
+  Theme,
+  ColorList,
+  ThemeList,
+  ColorDefine,
+  PaletteList,
+  ColorDefineKey,
+  ColorArray,
+  PalletteGroup,
+  PalletteGroupObj,
+  Pallette,
+} from './type';
 
-export const ThemeColorSets: Theme = {
-  light: { ...light },
-  dark: { ...dark },
+const buildCssVariables = <T>(PalletteGroup: PalletteGroupObj) => {
+  const colorListArray = Object.entries(PalletteGroup)
+    .map(([colorTitle, colorGroup]) => {
+      const color = Object.keys(colorGroup).map((data) => ({
+        name: `--${colorTitle}-${data}`,
+        value: colorGroup[data],
+        css: `var(--${colorTitle}-${data})`,
+      }));
+      return color;
+    })
+    .flat() as T[];
+
+  return colorListArray;
 };
 
-const buildCssVariables = <T extends Object>(variables: T) => {
-  const colorListArray = Object.entries(variables).map((color) => {
-    const keys = Object.keys(color[1]);
-    return keys.reduce(
-      (acc, key) => acc.concat(`--${color[0]}-${key}: ${color[1][key]};`, '\n'),
-      '',
-    );
-  });
+export const colorThemes = {
+  light: buildCssVariables(colorPalette.light),
+  dark: buildCssVariables(colorPalette.dark),
+  common: buildCssVariables(colorPalette.common),
+};
+
+const buildColorPalette = <T extends Object, K>(variables: T) => {
+  const colorListArray = Object.entries(variables)
+    .map((color) =>
+      Object.keys(color[1]).map((value) => ({ [color[0] + '-' + value]: color[1][value] })),
+    )
+    .flat() as K[];
   return colorListArray.join();
 };
-export const colorThemes = {
-  light: buildCssVariables(ThemeColorSets.light),
-  dark: buildCssVariables(ThemeColorSets.dark),
-  common: buildCssVariables(color),
-};
 
-const buildColorPalette2 = <T extends Object>(variables: T) => {
-  const keys = Object.keys(variables) as KeysOfUnion<T>[];
-  return keys.reduce((acc, current) => {
-    acc[current] = cssVar(current);
-    return acc;
-  }, {} as Record<KeysOfUnion<T>, string>);
-};
+/* export const themedPalette: Record<ColorDefine, string> = variableKeys.reduce((acc, current) => {
+  acc[current] = cssVar(current);
+  return acc;
+}, {} as ThemedPalette); */
 
-const buildColorPalette = <T extends Object>(variables: T) => {
-  const colorListArray = Object.entries(variables).map((color) => {
-    const keys = Object.keys(color[1]);
-    return keys.reduce(
-      (acc, key) =>   acc[current]
-    return acc;
-  }, {} as Record<KeysOfUnion<T>, string>);
-};
-
-//export const cssVar = (name: string) => `var(--${name.replace(/_/g, '-')})`;
-
-export const colorListArray = Object.entries(color)
-  // .map(color => Object.keys(color[1]).map(value => `${color[0]}-${value}`))
-  .flat() as ColorList[];
+/* const variableKeys = Object.keys(themeVariableSets.light) as VariableKey[];
+const themedPalette: Record<ColorDefineKey, string> = variableKeys.reduce((acc, current) => {
+  acc[current] = cssVar(current);
+  return acc;
+}, {} as ThemedPalette);
+ */
+/* export const themedPalette: Record<VariableKey, string> = variableKeys.reduce((acc, current) => {
+  acc[current] = cssVar(current);
+  return acc;
+}, {} as ThemedPalette); */
