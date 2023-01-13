@@ -1,4 +1,10 @@
-import { CommonColorObject, GrayColorObject, OrangeTealColorObject, StatusObject } from './type';
+import {
+  CommonColorObject,
+  GrayColorObject,
+  OrangeTealColorObject,
+  StatusObject,
+  BaseColorObject,
+} from './type';
 
 const common: CommonColorObject = {
   white: '#FFFFFF',
@@ -45,7 +51,7 @@ const status: StatusObject = {
   error: '#DC1B2C',
 } as const;
 
-export const baseColor = {
+export const baseColor: BaseColorObject = {
   common: { ...common },
   orange: { ...orange },
   gray: { ...gray },

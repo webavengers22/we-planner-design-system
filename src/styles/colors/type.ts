@@ -6,37 +6,43 @@ import { paletteColor, themeColor } from './constant';
 
 /** 기본 팔레트 타입 */
 type Color = string;
-type PalletteType = 'standard' | ThemeColorType;
 type BaseColorType = 'common' | 'gray' | 'status' | 'orange' | 'teal';
 type VariantColorType = 'background' | 'text';
 type AllColorType = BaseColorType | VariantColorType;
+type PalletteType = 'standard' | ThemeColorType;
 
-/** base color TYPE  */
+/** Base color 하위 TYPE  */
 type ColorRange = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 type CommColorType = 'white' | 'black';
 type StatusType = 'success' | 'info' | 'warning' | 'error';
 
-/** base color object  */
+/** Base color 하위 object  */
 type CommonColorObject = Record<CommColorType, Color>;
 type OrangeTealColorObject = Record<Exclude<ColorRange, 800 | 900>, Color>;
 type GrayColorObject = Record<Exclude<ColorRange, 50>, Color>;
 type StatusObject = Record<StatusType, string>;
-type BaseColorObject = Record<BaseColorType, Color>;
+type BaseLowObject = CommonColorObject | OrangeTealColorObject | GrayColorObject | StatusObject;
 
-/** theme color TYPE  */
+/** Variant color 하위 TYPE  */
 type BackGroundColorType = 'default' | 'paper';
 type TextColorType = 'primary' | 'secondary';
 
-/** theme color object  */
+/** Variant color 하위 object  */
 type BackGroundColorObject = Record<BackGroundColorType, Color>;
 type TextColorObject = Record<TextColorType, Color>;
+type VariantColorLowObject = BackGroundColorObject | TextColorObject;
 
+/** Color type 속성 */
 interface ColorProperty {
   [key: string | number]: Color;
 }
 
+/** Color Object  */
+type BaseColorObject = Record<BaseColorType, BaseLowObject>;
+type VariantColorObject = Record<VariantColorType, VariantColorLowObject>;
+
 type BaseColor = typeof baseColor;
-type ThemeColor = typeof darkColor | typeof lightColor;
+type VariantColor = typeof darkColor | typeof lightColor;
 type PaletteColor = typeof paletteColor;
 
 type GetColorList<T> = {
@@ -52,25 +58,37 @@ type GetColorOptions<T> = {
 };
 
 type BaseColorList = GetColorList<BaseColor>;
-type ThemeList = GetColorList<ThemeColor>;
+type VariantColorList = GetColorList<VariantColor>;
 type PaletteList = GetColorList<PaletteColor>;
 
 type BaseColorOptions = GetColorOptions<BaseColor>;
-type ThemeColorOptions = GetColorOptions<ThemeColor>;
+type VariantColorOptions = GetColorOptions<VariantColor>;
+
 export type {
-  BackGroundColorObject,
-  TextColorObject,
-  TextColorType,
-  CommColorType,
-  OrangeTealColorObject,
-  GrayColorObject,
-  CommonColorObject,
-  StatusObject,
-  StatusType,
+  //컬러 타입
   Color,
-  ColorProperty,
-  AllColorType,
   BaseColorType,
   VariantColorType,
+  AllColorType,
+  //Base Color 하위 Type
+  ColorRange,
+  CommColorType,
+  StatusType,
+  //Base color 하위object
+  CommonColorObject,
+  OrangeTealColorObject,
+  GrayColorObject,
+  StatusObject,
+  // Variant color 하위TYPE
+  BackGroundColorType,
+  TextColorType,
+  //Variant color 하위 object
+  BackGroundColorObject,
+  TextColorObject,
+  //Color List
   BaseColorList,
+  VariantColorList,
+  //Color Object
+  VariantColorObject,
+  BaseColorObject,
 };
