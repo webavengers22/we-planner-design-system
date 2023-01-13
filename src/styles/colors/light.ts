@@ -1,5 +1,5 @@
 import { baseColor } from './colors';
-import { BackGroundColorObject, TextColorObject } from './type';
+import { BackGroundColorObject, TextColorObject, VariantColorObject } from './type';
 
 const background: BackGroundColorObject = {
   default: baseColor.common.white,
@@ -11,7 +11,7 @@ const text: TextColorObject = {
   secondary: baseColor.gray[700],
 } as const;
 
-export const lightColor = {
+export const lightColor: VariantColorObject = {
   background: { ...background },
   text: { ...text },
 } as const;
