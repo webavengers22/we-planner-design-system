@@ -1,4 +1,5 @@
-import { colorThemes } from '@/styles/colors';
+import { baseColor } from './../styles/colors/colors';
+import { BaseColorListArray } from '@/styles/colors/constant';
 
 const theme = (() => {
   if (typeof window === 'undefined') return 'light';
@@ -13,7 +14,8 @@ const theme = (() => {
 
 console.log(theme);
 
-console.log(colorThemes);
+console.log(baseColor);
+console.log(BaseColorListArray);
 const cv = {
   theme,
 };

@@ -1,32 +1,62 @@
-import { ThemeProvider } from '@emotion/react';
 import { paletteColor } from './constant';
-import { PalletteGroupObj, ColorGroup, ThemeGroup } from './type';
-
-const buildCssVariables = <T>(PalletteGroup: PalletteGroupObj) => {
-  const colorListArray = Object.entries(PalletteGroup)
-    .map(([colorTitle, colorGroup]) => {
-      const color = Object.keys(colorGroup).map((data) => ({
-        title: `${colorTitle}-${data}`,
-        name: `--${colorTitle}-${data}\n`,
-        value: colorGroup[data],
-        css: `var(--${colorTitle}-${data})`,
-      }));
-      return color;
-    })
-    .flat() as T[];
-  return colorListArray;
+import { ColorProperty } from './type';
+/*
+const customColorVariables = <Type extends ThemeObject | ColorObject>(colors: Type) => {
+  return Object.entries(colors).reduce<Record<string, ColorProperty>>((acc, [title, object]) => {
+    Object.keys(object).map((data) => {
+      const test = {
+        title: `${title}-${data}`,
+        name: `--${title}-${data}\n`,
+        value: object[data],
+        css: `var(--${title}-${data})`,
+      };
+      acc[`${title}-${data}`] = test;
+    });
+    return acc;
+  }, {});
 };
-
-const generateColorCssVar = () =>
-  Object.entries(colors)
-    .map(([key, hex]) => `--${key}: ${hex}`)
-    .join(';');
 
 export const colorThemes = {
-  light: buildCssVariables<ColorGroup>(paletteColor.light),
-  dark: buildCssVariables<ThemeGroup>(paletteColor.dark),
-  common: buildCssVariables<ThemeGroup>(paletteColor.common),
-};
+  standard: customColorVariables<ColorObject>(paletteColor.standard),
+  dark: customColorVariables<ThemeObject>(paletteColor.dark),
+  light: customColorVariables<ThemeObject>(paletteColor.light),
+}; */
+
+/* const buildCssVariables = <Type extends ThemeObject | ColorObject>(color: Type) => {
+  const array = Object.fromEntries(
+    Object.entries(color).map(([title, object]) => {
+      const colors = Object.keys(object).reduce(
+        (acc, name) => acc.concat(`--${title}-${name}: ${object[name]};`, '\n'),
+        '',
+      );
+      return [colors];
+    }),
+  ) as Type;
+  return array;
+}; */
+
+/* function tailwindColorMap<T extends PickPalletteColor, K>(
+  name: T,
+): {
+  [P in [T] as `${T}-${TailwindColorStop}`]: string;
+} {
+  // @ts-ignore: I promise the type is correct:
+  return Object.fromEntries(
+    Object.entries(colors[name]).map(([num, value]) => [`${name}-${num}`, value]),
+  );
+} */
+
+/* const generateColorCssVar = () =>
+  Object.entries(colors)
+    .map(([key, hex]) => `--${key}: ${hex}`)
+    .join(';'); */
+
+/* Object.fromEntries(
+  Object.entries(newPricesList).map(([priceKey, priceValue]) => [
+    priceKey,
+    priceValue * 2
+  ])
+); */
 
 const buildColorPalette = <T extends Object, K>(variables: T) => {
   const colorListArray = Object.entries(variables)
