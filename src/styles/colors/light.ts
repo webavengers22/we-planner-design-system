@@ -1,17 +1,17 @@
 import { baseColor } from './colors';
-import { ColorProperty, ThemeObject } from './type';
+import { BackGroundColorObject, TextColorObject } from './type';
 
-const background: ColorProperty = {
+const background: BackGroundColorObject = {
   default: baseColor.common.white,
   paper: baseColor.common.white,
 } as const;
 
-const text: ColorProperty = {
+const text: TextColorObject = {
   primary: baseColor.gray[900],
   secondary: baseColor.gray[700],
 } as const;
 
-export const light: ThemeObject = {
+export const lightColor = {
   background: { ...background },
   text: { ...text },
 } as const;

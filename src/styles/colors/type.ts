@@ -1,35 +1,43 @@
-import { paletteColor, themeColor } from './constant';
+import { lightColor } from './light';
+import { darkColor } from './dark';
 import { baseColor } from './colors';
 import { ThemeMode as ThemeColorType } from '@/types/themeType';
+import { paletteColor, themeColor } from './constant';
 
-type PalletteType = 'common' | ThemeColorType;
+/** 기본 팔레트 타입 */
+type Color = string;
+type PalletteType = 'standard' | ThemeColorType;
 type BaseColorType = 'common' | 'gray' | 'status' | 'orange' | 'teal';
 type VariantColorType = 'background' | 'text';
 type AllColorType = BaseColorType | VariantColorType;
 
-type ColorObject = {
-  [key in BaseColorType]: ColorProperty;
-};
-type ColorProperty = {
-  [key: number | string]: string;
-};
-type ThemeObject = {
-  [key in VariantColorType]: ColorProperty;
-};
+/** base color TYPE  */
+type ColorRange = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+type CommColorType = 'white' | 'black';
+type StatusType = 'success' | 'info' | 'warning' | 'error';
 
-interface PalletteDefine {
-  light: ThemeObject;
-  dark: ThemeObject;
-  common: ColorObject;
+/** base color object  */
+type CommonColorObject = Record<CommColorType, Color>;
+type OrangeTealColorObject = Record<Exclude<ColorRange, 800 | 900>, Color>;
+type GrayColorObject = Record<Exclude<ColorRange, 50>, Color>;
+type StatusObject = Record<StatusType, string>;
+type BaseColorObject = Record<BaseColorType, Color>;
+
+/** theme color TYPE  */
+type BackGroundColorType = 'default' | 'paper';
+type TextColorType = 'primary' | 'secondary';
+
+/** theme color object  */
+type BackGroundColorObject = Record<BackGroundColorType, Color>;
+type TextColorObject = Record<TextColorType, Color>;
+
+interface ColorProperty {
+  [key: string | number]: Color;
 }
 
 type BaseColor = typeof baseColor;
-type ThemeColor = typeof themeColor.light;
+type ThemeColor = typeof darkColor | typeof lightColor;
 type PaletteColor = typeof paletteColor;
-
-type PickBaseColor = Record<BaseColorType, ColorObject>;
-type PickThemeColor = Record<VariantColorType, ThemeObject>;
-type PickPalletteColor = Record<AllColorType, ColorObject | ThemeObject>;
 
 type GetColorList<T> = {
   readonly [P in keyof T]: `${P extends number | string ? P : never}-${keyof T[P] extends
@@ -39,32 +47,30 @@ type GetColorList<T> = {
     : never}`;
 }[keyof T];
 
+type GetColorOptions<T> = {
+  readonly [P in keyof T]: keyof T[P];
+};
+
 type BaseColorList = GetColorList<BaseColor>;
 type ThemeList = GetColorList<ThemeColor>;
 type PaletteList = GetColorList<PaletteColor>;
 
-type ColorDefine = BaseColorList | ThemeList;
-type ColorDefineKey = keyof ColorDefine;
-type GetColorDefine = Record<ColorDefine, string>;
-
-const colorListArray = Object.entries(baseColor)
-  // .map(color => Object.keys(color[1]).map(value => `${color[0]}-${value}`))
-  .flat() as BaseColorList[];
-
-type GetColorOptions<T> = {
-  readonly [P in keyof T]: keyof T[P];
-};
-type ColorOptions = GetColorOptions<ColorDefine>;
-
-/* type Common = ColorOptions['common'];
-type Others = ValueOf<Omit<ColorOptions, 'common'>>;
-type ColorArray = [ColorDefine, Common | Others]; */
-
+type BaseColorOptions = GetColorOptions<BaseColor>;
+type ThemeColorOptions = GetColorOptions<ThemeColor>;
 export type {
+  BackGroundColorObject,
+  TextColorObject,
+  TextColorType,
+  CommColorType,
+  OrangeTealColorObject,
+  GrayColorObject,
+  CommonColorObject,
+  StatusObject,
+  StatusType,
+  Color,
   ColorProperty,
-  ColorObject,
-  ThemeObject,
+  AllColorType,
   BaseColorType,
   VariantColorType,
-  PalletteDefine,
+  BaseColorList,
 };
