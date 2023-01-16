@@ -1,4 +1,4 @@
-import { generateThemeCssColor as themes, themedPalette } from '@/styles/colors/index';
+import { generateThemeCssColor as themeCssColor, themedPalette } from '@/styles/colors/index';
 
 const theme = (() => {
   if (typeof window === 'undefined') return 'light';
@@ -11,9 +11,9 @@ const theme = (() => {
   return bodyTheme;
 })();
 
-const cv = {
+const themes = {
   ...themedPalette,
   theme,
 };
 
-export { cv, themes };
+export { themes, themeCssColor };

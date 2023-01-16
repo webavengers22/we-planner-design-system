@@ -1,5 +1,4 @@
 import { BaseColorObject } from '../interface';
-import {} from '../type';
 
 const common = {
   white: '#FFFFFF',
