@@ -21,6 +21,4 @@ const generateColor = Object.fromEntries(
     return [themeType, colorGroup];
   }),
 );
-
-console.log(generateColor);
 export { paletteColor, generateColor };

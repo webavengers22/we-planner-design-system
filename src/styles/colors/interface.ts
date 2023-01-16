@@ -5,8 +5,16 @@ import {
   StatusType,
   BackGroundColorType,
   TextColorType,
+  ButtonColorType,
 } from './type';
 
+interface PalletteColor {
+  standard: BaseColorObject;
+  dark: VariantColorObject;
+  light: VariantColorObject;
+}
+
+/** BaseColor interface */
 interface BaseColorObject {
   common: {
     [key in CommonType]: Color;
@@ -25,13 +33,17 @@ interface BaseColorObject {
   };
 }
 
-interface VariantObject {
+/** Variant Color : light, dark interface */
+interface VariantColorObject {
   background: {
     [key in BackGroundColorType]: Color;
   };
   text: {
-    [key in Exclude<TextColorType, 50>]: Color;
+    [key in TextColorType]: Color;
+  };
+  button: {
+    [key in ButtonColorType]: Color;
   };
 }
 
-export type { BaseColorObject, VariantObject };
+export type { BaseColorObject, VariantColorObject };
