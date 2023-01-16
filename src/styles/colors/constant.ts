@@ -12,7 +12,7 @@ const generateColor = Object.fromEntries(
     const colorGroup = Object.entries(getData).reduce<Record<string, ColorProperty>>(
       (acc, [title, object]) => {
         Object.keys(object).map((data) => {
-          acc[`${title}-${data}`] = object[data];
+          acc[`${title}_${data}`] = object[data];
         });
         return acc;
       },
