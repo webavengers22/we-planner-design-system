@@ -1,22 +1,18 @@
 import { generateColor } from '@/styles/colors/constant';
-import { Color } from './type';
+import { cssVar } from '@/utils/styled';
+import { Color, PickPalletteKeys } from './type';
 
 const generateThemeCssColor = Object.fromEntries(
   Object.entries(generateColor).map(([themeType, colorGroup]) => {
     const themeColor = Object.keys(colorGroup).reduce(
-      (acc, colorKey) => acc.concat(`--${colorKey}: ${colorGroup[colorKey]};`, '\n'),
+      (acc, colorKey) =>
+        acc.concat(`--${colorKey.replace(/_/g, '-')}: ${colorGroup[colorKey]};`, '\n'),
       '',
     );
     return [themeType, themeColor];
   }),
 );
-
-type cvTheme = keyof typeof generateColor.light;
-type cvStandard = keyof typeof generateColor.standard;
-type VariableKey = cvTheme & cvStandard;
-type ThemedPalette = Record<VariableKey, string>;
-
-const cssVar = (name: string) => `var(--${name.replace(/_/g, '-')})`;
+type ThemedPalette = Record<keyof PickPalletteKeys, string>;
 
 const generatePalletteColor = Object.fromEntries(
   Object.entries(generateColor).map(([themeType, colorGroup]) => {

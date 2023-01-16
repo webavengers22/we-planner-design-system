@@ -29,7 +29,7 @@ type VariantColor = typeof darkColor | typeof lightColor;
 type PaletteColor = typeof paletteColor;
 
 type GetColorList<T> = {
-  readonly [P in keyof T]: `${P extends number | string ? P : never}-${keyof T[P] extends
+  readonly [P in keyof T]: `${P extends number | string ? P : never}_${keyof T[P] extends
     | string
     | number
     ? keyof T[P]
@@ -43,6 +43,10 @@ type GetColorOptions<T> = {
 type BaseColorList = GetColorList<BaseColor>;
 type VariantColorList = GetColorList<VariantColor>;
 type ColorObjectList = BaseColorList | VariantColorList;
+
+type PickPalletteKeys = {
+  [key in BaseColorList | VariantColorList]: Color;
+};
 type PaletteList = GetColorList<PaletteColor>;
 
 type BaseColorOptions = GetColorOptions<BaseColor>;
@@ -68,4 +72,5 @@ export type {
   ColorProperty,
   PickThemeColor,
   ColorObjectList,
+  PickPalletteKeys,
 };

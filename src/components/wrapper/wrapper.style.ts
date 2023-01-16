@@ -3,10 +3,6 @@ import { css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 import { themes, cv } from '@/theme';
 import '@styles/fonts/css/pretendard.css';
-console.log('cv');
-console.log(cv);
-console.log(cv['background-default']);
-
 const GlobalStyles = css`
   ${emotionNormalize}
   :root {
@@ -21,7 +17,7 @@ const GlobalStyles = css`
   @media (prefers-color-scheme: dark) {
     body {
       ${themes.dark};
-      background-color: var(--background-paper);
+      background-color: ${cv.background_paper};
     }
   }
 

@@ -11,8 +11,6 @@ const theme = (() => {
   return bodyTheme;
 })();
 
-console.log(themedPalette);
-
 const cv = {
   ...themedPalette,
   theme,
