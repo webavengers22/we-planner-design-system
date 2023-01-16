@@ -1,5 +1,4 @@
-import { baseColor } from './../styles/colors/colors';
-import { BaseColorListArray } from '@/styles/colors/constant';
+import { generateThemeCssColor as themes, generatePalletteColor } from '@/styles/colors/index';
 
 const theme = (() => {
   if (typeof window === 'undefined') return 'light';
@@ -12,11 +11,16 @@ const theme = (() => {
   return bodyTheme;
 })();
 
-console.log(theme);
+const cssVar = (name: string) => `var(--${name.replace(/_/g, '-')})`;
 
-console.log(baseColor);
-console.log(BaseColorListArray);
-const cv = {
+type cvTheme = keyof typeof generatePalletteColor.dark;
+type cvStandard = keyof typeof generatePalletteColor.standard;
+
+type cvType = cvTheme | cvStandard;
+const cv: Record<string, cvType> = {
+  ...generatePalletteColor.dark,
+  ...generatePalletteColor.standard,
   theme,
 };
-export { cv };
+
+export { cv, themes, cssVar };

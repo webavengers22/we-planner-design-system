@@ -1,12 +1,16 @@
 import { css } from '@emotion/react';
 
 import emotionNormalize from 'emotion-normalize';
-import { cv } from '@/theme';
+import { themes, cv } from '@/theme';
 import '@styles/fonts/css/pretendard.css';
+console.log('cv');
 console.log(cv);
+console.log(cv['background-default']);
+
 const GlobalStyles = css`
   ${emotionNormalize}
   :root {
+    ${themes.standard}
     transition: 0.125s all ease-in;
     scroll-padding-top: 64px;
     text-rendering: optimizeLegibility;
@@ -16,16 +20,19 @@ const GlobalStyles = css`
 
   @media (prefers-color-scheme: dark) {
     body {
-      background-color: var(--background);
+      ${themes.dark};
+      background-color: var(--background-paper);
     }
   }
 
   body[data-theme='light'] {
-    background-color: var(--background);
+    ${themes.light};
+    background-color: var(--background-paper);
   }
 
   body[data-theme='dark'] {
-    background-color: var(--background);
+    ${themes.dark};
+    background-color: var(--background-paper);
   }
 
   * {

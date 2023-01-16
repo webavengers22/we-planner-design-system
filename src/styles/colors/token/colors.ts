@@ -1,16 +1,11 @@
-import {
-  CommonColorObject,
-  GrayColorObject,
-  OrangeTealColorObject,
-  StatusObject,
-  BaseColorObject,
-} from './type';
+import { BaseColorObject } from '../interface';
+import {} from '../type';
 
-const common: CommonColorObject = {
+const common = {
   white: '#FFFFFF',
   black: '#15130E', // 메인/블랙1
 };
-const orange: OrangeTealColorObject = {
+const orange = {
   50: '#FEEFE6', //brand color
   100: '#FFE3DA',
   200: '#FFC7B4',
@@ -21,7 +16,7 @@ const orange: OrangeTealColorObject = {
   700: '#CC2200',
 } as const;
 
-const teal: OrangeTealColorObject = {
+const teal = {
   50: '#E0F2F1', //brand color
   100: '#82DFDB',
   200: '#80CBC4',
@@ -32,7 +27,7 @@ const teal: OrangeTealColorObject = {
   700: '#00695C',
 } as const;
 
-const gray: GrayColorObject = {
+const gray = {
   100: '#FAF6EC',
   200: '#F4EFE3',
   300: '#E9E3D7',
@@ -44,7 +39,7 @@ const gray: GrayColorObject = {
   900: '#28241B',
 } as const;
 
-const status: StatusObject = {
+const status = {
   success: '#109867',
   info: '#127CB3',
   warning: '#DC1B2C',
