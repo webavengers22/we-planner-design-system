@@ -13,8 +13,6 @@ export default {
 } as Meta<typeof Button>;
 
 type Template = StoryObj<typeof Button>;
-export const Template: Template = {};
-
 export const Primary: Template = {};
 Primary.args = {
   children: 'text',
