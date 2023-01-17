@@ -23,10 +23,14 @@ interface CommonAttrProps {
   id?: string;
   style?: React.CSSProperties;
 }
+interface LabelProps {
+  label?: string;
+}
 
 type variantType = 'primary' | 'secondary';
 
 export type {
+  LabelProps,
   ChildrenProps,
   AsProps,
   DisableProps,
