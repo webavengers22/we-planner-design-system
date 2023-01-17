@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from '@emotion/react';
-import { useColorTheme } from '@/contexts/themeContext';
+import { useColorTheme } from '@/contexts/ThemeContext';
 
 export function MainThemeProvider({ children }: { children: React.ReactNode }) {
   const { nowColorTheme } = useColorTheme();
