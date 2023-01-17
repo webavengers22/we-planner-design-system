@@ -13,7 +13,6 @@ const theme = (() => {
 
 const themes = {
   ...themedPalette,
-  theme,
 };
 
 export { themes, themeCssColor };

@@ -8,7 +8,7 @@ const button = {
 } as const;
 
 const background = {
-  default: baseColor.gray[800],
+  default: baseColor.common.white,
 };
 
 const text = {

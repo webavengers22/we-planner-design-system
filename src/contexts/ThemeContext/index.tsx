@@ -1,7 +1,6 @@
-import { ThemeMode } from '@types/themeType';
 import React, { useContext, useMemo, createContext, useState, useEffect, useCallback } from 'react';
 type SystemMode = 'light' | 'dark' | 'system';
-type UserThemeMode = ThemeMode;
+type UserThemeMode = 'light' | 'dark';
 
 export interface ThemeContextProps {
   colorTheme: SystemMode;
@@ -38,7 +37,6 @@ export function ThemeContextProvider({ children }: { children: React.ReactNode }
     setColorTheme('light');
     setNowColorTheme(isUserDark ? 'dark' : 'light');
   }, []);
-
   const changeColorTheme = useCallback((theme: SystemMode) => {
     if (theme === 'system') {
       setColorTheme('system');
@@ -61,7 +59,6 @@ export function ThemeContextProvider({ children }: { children: React.ReactNode }
       if (typeof window !== 'undefined') localStorage.setItem('theme', 'light');
     }
   }, []);
-
   const value = useMemo(
     () => ({
       setColorTheme: changeColorTheme,

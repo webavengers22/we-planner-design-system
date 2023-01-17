@@ -1,17 +1,25 @@
 import React from 'react';
-import { GlobalStyles } from './wrapper.style';
-import { Global, ThemeProvider } from '@emotion/react';
+import { GlobalStyles, BaseGLobalStyles } from './wrapper.style';
+import { Global } from '@emotion/react';
 import { WePlanProvider } from '@contexts/index';
-
-interface wrapperProps {
-  children: React.ReactElement; // Link 사용 컴포넌트 ex. \<WePlanWrapper initLink={Link}\>
+import { MainThemeProvider } from '@/theme/userThemeProvider';
+interface WrapperProps {
+  children: React.ReactNode;
   initLink?: React.ElementType<any>;
+  applyDefaultStyle?: boolean;
 }
-export function WePlanWrapper({ children, initLink }: wrapperProps) {
+
+export function WePlanWrapper({
+  children,
+  initLink = 'a',
+  applyDefaultStyle = true,
+}: WrapperProps) {
   return (
     <>
       <Global styles={GlobalStyles} />
-      <WePlanProvider initLink={initLink}>{children}</WePlanProvider>
+      <WePlanProvider initLink={initLink}>
+        <MainThemeProvider>{children}</MainThemeProvider>
+      </WePlanProvider>
     </>
   );
 }
