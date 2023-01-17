@@ -1,4 +1,4 @@
-import { css, keyframes } from '@emotion/react';
+import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 
 const fadeIn = keyframes`
@@ -35,13 +35,13 @@ const ColorLabel = styled.div`
   gap: 4px;
 
   div:first-of-type {
-    color: var(--text);
+    color: var(--text-default);
     font-size: 14px;
     font-weight: 600;
   }
 
   div:last-child {
-    color: var(--text);
+    color: var(--text-default);
     font-size: 14px;
   }
 `;
@@ -49,9 +49,10 @@ const ColorLabel = styled.div`
 const ColorShow = styled.div<{ color: string }>`
   width: 60%;
   height: 52px;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => {
+    return props.color;
+  }};
   border-radius: 8px;
-  border: solid 1px var(--border3);
 `;
 
 export { ColorsDiv, ColorDiv, ColorLabel, ColorShow };

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { css, keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
-import { themes, cv } from '@/theme';
+import styled, { css } from 'styled-components';
+
+import { theme } from 'theme';
 
 type TextAlign = 'left' | 'center' | 'right';
 
@@ -9,10 +9,10 @@ export const Paper = styled.div<{
   $minWidth?: number;
   $maxWidth?: number;
 }>`
-  background: ${themes.background};
+  background: ${theme.background};
   padding: 2rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0px 16px 0 ${themes.gray600};
+  box-shadow: 0 0px 16px 0 ${theme.gray600};
 
   ${({ $minWidth }) =>
     $minWidth &&
@@ -40,7 +40,7 @@ export const TableHeader = styled.thead``;
 export const TableBody = styled.tbody``;
 
 const Th = styled.th<{ align?: TextAlign }>`
-  border: 1px solid ${themes.primary};
+  border: 1px solid ${theme.primary};
   border-width: 1px 0 1px 0;
   padding: 10px;
   text-align: ${({ align = 'left' }) => align};
@@ -48,7 +48,7 @@ const Th = styled.th<{ align?: TextAlign }>`
 `;
 
 const Td = styled.td<{ align?: TextAlign }>`
-  border-bottom: 1px solid ${themes.primary};
+  border-bottom: 1px solid ${theme.primary};
   vertical-align: top;
   padding: 20px 10px;
   text-align: ${({ align = 'left' }) => align};

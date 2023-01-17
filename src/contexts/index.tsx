@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeContextProvider } from '@/contexts/themeContext';
+import { ThemeContextProvider } from '@/contexts/ThemeContext';
 import { LinkContextProvider } from '@/contexts/linkContextProvider';
 
 export function WePlanProvider({
