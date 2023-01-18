@@ -9,16 +9,11 @@ export default {
 } as Meta<typeof WePlanWrapper>;
 
 type Template = StoryObj<typeof WePlanWrapper>;
-export const Primary: Template = {};
-Primary.args = {};
-
-const WithInitLinkTemplate: Template = {
+export const Primary: Template = {
   render: (args) => (
     <WePlanWrapper {...args}>
       <a href="/">Link</a>
     </WePlanWrapper>
   ),
+  args: {},
 };
-
-export const WithInitLink = WithInitLinkTemplate;
-WithInitLink.args = {};

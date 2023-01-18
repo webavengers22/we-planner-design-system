@@ -81,7 +81,7 @@ export const decorators = [
         <WePlanWrapper initLink={Link}>
           <>
             <ThemeSwitcher />
-            <Story />
+            {Story()}
           </>
         </WePlanWrapper>
       </>

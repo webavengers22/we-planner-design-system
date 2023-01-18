@@ -7,6 +7,10 @@ const config = {
     '@storybook/theming',
     '@storybook/addon-interactions',
     'storybook-dark-mode',
+    {
+      name: '@storybook/addon-docs',
+      options: { mdxBabelOptions: { babelrc: true, configFile: true } },
+    },
   ],
   framework: {
     name: '@storybook/react-vite',

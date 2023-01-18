@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeContextProvider } from '@/contexts/ThemeContext';
+import ColorThemeProvider from '@/hooks/useColorTheme/colorThemeContext';
 import { LinkContextProvider } from '@/contexts/linkContextProvider';
 
 export function WePlanProvider({
@@ -10,8 +10,8 @@ export function WePlanProvider({
   initLink?: React.ElementType<any>;
 }) {
   return (
-    <ThemeContextProvider>
+    <ColorThemeProvider>
       <LinkContextProvider initLink={initLink}>{children}</LinkContextProvider>
-    </ThemeContextProvider>
+    </ColorThemeProvider>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
-import { useColorTheme } from '../../src/contexts/themeContext';
+import { useColorTheme } from '../../src/hooks/useColorTheme';
 
 export function ThemeSwitcher() {
   const isDarkMode = useDarkMode();

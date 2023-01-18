@@ -9,7 +9,7 @@ export function ColorPalette() {
 
   useEffect(() => {
     document.querySelector('body')?.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-    (document.querySelector('#storybook-docs') as HTMLDivElement).style.background =
+    (document.querySelector('#docs-root') as HTMLDivElement).style.background =
       themes.background_default;
   }, [isDarkMode]);
 

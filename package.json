@@ -19,6 +19,7 @@
     "@emotion/babel-plugin": "^11.10.5",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mdx-js/react": "^2.2.1",
     "@storybook/addon-docs": "7.0.0-beta.21",
     "@storybook/addon-essentials": "7.0.0-beta.21",
     "@storybook/addon-interactions": "7.0.0-beta.21",
