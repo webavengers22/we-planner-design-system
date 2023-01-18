@@ -152,6 +152,9 @@ const GlobalStyles = css`
     resize: none;
   }
 
+  #storybook-docs > div {
+    background: none;
+  }
   .visually-hidden {
     position: absolute !important;
     width: 1px !important;

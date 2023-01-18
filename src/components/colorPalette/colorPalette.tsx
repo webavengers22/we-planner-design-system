@@ -5,14 +5,6 @@ import { WePlanWrapper } from '@components/wrapper';
 import { themes } from '@theme/index';
 
 export function ColorPalette() {
-  const isDarkMode = useDarkMode();
-
-  useEffect(() => {
-    document.querySelector('body')?.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-    (document.querySelector('#docs-root') as HTMLDivElement).style.background =
-      themes.background_default;
-  }, [isDarkMode]);
-
   return (
     <WePlanWrapper>
       <ColorsDiv bgColor={themes.background_default}>

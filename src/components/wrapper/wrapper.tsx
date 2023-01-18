@@ -5,19 +5,13 @@ import { WePlanProvider } from '@contexts/index';
 import { MainThemeProvider } from '@/theme/userThemeProvider';
 interface WrapperProps {
   children: React.ReactNode;
-  initLink?: React.ElementType<any>;
-  applyDefaultStyle?: boolean;
 }
 
-export function WePlanWrapper({
-  children,
-  initLink = 'a',
-  applyDefaultStyle = true,
-}: WrapperProps) {
+export function WePlanWrapper({ children }: WrapperProps) {
   return (
     <>
       <Global styles={GlobalStyles} />
-      <WePlanProvider initLink={initLink}>
+      <WePlanProvider>
         <MainThemeProvider>{children}</MainThemeProvider>
       </WePlanProvider>
     </>

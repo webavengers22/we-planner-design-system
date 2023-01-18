@@ -9,9 +9,5 @@ export function WePlanProvider({
   children: React.ReactElement;
   initLink?: React.ElementType<any>;
 }) {
-  return (
-    <ColorThemeProvider>
-      <LinkContextProvider initLink={initLink}>{children}</LinkContextProvider>
-    </ColorThemeProvider>
-  );
+  return <ColorThemeProvider>{children}</ColorThemeProvider>;
 }
