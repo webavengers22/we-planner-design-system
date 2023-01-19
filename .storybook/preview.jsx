@@ -2,7 +2,6 @@ import React, { forwardRef, useEffect } from 'react';
 import { DocsContainer } from './DocsContainer';
 import { darkTheme, lightTheme } from './theme';
 import { WePlanWrapper } from '../src/components/wrapper';
-import { ThemeSwitcher } from './components/ThemeSwitcher';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -31,12 +30,10 @@ const Link = React.forwardRef((props, ref) => {
 
 export const decorators = [
   (Story) => {
+    console.log('decorators');
     return (
       <>
-        <WePlanWrapper initLink={Link}>
-          <ThemeSwitcher />
-          <Story />
-        </WePlanWrapper>
+        <Story />
       </>
     );
   },

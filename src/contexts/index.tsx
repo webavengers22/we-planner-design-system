@@ -1,7 +1,7 @@
 import React from 'react';
-import ColorThemeProvider from '@/contexts/ThemeContext/colorThemeContext';
-import { LinkContextProvider } from '@/contexts/linkContextProvider';
+import ThemeColorProvider from '@/contexts/ThemeContext';
 
+console.log('WePlanProvider');
 export function WePlanProvider({
   children,
   initLink,
@@ -9,5 +9,5 @@ export function WePlanProvider({
   children: React.ReactElement;
   initLink?: React.ElementType<any>;
 }) {
-  return <ColorThemeProvider>{children}</ColorThemeProvider>;
+  return <ThemeColorProvider>{children}</ThemeColorProvider>;
 }
