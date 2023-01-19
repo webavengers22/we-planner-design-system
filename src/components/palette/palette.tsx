@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
-import { ColorsDiv, ColorDiv, ColorLabel, ColorShow } from './colorPalette.style';
+import { ColorsDiv, ColorDiv, ColorLabel, ColorShow } from './palette.style';
 import { WePlanWrapper } from '@components/wrapper';
 import { themes } from '@theme/index';
 
-export function ColorPalette() {
+export function WePlanPallette() {
+  const isDarkMode = useDarkMode();
+
+  useEffect(() => {
+    document.querySelector('body')?.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+    (document.querySelector('.sb-show-main') as HTMLDivElement).style.background =
+      themes.background_default;
+  }, [isDarkMode]);
+
   return (
     <WePlanWrapper>
       <ColorsDiv bgColor={themes.background_default}>

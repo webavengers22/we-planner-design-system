@@ -1,9 +1,23 @@
-import path from 'path';
-import remarkGfm from 'remark-gfm';
-
 import { loadConfigFromFile, mergeConfig } from 'vite';
+
+import { StorybookConfig, ViteFinal } from '@storybook/builder-vite';
 import react from '@vitejs/plugin-react';
-import type { StorybookConfig } from '@storybook/builder-vite';
+
+const viteFinal: ViteFinal = async (config, { configType }) => {
+  // modify and return config
+  config.plugins = config.plugins?.filter(
+    (plugin) => !(Array.isArray(plugin) && plugin[0]?.name.includes('vite:react')),
+  );
+
+  return mergeConfig(config, {
+    plugins: [
+      react({
+        jsxImportSource: '@emotion/react',
+      }),
+    ],
+  });
+};
+
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -12,14 +26,7 @@ const config: StorybookConfig = {
     '@storybook/theming',
     '@storybook/addon-interactions',
     'storybook-dark-mode',
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        mdxCompileOptions: {
-          remarkPlugins: [remarkGfm],
-        },
-      },
-    },
+    '@storybook/addon-storysource',
   ],
   framework: {
     name: '@storybook/react-vite',
@@ -27,24 +34,14 @@ const config: StorybookConfig = {
   },
   core: {
     builder: '@storybook/builder-vite',
+    disableTelemetry: true,
+  },
+  features: {
+    storyStoreV7: true,
   },
   docs: {
     autodocs: 'tag',
   },
-  async viteFinal(config) {
-    config.plugins = config.plugins?.filter(
-      (plugin) =>
-        //@ts-expect-error -- https://github.com/storybookjs/builder-vite/issues/210
-        !(Array.isArray(plugin) && plugin[0]?.name.includes('vite:react')),
-    );
-
-    return mergeConfig(config, {
-      plugins: [
-        react({
-          jsxImportSource: '@emotion/react',
-        }),
-      ],
-    });
-  },
+  viteFinal,
 };
 export default config;

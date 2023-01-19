@@ -1,5 +1,5 @@
 import React from 'react';
-import ColorThemeProvider from '@/hooks/useColorTheme/colorThemeContext';
+import ColorThemeProvider from '@/contexts/ThemeContext/colorThemeContext';
 import { LinkContextProvider } from '@/contexts/linkContextProvider';
 
 export function WePlanProvider({

@@ -1,11 +1,14 @@
 import Component from './Component';
-import { GlobalStyles } from '@components/wrapper/wrapper.style';
+import { GlobalStyles } from '@/theme/GlobalStyle';
+import { Global } from '@emotion/react';
+import { WePlanWrapper } from './components/wrapper';
 
 function App() {
   return (
     <>
-      <GlobalStyles />
-      <Component />
+      <WePlanWrapper>
+        <Component />
+      </WePlanWrapper>
     </>
   );
 }

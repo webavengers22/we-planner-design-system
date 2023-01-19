@@ -4,8 +4,8 @@ type ColorTheme = 'light' | 'dark' | 'system';
 type NowColorTheme = 'light' | 'dark';
 
 export interface ColorThemeContextProps {
-  colorTheme: ColorTheme;
-  nowColorTheme: NowColorTheme;
+  colorTheme: ColorTheme; //유저가 선택한 색상 테마입니다.
+  nowColorTheme: NowColorTheme; //실제 화면에 표시되는 색상 테마 입니다.
   setColorTheme: (theme: ColorTheme) => void;
 }
 
@@ -40,7 +40,9 @@ function ColorThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const changeColorTheme = useCallback((theme: ColorTheme) => {
+    console.log('changeColorTheme');
     if (theme === 'system') {
+      console.log('system');
       setColorTheme('system');
       setNowColorTheme(
         window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -50,11 +52,13 @@ function ColorThemeProvider({ children }: { children: React.ReactNode }) {
       document.querySelector('body')?.removeAttribute('data-theme');
       if (typeof window !== 'undefined') localStorage.removeItem('theme');
     } else if (theme === 'dark') {
+      console.log('dark');
       setColorTheme('dark');
       setNowColorTheme('dark');
       document.querySelector('body')?.setAttribute('data-theme', 'dark');
       if (typeof window !== 'undefined') localStorage.setItem('theme', 'dark');
     } else if (theme === 'light') {
+      console.log('light');
       setColorTheme('light');
       setNowColorTheme('light');
       document.querySelector('body')?.setAttribute('data-theme', 'light');
