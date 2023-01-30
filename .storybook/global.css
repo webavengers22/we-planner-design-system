@@ -1,0 +1,89 @@
+.docs-story {
+  background: var(--background-default);
+  color: var(--text-default) !important;
+}
+
+#docs-root {
+  background: var(--background-default);
+  color: var(--text-default) !important;
+}
+
+.sbdocs {
+  background: var(--background-default) !important;
+  color: var(--text-default) !important;
+}
+
+.sbdocs p code {
+  background: var(--background-default);
+  color: var(--text-default);
+}
+
+.sbdocs-title {
+  color: var(--text-default) !important;
+}
+
+.docblock-argstable-head span {
+  color: var(--text-default) !important;
+}
+
+.os-content {
+  background: var(--background-default);
+  color: var(--text-default) !important;
+}
+
+.docblock-argstable-body td {
+  background: var(--background-default) !important;
+  color: var(--text-default);
+}
+
+.docblock-argstable-body td code {
+  background: var(--background-default);
+  color: var(--text-default);
+}
+
+.css-ks2jcn {
+  background: var(--background-default) !important;
+  color: var(--text-default) !important;
+}
+
+.docblock-code-toggle {
+  background: var(--background-default) !important;
+  color: var(--text-default) !important;
+}
+
+.docblock-code-toggle--disabled {
+  background: var(--button-tertiary) !important;
+  color: var(--text-default) !important;
+}
+
+.css-11xgcgt {
+  background: var(--button-tertiary) !important;
+  color: var(--text-default) !important;
+}
+
+.sbdocs-preview {
+  box-shadow: none;
+}
+
+.docblock-argstable-body textarea {
+  background: var(--background-default) !important;
+  color: var(--text-default) !important;
+}
+
+.docblock-argstable-body button {
+  background: var(--button-primary) !important;
+  color: var(--text-default) !important;
+}
+
+.css-ozs5u1 span {
+  color: var(--text-default) !important;
+}
+
+.css-ozs5u1 input:checked ~ span:last-of-type,
+.css-ozs5u1 input:not(:checked) ~ span:first-of-type {
+  color: var(--button-tertiary) !important;
+}
+
+.prismjs {
+  background: rgb(25, 25, 25) !important;
+}

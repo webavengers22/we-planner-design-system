@@ -1,8 +1,13 @@
-import { css } from '@emotion/react';
-
+import { Global, css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 import { themes, themeCssColor } from '@/theme';
 import '@styles/fonts/css/pretendard.css';
+import { ColorKey } from '@/styles/colors/type';
+
+function GlobalStyles() {
+  return <Global styles={styles} />;
+}
+console.log(themeCssColor);
 
 const BaseGLobalStyles = css`
   * {
@@ -38,12 +43,11 @@ const BaseGLobalStyles = css`
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 `;
-
-const GlobalStyles = css`
+const cssVar = (key: ColorKey) => `var(--${key})`;
+const styles = css`
   ${emotionNormalize}
   :root {
     ${themeCssColor.standard}
-    ${themeCssColor.dark}
     transition: 0.125s all ease-in;
     scroll-padding-top: 64px;
     text-rendering: optimizeLegibility;
@@ -54,36 +58,20 @@ const GlobalStyles = css`
   @media (prefers-color-scheme: dark) {
     body {
       ${themeCssColor.dark};
-      background-color: var(--background-default);
     }
   }
 
   @media (prefers-color-scheme: light) {
     body {
       ${themeCssColor.light};
-      background-color: var(--background-default);
     }
   }
 
   body[data-theme='light'] {
     ${themeCssColor.light};
-    background-color: var(--background-default);
-
-    * {
-      ::selection {
-        background: #74fde0;
-      }
-    }
   }
   body[data-theme='dark'] {
     ${themeCssColor.dark};
-    background-color: var(--background-default);
-
-    * {
-      ::selection {
-        background: #7270ff;
-      }
-    }
   }
 
   * {
@@ -93,6 +81,9 @@ const GlobalStyles = css`
     font-size: 16px;
     font-family: 'Pretendard', sans-serif;
   }
+  body {
+    color: ${cssVar('text-default')};
+  }
 
   html,
   body {
@@ -101,7 +92,6 @@ const GlobalStyles = css`
     height: 100vh;
     width: 100%;
     margin: 0 auto;
-    color: var(--text_default);
   }
 
   p {
@@ -152,9 +142,6 @@ const GlobalStyles = css`
     resize: none;
   }
 
-  #storybook-docs > div {
-    background: none;
-  }
   .visually-hidden {
     position: absolute !important;
     width: 1px !important;
@@ -168,4 +155,4 @@ const GlobalStyles = css`
   }
 `;
 
-export { GlobalStyles, BaseGLobalStyles };
+export { GlobalStyles, BaseGLobalStyles, styles };

@@ -1,31 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
 import { ColorsDiv, ColorDiv, ColorLabel, ColorShow } from './palette.style';
-import { WePlanWrapper } from '@components/wrapper';
 import { themes } from '@theme/index';
+import { useTheme } from '@/contexts';
 
 export function WePlanPallette() {
-  const isDarkMode = useDarkMode();
-
-  useEffect(() => {
-    document.querySelector('body')?.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-    (document.querySelector('.sb-show-main') as HTMLDivElement).style.background =
-      themes.background_default;
-  }, [isDarkMode]);
-
+  const { isDarkTheme } = useTheme();
+  console.log('WePlanPallette');
+  console.log(isDarkTheme);
   return (
-    <WePlanWrapper>
-      <ColorsDiv bgColor={themes.background_default}>
-        {Object.entries(themes).map(([key, value], i) => (
-          <ColorDiv key={key} delay={i * 100}>
-            <ColorLabel>
-              <div>{key}</div>
-              <div>{value}</div>
-            </ColorLabel>
-            <ColorShow color={value} />
-          </ColorDiv>
-        ))}
-      </ColorsDiv>
-    </WePlanWrapper>
+    <ColorsDiv bgColor={themes.background_default}>
+      {Object.entries(themes).map(([key, value], i) => (
+        <ColorDiv key={key} delay={i * 100}>
+          <ColorLabel>
+            <div>{key}</div>
+            <div>{value}</div>
+          </ColorLabel>
+          <ColorShow color={value} />
+        </ColorDiv>
+      ))}
+    </ColorsDiv>
   );
 }

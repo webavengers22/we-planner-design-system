@@ -4,7 +4,7 @@ import { baseColor } from './colors';
 const button = {
   primary: baseColor.orange[500],
   secondary: baseColor.orange[500],
-  tertiary: baseColor.orange[500],
+  tertiary: baseColor.gray[500],
 } as const;
 
 const background = {
