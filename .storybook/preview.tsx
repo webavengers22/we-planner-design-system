@@ -1,12 +1,9 @@
-import { themes } from '@storybook/theming';
-import React from 'react';
-import { WePlanProvider } from '../src/contexts/WePlanProvider';
-import StorybookThemeWrapper from '../src/theme/docs/StorybookThemeWrapper';
-import { GlobalStyles } from '../src/components/GlobalStyles';
+import React, { forwardRef, useEffect } from 'react';
+import { darkTheme, lightTheme } from './theme';
+import { WePlanProvider } from '../src/contexts';
+import { GlobalStyles } from '../src/theme/GlobalStyle';
+import StorybookThemeWrapper from '../src/theme/StorybookThemeWrapper';
 import './global.css';
-import { DARK_MODE_EVENT_NAME, UPDATE_DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
-import { useDarkMode } from 'storybook-dark-mode';
-
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -15,14 +12,23 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  darkMode: {
+    dark: darkTheme,
+    light: lightTheme,
+  },
 };
 
 export const decorators = [
   (Story) => {
-    const darkMode = useDarkMode();
-    console.log(darkMode);
+    let theme: 'default' | 'light' | 'dark' = 'default';
+    try {
+      const data = JSON.parse(localStorage.getItem('sb-addon-themes-3'));
+      document.body.dataset.theme = data.current;
+      theme = data.current;
+    } catch (error) {}
+
     return (
-      <WePlanProvider initialTheme={darkMode}>
+      <WePlanProvider initialTheme={theme}>
         <StorybookThemeWrapper>
           <GlobalStyles />
           <Story />

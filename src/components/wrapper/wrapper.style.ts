@@ -1,12 +1,10 @@
-import { Global, css } from '@emotion/react';
+import { css } from '@emotion/react';
+
 import emotionNormalize from 'emotion-normalize';
 import { themes, themeCssColor } from '@/theme';
 import '@styles/fonts/css/pretendard.css';
 
-export function GlobalStyles() {
-  return <Global styles={styles} />;
-}
-
+console.log(themes);
 const BaseGLobalStyles = css`
   * {
     padding: 0;
@@ -42,14 +40,51 @@ const BaseGLobalStyles = css`
   }
 `;
 
-const styles = css`
+const GlobalStyles = css`
   ${emotionNormalize}
   :root {
+    ${themeCssColor.standard}
+    ${themeCssColor.dark}
     transition: 0.125s all ease-in;
     scroll-padding-top: 64px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     touch-action: manipulation;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      ${themeCssColor.dark};
+      background-color: var(--background-default);
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    body {
+      ${themeCssColor.light};
+      background-color: var(--background-default);
+    }
+  }
+
+  body[data-theme='light'] {
+    ${themeCssColor.light};
+    background-color: var(--background-default);
+
+    * {
+      ::selection {
+        background: #74fde0;
+      }
+    }
+  }
+  body[data-theme='dark'] {
+    ${themeCssColor.dark};
+    background-color: var(--background-default);
+
+    * {
+      ::selection {
+        background: #7270ff;
+      }
+    }
   }
 
   * {
@@ -118,9 +153,6 @@ const styles = css`
     resize: none;
   }
 
-  #storybook-docs > div {
-    background: none;
-  }
   .visually-hidden {
     position: absolute !important;
     width: 1px !important;
@@ -134,4 +166,4 @@ const styles = css`
   }
 `;
 
-export { styles, BaseGLobalStyles };
+export { GlobalStyles, BaseGLobalStyles };

@@ -35,11 +35,13 @@ const ColorLabel = styled.div`
   gap: 4px;
 
   div:first-of-type {
+    color: var(--text-default);
     font-size: 14px;
     font-weight: 600;
   }
 
   div:last-child {
+    color: var(--text-default);
     font-size: 14px;
   }
 `;

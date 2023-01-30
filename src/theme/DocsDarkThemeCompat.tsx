@@ -1,8 +1,7 @@
 import React, { useEffect, useLayoutEffect } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
 import { css, Global } from '@emotion/react';
-import ThemeProvider, { cssVar, useTheme } from '../../contexts/ThemeProvider';
-import { WePlanProvider } from '@contexts/WePlanProvider';
+import ThemeProvider, { cssVar1, useTheme } from '@/contexts/ThemeContext';
 
 interface Props {
   children?: React.ReactNode;
@@ -34,14 +33,11 @@ function DocsDarkThemeCompat() {
 }
 
 const styles = css`
+  .happy {
+    background: var(--background-default) !important;
+  }
   .sbdocs {
     background: var(--background-default) !important;
-    color: var(--text-default) !important;
-    p code {
-      background: ${cssVar('gray-400')};
-      color: ${cssVar('text-default')};
-      border-color: ${cssVar('orange-500')};
-    }
   }
 
   .os-content {

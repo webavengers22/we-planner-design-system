@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import ThemeProvider from '@contexts/ThemeProvider';
+import ThemeProvider from '@/contexts/ThemeContext';
 import StorybookThemeWrapper from './StorybookThemeWrapper';
 
 interface Props {

@@ -1,5 +1,5 @@
-import { Theme } from '@/types';
-import ThemeProvider from './ThemeProvider';
+import React from 'react';
+import ThemeProvider, { Theme } from '@/contexts/ThemeContext';
 
 interface Props {
   initialTheme?: Theme;

@@ -2,7 +2,6 @@ import { generateColor } from '@/styles/colors/constant';
 import { cssVar } from '@/utils/styled';
 import { Color, PickPalletteKeys } from './type';
 
-console.log(generateColor);
 const generateThemeCssColor = Object.fromEntries(
   Object.entries(generateColor).map(([themeType, colorGroup]) => {
     const themeColor = Object.keys(colorGroup).reduce(
