@@ -2,7 +2,7 @@ import { BaseColorObject } from '../interface';
 
 const common = {
   white: '#FFFFFF',
-  black: '#15130E', // 메인/블랙1
+  black: '#1A1712', // 메인/블랙1
 };
 const orange = {
   50: '#FEEFE6', //brand color

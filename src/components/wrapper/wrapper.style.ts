@@ -1,10 +1,8 @@
 import { css } from '@emotion/react';
 
 import emotionNormalize from 'emotion-normalize';
-import { themes, themeCssColor } from '@/theme';
+import { themeCssColor } from '@/theme';
 import '@styles/fonts/css/pretendard.css';
-
-console.log(themes);
 const BaseGLobalStyles = css`
   * {
     padding: 0;

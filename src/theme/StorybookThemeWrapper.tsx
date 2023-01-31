@@ -1,18 +1,24 @@
 import React, { useEffect } from 'react';
-import { useDarkMode } from 'storybook-dark-mode';
+import { DARK_MODE_EVENT_NAME, useDarkMode } from 'storybook-dark-mode';
 import { useTheme } from '../contexts';
+import { addons } from '@storybook/preview-api';
+
+const channel = addons.getChannel();
 
 interface Props {
   children: React.ReactNode;
 }
 
 function StorybookThemeWrapper({ children }: Props) {
-  const darkTheme = useDarkMode();
   const { setTheme } = useTheme();
 
   useEffect(() => {
-    setTheme(darkTheme ? 'dark' : 'light');
-  }, [darkTheme, setTheme]);
+    const updater = (value: boolean) => setTheme(value ? 'dark' : 'light');
+
+    channel.on(DARK_MODE_EVENT_NAME, updater);
+    // Clean up.
+    return () => channel.off(DARK_MODE_EVENT_NAME, updater);
+  }, []);
 
   return <>{children}</>;
 }

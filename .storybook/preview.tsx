@@ -22,7 +22,7 @@ export const decorators = [
   (Story) => {
     let theme: 'default' | 'light' | 'dark' = 'default';
     try {
-      const data = JSON.parse(localStorage.getItem('sb-addon-themes-3'));
+      const data = JSON.parse(localStorage.getItem('sb-addon-themes-3') || '{}');
       document.body.dataset.theme = data.current;
       theme = data.current;
     } catch (error) {}

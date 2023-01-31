@@ -1,4 +1,4 @@
-import { generateColor } from '@/styles/colors/constant';
+import { generateColor, generateBaseColor, generateThemeColor } from '@/styles/colors/constant';
 import { cssVar } from '@/utils/styled';
 import { Color, PickPalletteKeys } from './type';
 
@@ -28,5 +28,6 @@ const themedPalette: ThemedPalette = {
   ...generatePalletteColor.dark,
   ...generatePalletteColor.standard,
 };
+const paletteColorList = { ...generateBaseColor, ...generateThemeColor };
 
-export { generateThemeCssColor, themedPalette };
+export { generateThemeCssColor, themedPalette, paletteColorList };

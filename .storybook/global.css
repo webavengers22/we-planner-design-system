@@ -28,7 +28,6 @@
 
 .os-content {
   background: var(--background-default);
-  color: var(--text-default) !important;
 }
 
 .docblock-argstable-body td {
@@ -85,5 +84,5 @@
 }
 
 .prismjs {
-  background: rgb(25, 25, 25) !important;
+  background: var(--gray-100) !important;
 }

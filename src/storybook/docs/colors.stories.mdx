@@ -1,5 +1,5 @@
 import { Canvas, Story, Meta, Unstyled } from '@storybook/addon-docs';
-
+import DocsThemeWrapper from '@theme/DocsThemeWrapper';
 import { WePlanPallette } from '@components/palette';
 
 <Meta title="Design System/ColorPalette" />
@@ -8,6 +8,21 @@ import { WePlanPallette } from '@components/palette';
 
 WePlanner Design System의 브랜드 컬러 팔레트입니다.
 
-## Color Palette
+## Color Use
 
 - WePlanner Design System는 다크모드를 지원하고 있습니다.
+- 기본 팔레트를 사용하려면 프로젝트에서 "palette" 개체를 가져와야 합니다. 색상 이름은 객체의 키입니다.
+
+```js
+import { themes } from '@theme/index';
+
+const styles = css`
+  background: ${themes.background_default};
+`;
+```
+
+## Color Palette
+
+<DocsThemeWrapper>
+  <WePlanPallette />
+</DocsThemeWrapper>

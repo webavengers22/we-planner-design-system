@@ -24,6 +24,9 @@ type PalletteType = 'standard' & ThemeColorType;
 type ColorProperty = {
   [key: string | number]: Color;
 };
+type ColorListProperty = {
+  [key: string | number]: string;
+};
 type PickThemeColor = Pick<PalletteType, keyof ThemeColorType>;
 
 type GetColorList<T> = {
@@ -63,6 +66,7 @@ export type {
   VariantColorList,
   //Pick
   ColorProperty,
+  ColorListProperty,
   PickThemeColor,
   PickPalletteKeys,
   ColorObjectList,

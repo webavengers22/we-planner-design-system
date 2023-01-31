@@ -1,28 +1,27 @@
 import React, { useEffect } from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
-import { ColorsDiv, ColorDiv, ColorLabel, ColorShow } from './palette.style';
-import { themes } from '@theme/index';
+import { PaletteDiv, ColorDiv, ColorRow, ColorItem, ColorLabel, Color } from './palette.style';
+import { themes, paletteColorList } from '@theme/index';
 
 export function WePlanPallette() {
-  const isDarkMode = useDarkMode();
-
-  useEffect(() => {
-    document.querySelector('body')?.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
-    (document.querySelector('.sb-show-main') as HTMLDivElement).style.background =
-      themes.background_default;
-  }, [isDarkMode]);
-
   return (
-    <ColorsDiv bgColor={themes.background_default}>
-      {Object.entries(themes).map(([key, value], i) => (
-        <ColorDiv key={key} delay={i * 100}>
-          <ColorLabel>
-            <div>{key}</div>
-            <div>{value}</div>
-          </ColorLabel>
-          <ColorShow color={value} />
+    <PaletteDiv bgColor={themes.background_default}>
+      {Object.keys(paletteColorList).map((key) => (
+        <ColorDiv key={key} className={key}>
+          <h3>{`${key} Color`}</h3>
+          <ColorRow>
+            {Object.entries(paletteColorList[key]).map(([key, value], i) => (
+              <ColorItem key={value} delay={i * 100}>
+                <Color color={value} />
+                <ColorLabel>
+                  <span className="title">{key}</span>
+                  <span className="value">{value}</span>
+                </ColorLabel>
+              </ColorItem>
+            ))}
+          </ColorRow>
         </ColorDiv>
       ))}
-    </ColorsDiv>
+    </PaletteDiv>
   );
 }
