@@ -1,9 +1,12 @@
-import { BaseColorObject } from '../interface';
+import { IBaseColorObject } from '../interface';
 
+/** 기본 컬러 */
 const common = {
   white: '#FFFFFF',
   black: '#1A1712', // 메인/블랙1
-};
+} as const;
+
+/** 브랜드 컬러 : Orange*/
 const orange = {
   50: '#FEEFE6', //brand color
   100: '#FFE3DA',
@@ -15,6 +18,7 @@ const orange = {
   700: '#CC2200',
 } as const;
 
+/** 브랜드 컬러 : Teal*/
 const teal = {
   50: '#E0F2F1', //brand color
   100: '#82DFDB',
@@ -26,6 +30,7 @@ const teal = {
   700: '#00695C',
 } as const;
 
+/** 브랜드 컬러 : Gray*/
 const gray = {
   100: '#FAF6EC',
   200: '#F4EFE3',
@@ -38,6 +43,7 @@ const gray = {
   900: '#28241B',
 } as const;
 
+/** 상태 컬러*/
 const status = {
   success: '#109867',
   info: '#127CB3',
@@ -45,10 +51,10 @@ const status = {
   error: '#DC1B2C',
 } as const;
 
-export const baseColor: BaseColorObject = {
+export const baseColor: IBaseColorObject = {
   common: { ...common },
   orange: { ...orange },
-  gray: { ...gray },
   teal: { ...teal },
+  gray: { ...gray },
   status: { ...status },
 };

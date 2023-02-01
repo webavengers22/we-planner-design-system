@@ -9,13 +9,13 @@ import {
 } from './type';
 
 interface PalletteColor {
-  standard: BaseColorObject;
-  dark: VariantColorObject;
-  light: VariantColorObject;
+  standard: IBaseColorObject;
+  dark: IVariantColorObject;
+  light: IVariantColorObject;
 }
 
 /** BaseColor interface */
-interface BaseColorObject {
+interface IBaseColorObject {
   common: {
     [key in CommonType]: Color;
   };
@@ -34,7 +34,7 @@ interface BaseColorObject {
 }
 
 /** Variant Color : light, dark interface */
-interface VariantColorObject {
+interface IVariantColorObject {
   background: {
     [key in BackGroundColorType]: Color;
   };
@@ -46,4 +46,4 @@ interface VariantColorObject {
   };
 }
 
-export type { BaseColorObject, VariantColorObject };
+export type { IBaseColorObject, IVariantColorObject };

@@ -1,4 +1,4 @@
-import { VariantColorObject } from '../interface';
+import { IVariantColorObject } from '../interface';
 import { baseColor } from './colors';
 
 const button = {
@@ -15,7 +15,7 @@ const text = {
   default: baseColor.common.black,
 } as const;
 
-export const lightColor: VariantColorObject = {
+export const lightColor: IVariantColorObject = {
   button: { ...button },
   background: { ...background },
   text: { ...text },

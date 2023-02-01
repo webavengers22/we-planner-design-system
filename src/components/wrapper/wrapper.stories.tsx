@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { WePlanWrapper } from '.';
 
 export default {
-  title: 'component/wrapper',
+  title: 'component/Wrapper',
   component: WePlanWrapper,
 } as Meta<typeof WePlanWrapper>;
 
