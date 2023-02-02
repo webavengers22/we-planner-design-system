@@ -50,6 +50,8 @@ type PickPalletteKeys = {
   [key in BaseColorList | VariantColorList]: Color;
 };
 
+export type ColorToken = `${ColorObjectList}` | 'outline' | (string & Record<never, never>);
+
 export type {
   //컬러 타입
   Color,

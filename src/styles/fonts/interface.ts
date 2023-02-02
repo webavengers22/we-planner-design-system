@@ -1,14 +1,14 @@
-import { CommonType, FontRange, WeightType, Font, SizeType } from './type';
+import { CommonType, FontRange, WeightType, Font } from './type';
 
 interface ITypography {
   fontWeight?: number | string;
   fontSize?: string | number;
   lineHeight?: number | string;
-  fontFamily?: number | string;
 }
 
 /** Typography interface */
 interface ITypographyStyle {
+  fontFamily: string | number;
   display3: ITypography;
   display2: ITypography;
   display1: ITypography;

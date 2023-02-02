@@ -1,7 +1,6 @@
 import { Global, css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 import { themes, themeCssColor } from '@/theme';
-import '@styles/fonts/css/pretendard.css';
 
 export function GlobalStyles() {
   return <Global styles={styles} />;
