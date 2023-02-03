@@ -5,7 +5,8 @@ import {
   StatusType,
   BackGroundColorType,
   TextColorType,
-  ButtonColorType,
+  CommonColorType,
+  StorybookColorType,
 } from './type';
 
 interface PalletteColor {
@@ -42,7 +43,10 @@ interface IVariantColorObject {
     [key in TextColorType]: Color;
   };
   button: {
-    [key in ButtonColorType]: Color;
+    [key in CommonColorType]: Color;
+  };
+  storybook: {
+    [key in StorybookColorType]: Color;
   };
 }
 

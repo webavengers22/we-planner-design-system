@@ -1,17 +1,10 @@
 import { ElementType, ReactNode } from 'react';
+import { TypographyStoryVariant, TypographyVariant } from '@styles/fonts';
+
 /** Element h1~6 Type 정의 */
 type HeadingElement = `h${1 | 2 | 3 | 4 | 5 | 6}`;
 /** Element type 정의 */
 type TypographyElement = 'label' | 'span' | 'p' | 'div' | 'strong' | 'a' | HeadingElement;
-
-/** Typography 스타일 Type */
-type TypographyVariant =
-  | `display${1 | 2 | 3}`
-  | `headline${1 | 2}`
-  | 'title'
-  | `body${1 | 2}`
-  | 'caption'
-  | 'button';
 
 interface ITypographyProps {
   /** 정렬(text-align): center, left, right*/
@@ -32,4 +25,4 @@ interface ITypographyProps {
   as?: ElementType & TypographyElement;
 }
 
-export type { ITypographyProps, TypographyVariant, TypographyElement };
+export type { ITypographyProps, TypographyElement };

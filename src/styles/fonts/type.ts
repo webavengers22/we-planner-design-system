@@ -1,4 +1,5 @@
 import { type } from 'os';
+import { ITypography } from './interface';
 
 type Font = string | number;
 
@@ -13,6 +14,29 @@ type SizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 type FontSizeType = SizeType | Font;
 
+/** Typography 스타일 Type */
+type TypographyVariant =
+  | `display${1 | 2 | 3}`
+  | `headline${1 | 2}`
+  | 'title'
+  | `body${1 | 2}`
+  | 'caption'
+  | 'button';
+
+type TypographyStoryVariant =
+  | TypographyVariant
+  | `headline${1 | 2}_b`
+  | 'title_b'
+  | `body${1 | 2}_b`;
+
+type TypographyStoryProperty = {
+  [key in TypographyStoryVariant]: ITypography;
+};
+
+type TypographyProperty = {
+  [key: string | number]: Font;
+};
+
 export type {
   Font,
   /** Font Style 하위 Type key  */
@@ -22,4 +46,8 @@ export type {
   /** Font Object Type key  */
   FontStyleType,
   SizeType,
+  TypographyVariant,
+  TypographyStoryVariant,
+  TypographyStoryProperty,
+  TypographyProperty,
 };

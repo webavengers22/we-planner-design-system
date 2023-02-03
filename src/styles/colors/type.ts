@@ -11,7 +11,8 @@ type ColorRange = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 type AllBaseColorType = CommonType & StatusType & ColorRange;
 
 /** Variant color 하위 TYPE  */
-type ButtonColorType = 'primary' | 'secondary' | 'tertiary';
+type CommonColorType = 'primary' | 'secondary' | 'tertiary';
+type StorybookColorType = 'primary' | 'secondary' | 'background';
 type BackGroundColorType = 'default';
 type TextColorType = 'default';
 
@@ -62,7 +63,8 @@ export type {
   StatusType,
   BackGroundColorType,
   TextColorType,
-  ButtonColorType,
+  CommonColorType,
+  StorybookColorType,
   // Variant color 하위TYPE
   BaseColorList,
   VariantColorList,

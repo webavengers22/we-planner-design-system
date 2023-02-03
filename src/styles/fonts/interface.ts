@@ -1,10 +1,10 @@
 import { CommonType, FontRange, WeightType, Font } from './type';
 
-interface ITypography {
-  fontWeight?: number | string;
+type ITypography = {
+  fontWeight?: boolean;
   fontSize?: string | number;
   lineHeight?: number | string;
-}
+};
 
 /** Typography interface */
 interface ITypographyStyle {
@@ -19,6 +19,15 @@ interface ITypographyStyle {
   body2: ITypography;
   caption: ITypography;
   button: ITypography;
+}
+
+/** Typography interface */
+interface ITypographyStoryStyle extends Exclude<ITypographyStyle, 'fontFamily'> {
+  headline1_b: ITypography;
+  headline2_b: ITypography;
+  title_b: ITypography;
+  body1_b: ITypography;
+  body2_b: ITypography;
 }
 
 /** FontStyle interface */
@@ -41,4 +50,10 @@ interface FontProperty {
   [name: string]: Font;
 }
 
-export type { ITypographyStyle, ITypography, FontProperty, IFontStyleProperties };
+export type {
+  ITypographyStyle,
+  ITypographyStoryStyle,
+  ITypography,
+  FontProperty,
+  IFontStyleProperties,
+};

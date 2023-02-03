@@ -15,8 +15,15 @@ const text = {
   default: baseColor.common.black,
 } as const;
 
+const storybook = {
+  primary: baseColor.orange[500],
+  secondary: baseColor.orange[500],
+  background: baseColor.gray[800],
+};
+
 export const lightColor: IVariantColorObject = {
   button: { ...button },
   background: { ...background },
   text: { ...text },
+  storybook: { ...storybook },
 } as const;

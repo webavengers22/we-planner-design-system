@@ -1,10 +1,9 @@
-import { PRETENDARD_FONT_FAMILY } from '../constant';
 import { IFontStyleProperties } from '../interface';
 import { FontStyleType } from '../type';
 
 /** 기본 font data 정의 */
 const common = {
-  family: PRETENDARD_FONT_FAMILY,
+  family: 'Pretendard sans-serif',
   display: 'swap',
 } as const;
 
