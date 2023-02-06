@@ -1,15 +1,22 @@
 import {
-  generateThemeCssColor as themeCssColor,
-  themedPalette,
+  generateThemeCssColor as colorCss,
+  themedPalette as color,
   paletteColorList,
 } from '@/styles/colors/index';
-import { generateFont } from '@/styles/fonts';
-export * from './DocsDarkThemeCompat';
-export * from './StorybookThemeWrapper';
+import { fontThemeCss, themeTypography as font } from '@/styles/fonts/generate';
 export * from './GlobalStyle';
 const themes = {
-  ...themedPalette,
+  color,
+  font,
 };
 
-console.log(generateFont);
+const themeCssColor = {
+  colorCss,
+  fontThemeCss,
+};
+export type themesKey = typeof themes;
 export { themes, themeCssColor, paletteColorList };
+
+declare module '@emotion/react' {
+  export interface Theme extends themesKey {}
+}

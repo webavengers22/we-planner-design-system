@@ -1,113 +1,74 @@
-import React, {
-  useEffect,
-  useLayoutEffect,
-  createContext,
-  useState,
-  useMemo,
-  useCallback,
-  useContext,
-} from 'react';
-import { css, Global } from '@emotion/react';
-import { themes, themeCssColor } from '@/theme';
-import { ColorObjectList } from '@/styles/colors/type';
-export type Theme = 'light' | 'dark' | 'default';
+import React, { useContext, useMemo, createContext, useState, useEffect, useCallback } from 'react';
+type Theme = 'light' | 'dark' | 'system';
+type SelectTheme = 'light' | 'dark';
 
-interface Props {
-  children: React.ReactNode;
-  initialTheme?: Theme;
-}
-
-// In browser -> useLayoutEffect
-// In SSR -> useEffect
-const useIsomorphicEffect = typeof window !== 'undefined' ? useEffect : useLayoutEffect;
-
-const ThemeContext = createContext<{
+export interface ThemeContextProps {
   theme: Theme;
-  isDarkTheme: boolean;
+  selectTheme: SelectTheme;
   setTheme: (theme: Theme) => void;
-  toggle(): void;
-} | null>(null);
-
-function checkIsDarkTheme() {
-  if (typeof window === 'undefined') return false;
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  return systemPrefersDark;
 }
 
-export function ThemeProvider({ children, initialTheme = 'default' }: Props) {
-  const [theme, setTheme] = useState<'light' | 'dark' | 'default'>(initialTheme);
-  const [systemIsDark, setSystemIsDark] = useState(() => checkIsDarkTheme());
+const ThemeContext = createContext<ThemeContextProps>({
+  theme: 'system',
+  selectTheme: 'light',
+  setTheme: () => null,
+});
 
-  useIsomorphicEffect(() => {
-    if (theme === 'default') return;
-    document.body.dataset.theme = theme;
-  }, [theme]);
+export function ThemeContextProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<Theme>('system');
+  const [selectTheme, setSelectTheme] = useState<SelectTheme>('light');
 
   useEffect(() => {
-    const callback = (e: MediaQueryListEvent) => {
-      setSystemIsDark(e.matches);
-    };
-
-    const match = window.matchMedia('(prefers-color-scheme: dark)');
-    match.addEventListener('change', callback);
-
-    return () => {
-      match.removeEventListener('change', callback);
-    };
-  }, []);
-
-  const isDarkTheme = useMemo(() => {
-    if (theme === 'dark') return true;
-    if (systemIsDark && theme === 'default') return true;
-    return false;
-  }, [theme, systemIsDark]);
-
-  const toggle = useCallback(() => {
-    if (isDarkTheme) {
-      setTheme('light');
-    } else {
+    const savedTheme = typeof window === 'undefined' ? 'light' : localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
       setTheme('dark');
+      setSelectTheme('dark');
+      return;
     }
-  }, [isDarkTheme]);
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme, isDarkTheme, toggle }}>
-      <Global styles={styles} />
-      {children}
-    </ThemeContext.Provider>
+    if (savedTheme === 'light') {
+      setTheme('light');
+      setSelectTheme('light');
+      return;
+    }
+
+    const isUserDark =
+      window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme('light');
+    setSelectTheme(isUserDark ? 'dark' : 'light');
+  }, []);
+  const changeColorTheme = useCallback((theme: Theme) => {
+    if (theme === 'system') {
+      setTheme('system');
+      setSelectTheme(
+        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light',
+      );
+      document.querySelector('body')?.removeAttribute('data-theme');
+      if (typeof window !== 'undefined') localStorage.removeItem('theme');
+    } else if (theme === 'dark') {
+      setTheme('dark');
+      setSelectTheme('dark');
+      document.querySelector('body')?.setAttribute('data-theme', 'dark');
+      if (typeof window !== 'undefined') localStorage.setItem('theme', 'dark');
+    } else if (theme === 'light') {
+      setTheme('light');
+      setSelectTheme('light');
+      document.querySelector('body')?.setAttribute('data-theme', 'light');
+      if (typeof window !== 'undefined') localStorage.setItem('theme', 'light');
+    }
+  }, []);
+  const value = useMemo(
+    () => ({
+      setTheme: changeColorTheme,
+      theme,
+      selectTheme,
+    }),
+    [changeColorTheme, theme, selectTheme],
   );
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
-export function useTheme() {
-  const value = useContext(ThemeContext);
-
-  if (!value) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-
-  return value;
-}
-
-export const cssVar1 = (key: ColorObjectList) => `var(--${key})`;
-
-const styles = css`
-  body {
-    ${themeCssColor.standard}
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body {
-      ${themeCssColor.dark};
-    }
-  }
-
-  body[data-theme='light'] {
-    ${themeCssColor.light};
-  }
-
-  body[data-theme='dark'] {
-    ${themeCssColor.dark};
-  }
-`;
-
-export default ThemeProvider;
+export const useColorTheme = () => useContext(ThemeContext);

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { DARK_MODE_EVENT_NAME, useDarkMode } from 'storybook-dark-mode';
-import { useTheme } from '../contexts';
+import { useColorTheme } from '@/contexts/ThemeContext';
 import { addons } from '@storybook/preview-api';
 
 const channel = addons.getChannel();
@@ -10,7 +10,7 @@ interface Props {
 }
 
 function StorybookThemeWrapper({ children }: Props) {
-  const { setTheme } = useTheme();
+  const { setTheme } = useColorTheme();
 
   useEffect(() => {
     const updater = (value: boolean) => setTheme(value ? 'dark' : 'light');

@@ -3,7 +3,7 @@ import { ITypographyStyle } from '../interface';
 import { TypographyStoryProperty } from '../type';
 const { common, size, lineHeight } = fontStyle;
 
-export const typography: ITypographyStyle = {
+export const typography = {
   fontFamily: common.family,
   display1: {
     fontSize: size[800],

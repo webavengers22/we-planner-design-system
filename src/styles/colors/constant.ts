@@ -21,7 +21,6 @@ const generateColor = Object.fromEntries(
     return [themeType, colorGroup];
   }),
 );
-
 const generateBaseColor = Object.fromEntries(
   Object.entries(baseColor).map(([themeType, getData]) => {
     const colorGroup = Object.entries(getData).reduce<ColorListProperty>((acc, [title, value]) => {

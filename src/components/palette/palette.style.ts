@@ -2,6 +2,8 @@ import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { themes } from '@/theme';
 
+const { color } = themes;
+
 const fadeIn = keyframes`
     0% {
         transform: translate(0, 12px);
@@ -29,7 +31,7 @@ const ColorDiv = styled.div`
   padding-bottom: 1.5rem;
 
   h3 {
-    color: ${themes.text_default};
+    color: ${color.text_default};
   }
   &:last-child {
     border-bottom: 0;
@@ -66,12 +68,12 @@ const ColorLabel = styled.div`
   align-items: center;
   span {
     font-size: 0.8rem;
-    color: ${themes.text_default};
+    color: ${color.text_default};
   }
 
   .gray & span,
   .background & span {
-    color: ${themes.common_white};
+    color: ${color.common_white};
   }
   span.title {
     font-size: 0.9rem;

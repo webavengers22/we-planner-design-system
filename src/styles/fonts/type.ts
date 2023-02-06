@@ -1,5 +1,7 @@
+import { fontStyle } from './token/fonts';
 import { type } from 'os';
 import { ITypography } from './interface';
+import { typography } from './token';
 
 type Font = string | number;
 
@@ -33,9 +35,26 @@ type TypographyStoryProperty = {
   [key in TypographyStoryVariant]: ITypography;
 };
 
+type GetColorList<T> = {
+  readonly [P in keyof T]: `${P extends number | string ? P : never}_${keyof T[P] extends
+    | string
+    | number
+    ? keyof T[P]
+    : never}`;
+}[keyof T];
+
+type BaseFont = typeof fontStyle;
+type FontList = GetColorList<BaseFont>;
+
+type PickFontKeys = {
+  [key in FontList]: Font;
+};
+
 type TypographyProperty = {
   [key: string | number]: Font;
 };
+
+type typographyStylesKey = keyof typeof typography;
 
 export type {
   Font,
@@ -50,4 +69,8 @@ export type {
   TypographyStoryVariant,
   TypographyStoryProperty,
   TypographyProperty,
+  /**const Font */
+  PickFontKeys,
+  FontList,
+  typographyStylesKey,
 };

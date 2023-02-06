@@ -1,8 +1,6 @@
 import React, { forwardRef, useEffect } from 'react';
 import { darkTheme, lightTheme } from './theme';
-import { WePlanProvider } from '../src/contexts';
-import { GlobalStyles } from '../src/theme/GlobalStyle';
-import StorybookThemeWrapper from '../src/theme/StorybookThemeWrapper';
+import { WePlanWrapper } from '../src/components/wrapper';
 import './global.css';
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -28,12 +26,9 @@ export const decorators = [
     } catch (error) {}
 
     return (
-      <WePlanProvider initialTheme={theme}>
-        <StorybookThemeWrapper>
-          <GlobalStyles />
-          <Story />
-        </StorybookThemeWrapper>
-      </WePlanProvider>
+      <WePlanWrapper>
+        <Story />
+      </WePlanWrapper>
     );
   },
 ];

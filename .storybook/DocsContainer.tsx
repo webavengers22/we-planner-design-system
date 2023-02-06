@@ -1,5 +1,4 @@
 import { addons } from '@storybook/preview-api';
-import { themes } from '@storybook/theming';
 import React from 'react';
 import { DocsContainer as BaseContainer } from '@storybook/addon-docs';
 import { useDarkMode } from 'storybook-dark-mode';

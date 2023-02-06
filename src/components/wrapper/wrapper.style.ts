@@ -2,6 +2,8 @@ import { css } from '@emotion/react';
 
 import emotionNormalize from 'emotion-normalize';
 import { themeCssColor } from '@/theme';
+
+const { colorCss, fontThemeCss } = themeCssColor;
 const BaseGLobalStyles = css`
   * {
     padding: 0;
@@ -11,7 +13,8 @@ const BaseGLobalStyles = css`
   }
 
   :root {
-    ${themeCssColor.standard}
+    ${colorCss.standard}
+    ${fontThemeCss}
     scroll-padding-top: 64px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -20,16 +23,16 @@ const BaseGLobalStyles = css`
 
   @media (prefers-color-scheme: dark) {
     body {
-      ${themeCssColor.dark};
+      ${colorCss.dark};
     }
   }
 
   body[data-theme='light'] {
-    ${themeCssColor.light};
+    ${colorCss.light};
   }
 
   body[data-theme='dark'] {
-    ${themeCssColor.dark};
+    ${colorCss.dark};
   }
 
   a {
@@ -40,8 +43,9 @@ const BaseGLobalStyles = css`
 const GlobalStyles = css`
   ${emotionNormalize}
   :root {
-    ${themeCssColor.standard}
-    ${themeCssColor.dark}
+    ${colorCss.standard}
+    ${colorCss.dark}
+    ${fontThemeCss}
     transition: 0.125s all ease-in;
     scroll-padding-top: 64px;
     text-rendering: optimizeLegibility;
@@ -51,20 +55,20 @@ const GlobalStyles = css`
 
   @media (prefers-color-scheme: dark) {
     body {
-      ${themeCssColor.dark};
+      ${colorCss.dark};
       background-color: var(--background-default);
     }
   }
 
   @media (prefers-color-scheme: light) {
     body {
-      ${themeCssColor.light};
+      ${colorCss.light};
       background-color: var(--background-default);
     }
   }
 
   body[data-theme='light'] {
-    ${themeCssColor.light};
+    ${colorCss.light};
     background-color: var(--background-default);
 
     * {
@@ -74,7 +78,7 @@ const GlobalStyles = css`
     }
   }
   body[data-theme='dark'] {
-    ${themeCssColor.dark};
+    ${colorCss.dark};
     background-color: var(--background-default);
 
     * {

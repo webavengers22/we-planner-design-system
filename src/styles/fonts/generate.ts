@@ -1,33 +1,43 @@
-import { generateColor, generateBaseColor, generateThemeColor } from '@/styles/colors/constant';
 import { cssVar } from '@/utils/styled';
-import { Color, PickPalletteKeys } from './type';
+import { generateFont } from './constant';
+import { Font, FontList, FontStyleType, PickFontKeys } from './type';
 
-const generateThemeCssColor = Object.fromEntries(
-  Object.entries(generateColor).map(([themeType, colorGroup]) => {
-    const themeColor = Object.keys(colorGroup).reduce(
-      (acc, colorKey) =>
-        acc.concat(`--${colorKey.replace(/_/g, '-')}: ${colorGroup[colorKey]};`, '\n'),
+type PickFontTheme = Record<FontStyleType, string>;
+type PickFontTheme2 = Record<FontList, Font>;
+const generateFontCssFont = Object.fromEntries(
+  Object.entries(generateFont).map(([themeType, fontGroup]) => {
+    const themeFont = Object.keys(fontGroup).reduce(
+      (acc, fontKey) => acc.concat(`--${fontKey.replace(/_/g, '-')}: ${fontGroup[fontKey]};`, '\n'),
       '',
     );
-    return [themeType, themeColor];
+    return [themeType, themeFont];
   }),
-);
-type ThemedPalette = Record<keyof PickPalletteKeys, string>;
+) as PickFontTheme;
 
-const generatePalletteColor = Object.fromEntries(
-  Object.entries(generateColor).map(([themeType, colorGroup]) => {
-    const themeColor = Object.keys(colorGroup).reduce<Record<string, Color>>((acc, colorKey) => {
+type ThemeFont = Record<keyof PickFontKeys, string>;
+
+const generateThemeFont = Object.fromEntries(
+  Object.entries(generateFont).map(([themeType, colorGroup]) => {
+    const themeColor = Object.keys(colorGroup).reduce<Record<string, Font>>((acc, colorKey) => {
       acc[colorKey] = cssVar(colorKey);
       return acc;
-    }, {}) as ThemedPalette;
+    }, {}) as ThemeFont;
     return [themeType, themeColor];
   }),
 );
+console.log(generateFontCssFont);
 
-const themedPalette: ThemedPalette = {
-  ...generatePalletteColor.dark,
-  ...generatePalletteColor.standard,
+const themeTypography: ThemeFont = {
+  ...generateThemeFont.common,
+  ...generateThemeFont.lineHeight,
+  ...generateThemeFont.size,
+  ...generateThemeFont.weight,
 };
-const paletteColorList = { ...generateBaseColor, ...generateThemeColor };
 
-export { generateThemeCssColor, themedPalette, paletteColorList };
+const fontThemeCss: string = `
+${generateFontCssFont.common}
+${generateFontCssFont.lineHeight}
+${generateFontCssFont.weight}
+${generateFontCssFont.size}`;
+
+export { fontThemeCss, generateThemeFont, themeTypography };

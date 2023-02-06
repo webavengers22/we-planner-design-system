@@ -1,11 +1,17 @@
 import React from 'react';
-import ThemeProvider, { Theme } from '@/contexts/ThemeContext';
+import { ThemeContextProvider } from '@/contexts/ThemeContext';
+import { LinkContextProvider } from '@/contexts/linkContext';
 
-interface Props {
-  initialTheme?: Theme;
-  children: React.ReactNode;
-}
-
-export function WePlanProvider({ children, initialTheme }: Props) {
-  return <ThemeProvider initialTheme={initialTheme}>{children}</ThemeProvider>;
+export function WePlanProvider({
+  children,
+  initLink,
+}: {
+  children: React.ReactElement;
+  initLink?: React.ElementType<any>;
+}) {
+  return (
+    <ThemeContextProvider>
+      <LinkContextProvider initLink={initLink}>{children}</LinkContextProvider>
+    </ThemeContextProvider>
+  );
 }

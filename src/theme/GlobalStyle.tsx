@@ -1,45 +1,8 @@
 import { Global, css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
-import { themes, themeCssColor } from '@/theme';
-
 export function GlobalStyles() {
   return <Global styles={styles} />;
 }
-
-const BaseGLobalStyles = css`
-  * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  :root {
-    ${themeCssColor.standard}
-    scroll-padding-top: 64px;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    touch-action: manipulation;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body {
-      ${themeCssColor.dark};
-    }
-  }
-
-  body[data-theme='light'] {
-    ${themeCssColor.light};
-  }
-
-  body[data-theme='dark'] {
-    ${themeCssColor.dark};
-  }
-
-  a {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
-`;
 
 const styles = css`
   ${emotionNormalize}
@@ -133,4 +96,4 @@ const styles = css`
   }
 `;
 
-export { styles, BaseGLobalStyles };
+export { styles };
