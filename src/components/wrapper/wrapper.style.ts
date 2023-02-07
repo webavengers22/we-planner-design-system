@@ -1,9 +1,10 @@
 import { css } from '@emotion/react';
 
 import emotionNormalize from 'emotion-normalize';
-import { themeCssColor } from '@/theme';
+import { themeCss } from '@/theme';
 
-const { colorCss, fontThemeCss } = themeCssColor;
+const { colorCss, typographyCss, styleCss } = themeCss;
+
 const BaseGLobalStyles = css`
   * {
     padding: 0;
@@ -14,7 +15,8 @@ const BaseGLobalStyles = css`
 
   :root {
     ${colorCss.standard}
-    ${fontThemeCss}
+    ${typographyCss}
+    ${styleCss}
     scroll-padding-top: 64px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -45,7 +47,8 @@ const GlobalStyles = css`
   :root {
     ${colorCss.standard}
     ${colorCss.dark}
-    ${fontThemeCss}
+    ${typographyCss}
+    ${styleCss}
     transition: 0.125s all ease-in;
     scroll-padding-top: 64px;
     text-rendering: optimizeLegibility;

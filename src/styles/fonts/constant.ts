@@ -31,7 +31,7 @@ const getTypographyStyles = (typographyStyle: typographyStylesKey) => {
   const { fontSize, lineHeight } = typography[typographyStyle] as ITypography;
   return css`
     font-size: ${fontSize}rem;
-    line-height: ${lineHeight}px;
+    line-height: ${lineHeight}rem;
     font-family: ${PRETENDARD_FONT_FAMILY};
     font-display: swap;
   `;

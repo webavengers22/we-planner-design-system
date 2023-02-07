@@ -1,22 +1,24 @@
 import {
-  generateThemeCssColor as colorCss,
-  themedPalette as color,
+  generateColorCss as colorCss,
+  themePalette as color,
   paletteColorList,
 } from '@/styles/colors/index';
-import { fontThemeCss, themeTypography as font } from '@/styles/fonts/generate';
+import { themeCssTypography as typographyCss, themeTypography as font } from '@styles/fonts';
+import { themeStyleCss as styleCss, themeStyle as style } from '@styles/style';
 export * from './GlobalStyle';
 const themes = {
   color,
   font,
+  style,
 };
 
-const themeCssColor = {
+const themeCss = {
   colorCss,
-  fontThemeCss,
+  typographyCss,
+  styleCss,
 };
 export type themesKey = typeof themes;
-export { themes, themeCssColor, paletteColorList };
-
+export { themes, themeCss, paletteColorList };
 declare module '@emotion/react' {
   export interface Theme extends themesKey {}
 }

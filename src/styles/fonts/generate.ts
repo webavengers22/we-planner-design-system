@@ -1,10 +1,8 @@
 import { cssVar } from '@/utils/styled';
 import { generateFont } from './constant';
-import { Font, FontList, FontStyleType, PickFontKeys } from './type';
+import { Font, ThemeFont, PickThemeFont } from './type';
 
-type PickFontTheme = Record<FontStyleType, string>;
-type PickFontTheme2 = Record<FontList, Font>;
-const generateFontCssFont = Object.fromEntries(
+const generateFontCss = Object.fromEntries(
   Object.entries(generateFont).map(([themeType, fontGroup]) => {
     const themeFont = Object.keys(fontGroup).reduce(
       (acc, fontKey) => acc.concat(`--${fontKey.replace(/_/g, '-')}: ${fontGroup[fontKey]};`, '\n'),
@@ -12,9 +10,7 @@ const generateFontCssFont = Object.fromEntries(
     );
     return [themeType, themeFont];
   }),
-) as PickFontTheme;
-
-type ThemeFont = Record<keyof PickFontKeys, string>;
+) as PickThemeFont;
 
 const generateThemeFont = Object.fromEntries(
   Object.entries(generateFont).map(([themeType, colorGroup]) => {
@@ -25,7 +21,6 @@ const generateThemeFont = Object.fromEntries(
     return [themeType, themeColor];
   }),
 );
-console.log(generateFontCssFont);
 
 const themeTypography: ThemeFont = {
   ...generateThemeFont.common,
@@ -34,10 +29,10 @@ const themeTypography: ThemeFont = {
   ...generateThemeFont.weight,
 };
 
-const fontThemeCss: string = `
-${generateFontCssFont.common}
-${generateFontCssFont.lineHeight}
-${generateFontCssFont.weight}
-${generateFontCssFont.size}`;
+const themeCssTypography: string = `
+${generateFontCss.common}
+${generateFontCss.lineHeight}
+${generateFontCss.weight}
+${generateFontCss.size}`;
 
-export { fontThemeCss, generateThemeFont, themeTypography };
+export { themeCssTypography, generateThemeFont, themeTypography };

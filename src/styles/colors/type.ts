@@ -1,6 +1,7 @@
 import { lightColor, darkColor, baseColor } from './token';
 import { ThemeMode as ThemeColorType } from '@/types/themeType';
 import { paletteColor } from './constant';
+import { GetColorList } from '@/types';
 
 type Color = string | undefined;
 
@@ -30,14 +31,6 @@ type ColorListProperty = {
 };
 type PickThemeColor = Pick<PalletteType, keyof ThemeColorType>;
 
-type GetColorList<T> = {
-  readonly [P in keyof T]: `${P extends number | string ? P : never}_${keyof T[P] extends
-    | string
-    | number
-    ? keyof T[P]
-    : never}`;
-}[keyof T];
-
 /** Color Data  */
 type BaseColor = typeof baseColor;
 type VariantColor = typeof darkColor | typeof lightColor;
@@ -50,7 +43,7 @@ type ColorObjectList = BaseColorList | VariantColorList;
 type PickPalletteKeys = {
   [key in BaseColorList | VariantColorList]: Color;
 };
-
+type ThemePalette = Record<keyof PickPalletteKeys, string>;
 export type ColorToken = `${ColorObjectList}` | 'outline' | (string & Record<never, never>);
 
 export type {
@@ -74,4 +67,5 @@ export type {
   PickThemeColor,
   PickPalletteKeys,
   ColorObjectList,
+  ThemePalette,
 };

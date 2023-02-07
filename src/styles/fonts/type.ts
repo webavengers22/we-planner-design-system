@@ -2,6 +2,7 @@ import { fontStyle } from './token/fonts';
 import { type } from 'os';
 import { ITypography } from './interface';
 import { typography } from './token';
+import { GetColorList, SizeType } from '@/types';
 
 type Font = string | number;
 
@@ -12,8 +13,6 @@ type FontRange = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 'normal';
 
 /** Font Object Type key  */
 type FontStyleType = 'common' | 'weight' | 'size' | 'lineHeight';
-type SizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
 type FontSizeType = SizeType | Font;
 
 /** Typography 스타일 Type */
@@ -35,14 +34,6 @@ type TypographyStoryProperty = {
   [key in TypographyStoryVariant]: ITypography;
 };
 
-type GetColorList<T> = {
-  readonly [P in keyof T]: `${P extends number | string ? P : never}_${keyof T[P] extends
-    | string
-    | number
-    ? keyof T[P]
-    : never}`;
-}[keyof T];
-
 type BaseFont = typeof fontStyle;
 type FontList = GetColorList<BaseFont>;
 
@@ -55,6 +46,8 @@ type TypographyProperty = {
 };
 
 type typographyStylesKey = keyof typeof typography;
+type PickThemeFont = Record<FontStyleType, string>;
+type ThemeFont = Record<keyof PickFontKeys, string>;
 
 export type {
   Font,
@@ -73,4 +66,7 @@ export type {
   PickFontKeys,
   FontList,
   typographyStylesKey,
+  /** generate 타입 지정 */
+  PickThemeFont,
+  ThemeFont,
 };

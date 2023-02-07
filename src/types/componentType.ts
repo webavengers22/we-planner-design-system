@@ -27,7 +27,7 @@ interface LabelProps {
   label?: string;
 }
 
-type variantType = 'primary' | 'secondary';
+type variantType = 'primary' | 'secondary' | 'tertiary';
 
 export type {
   LabelProps,

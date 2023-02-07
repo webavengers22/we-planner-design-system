@@ -8,11 +8,12 @@ export function Typography({
   italic = false,
   children,
   tagName,
+  align = 'left',
   as,
 }: ITypographyProps) {
   const Component = StyledText(tagName || VariantMapping[variant]);
   return (
-    <Component variant={variant} color={color} bold={bold} italic={italic}>
+    <Component variant={variant} color={color} bold={bold} italic={italic} align={align}>
       {children}
     </Component>
   );

@@ -28,19 +28,19 @@ const size = {
 
 /** font lineHeight 정의 : px */
 const lineHeight = {
-  normal: 16.5,
-  200: 16.5,
-  300: 18.7,
-  400: 20.9,
-  500: 24.2,
-  600: 26.4,
-  700: 31.9,
-  800: 42.9,
+  normal: 1.0,
+  200: 1.0,
+  300: 1.1,
+  400: 1.3,
+  500: 1.5,
+  600: 1.7,
+  700: 2,
+  800: 2.7,
 } as const;
 
 export const fontStyle: IFontStyleProperties = {
-  common: { ...common },
-  weight: { ...weight },
-  size: { ...size },
-  lineHeight: { ...lineHeight },
+  common,
+  weight,
+  size,
+  lineHeight,
 };

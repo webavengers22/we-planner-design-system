@@ -1,8 +1,8 @@
 import { generateColor, generateBaseColor, generateThemeColor } from '@/styles/colors/constant';
 import { cssVar } from '@/utils/styled';
-import { Color, PickPalletteKeys } from './type';
+import { Color, ThemePalette } from './type';
 
-const generateThemeCssColor = Object.fromEntries(
+const generateColorCss = Object.fromEntries(
   Object.entries(generateColor).map(([themeType, colorGroup]) => {
     const themeColor = Object.keys(colorGroup).reduce(
       (acc, colorKey) =>
@@ -12,22 +12,21 @@ const generateThemeCssColor = Object.fromEntries(
     return [themeType, themeColor];
   }),
 );
-type ThemedPalette = Record<keyof PickPalletteKeys, string>;
 
-const generatePalletteColor = Object.fromEntries(
+const generateThemePallette = Object.fromEntries(
   Object.entries(generateColor).map(([themeType, colorGroup]) => {
     const themeColor = Object.keys(colorGroup).reduce<Record<string, Color>>((acc, colorKey) => {
       acc[colorKey] = cssVar(colorKey);
       return acc;
-    }, {}) as ThemedPalette;
+    }, {}) as ThemePalette;
     return [themeType, themeColor];
   }),
 );
 
-const themedPalette: ThemedPalette = {
-  ...generatePalletteColor.dark,
-  ...generatePalletteColor.standard,
+const themePalette: ThemePalette = {
+  ...generateThemePallette.dark,
+  ...generateThemePallette.standard,
 };
 const paletteColorList = { ...generateBaseColor, ...generateThemeColor };
 
-export { generateThemeCssColor, themedPalette, paletteColorList };
+export { generateColorCss, themePalette, paletteColorList };

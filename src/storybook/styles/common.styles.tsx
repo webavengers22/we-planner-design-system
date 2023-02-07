@@ -18,12 +18,12 @@ export const Paper = styled.div<{
   ${({ $minWidth }) =>
     $minWidth &&
     css`
-      min-width: ${$minWidth};
+      min-width: ${$minWidth}px important;
     `}
   ${({ $maxWidth }) =>
     $maxWidth &&
     css`
-      max-width: ${$maxWidth}px;
+      max-width: ${$maxWidth}px important;
     `}
 `;
 
@@ -36,9 +36,13 @@ export const Table = styled.table`
   border-collapse: collapse;
 `;
 
-export const TableHeader = styled.thead``;
+export const TableHeader = styled.thead`
+  color: ${color.text_default};
+`;
 
-export const TableBody = styled.tbody``;
+export const TableBody = styled.tbody`
+  color: ${color.text_default};
+`;
 
 const Th = styled.th<{ align?: TextAlign }>`
   border: 1px solid ${color.storybook_primary};
