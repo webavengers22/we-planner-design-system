@@ -14,27 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "baseUrl": ".",
-    "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
-    "sourceMap": true,
-    "types": ["vite-plugin-svgr/client", "@emotion/react/types/css-prop"],
-    "paths": {
-      "@/*": [
-        //@로 시작하면 아래 줄의 디렉토리를 의미한다.
-        "src/*" //baseUrl을 기준으로 src/ 하위 디렉토리를 @로 표현
-      ],
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"],
-      "@theme/*": ["src/theme/*"],
-      "@types/*": ["src/types/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"],
-      "@contexts/*": ["src/contexts/*"],
-      "@stories/*": ["src/stories/*"]
-    }
+    "jsx": "react-jsx"
   },
-  "include": ["custom.d.ts", "src"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
