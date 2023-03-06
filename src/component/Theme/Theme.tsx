@@ -1,48 +1,48 @@
-import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
-import { defaultTheme } from '../constants'
+import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
+import { defaultTheme } from '../../contrants';
 
-import { DataTheme, IComponentBaseProps } from '../types'
-import { ThemeContext } from './ThemeContext'
-import { getThemeFromClosestAncestor } from './utils'
+import { DataTheme, IComponentBaseProps } from '@/types';
+import { ThemeContext } from './ThemeContext';
+import { getThemeFromClosestAncestor } from './utils';
 
 export type ThemeProps = Omit<
   React.HTMLAttributes<HTMLDivElement>,
   'onChange'
 > &
   IComponentBaseProps & {
-    onChange?: (theme: DataTheme) => void
-  }
+    onChange?: (theme: DataTheme) => void;
+  };
 
 const Theme = React.forwardRef<HTMLDivElement, ThemeProps>(
   (
     { children, dataTheme, onChange, className, ...props },
-    ref
+    ref,
   ): JSX.Element => {
     // Either use provided ref or create a new ref
     const themeRef = useRef<HTMLDivElement>(
-      (ref as MutableRefObject<HTMLDivElement>)?.current
-    )
+      (ref as MutableRefObject<HTMLDivElement>)?.current,
+    );
 
-    const closestAncestorTheme = getThemeFromClosestAncestor(themeRef)
+    const closestAncestorTheme = getThemeFromClosestAncestor(themeRef);
 
     // If no theme is provided, use the closest ancestor theme, if no ancestor theme, fallback to default theme (defined in constants)
     const [theme, setTheme] = useState<DataTheme>(
-      dataTheme || closestAncestorTheme || defaultTheme
-    )
+      dataTheme || closestAncestorTheme || defaultTheme,
+    );
 
     const handleThemeChange = (theme: DataTheme) => {
       // Fire custom onChange, if provided. ie, user provided function to store theme in session/local storage
-      onChange && onChange(theme)
+      onChange && onChange(theme);
       // Update state/context
-      setTheme(theme)
-    }
+      setTheme(theme);
+    };
 
     // Properly handle changes to theme prop on Theme component
     useEffect(() => {
       if (dataTheme !== theme) {
-        dataTheme && handleThemeChange(dataTheme)
+        dataTheme && handleThemeChange(dataTheme);
       }
-    }, [dataTheme])
+    }, [dataTheme]);
 
     return (
       <ThemeContext.Provider value={{ theme, setTheme: handleThemeChange }}>
@@ -50,7 +50,7 @@ const Theme = React.forwardRef<HTMLDivElement, ThemeProps>(
           {children}
         </div>
       </ThemeContext.Provider>
-    )
-  }
-)
-export default Theme
+    );
+  },
+);
+export default Theme;

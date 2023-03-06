@@ -1,0 +1,113 @@
+.checkbox {
+  flex-shrink: 0;
+  --chkbg: var(--orange-500);
+  --chkfg: var(--common-white);
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-width: 2px;
+  border-color: var(--orange-500);
+  --tw-border-opacity: 0.2;
+  border-radius: 4px;
+}
+
+.checkbox:indeterminate {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--bc) / var(--tw-bg-opacity));
+  background-repeat: no-repeat;
+  -webkit-animation: checkmark var(--animation-input, 0.2s) ease-in-out;
+  animation: checkmark var(--animation-input, 0.2s) ease-in-out;
+  background-image: linear-gradient(90deg, transparent 80%, var(--chkbg) 80%),
+    linear-gradient(-90deg, transparent 80%, var(--chkbg) 80%),
+    linear-gradient(
+      0deg,
+      var(--chkbg) 43%,
+      var(--chkfg) 43%,
+      var(--chkfg) 57%,
+      var(--chkbg) 57%
+    );
+}
+
+.checkbox:checked,
+.checkbox[checked='true'],
+.checkbox[aria-checked='true'] {
+  --tw-bg-opacity: 1;
+  background-color: var(--common-white);
+  background-repeat: no-repeat;
+  -webkit-animation: checkmark var(--animation-input, 0.2s) ease-in-out;
+  animation: checkmark var(--animation-input, 0.2s) ease-in-out;
+  background-image: linear-gradient(
+      -45deg,
+      transparent 65%,
+      var(--chkbg) 65.99%
+    ),
+    linear-gradient(45deg, transparent 75%, var(--chkbg) 75.99%),
+    linear-gradient(-45deg, var(--chkbg) 40%, transparent 40.99%),
+    linear-gradient(
+      45deg,
+      var(--chkbg) 30%,
+      var(--chkfg) 30.99%,
+      var(--chkfg) 40%,
+      transparent 40.99%
+    ),
+    linear-gradient(-45deg, var(--chkfg) 50%, var(--chkbg) 50.99%);
+}
+
+.checkbox:disabled {
+  cursor: not-allowed;
+  border-color: transparent;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--bc) / var(--tw-bg-opacity));
+  opacity: 0.2;
+}
+
+.checkbox-xs {
+  height: 1rem;
+  width: 1rem;
+}
+
+.checkbox-sm {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.checkbox-md {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.checkbox-lg {
+  height: 2rem;
+  width: 2rem;
+}
+
+.checkbox-primary {
+  --chkbg: var(--orange-500) !important;
+  --chkfg: var(--gray-200);
+  --tw-border-opacity: 1;
+  border-color: var(--orange-500);
+}
+
+.checkbox-secondary {
+  --chkbg: #666666;
+  --chkfg: var(--common-white);
+  --tw-border-opacity: 1;
+  border-color: #666666;
+}
+
+.checkbox-off {
+  --chkbg: var(--common-white) !important;
+  --chkfg: var(--gray-200);
+  --tw-border-opacity: 1;
+  border-color: var(--gray-300);
+}
+
+.checkbox-on {
+  --chkbg: var(--teal-500);
+  --chkfg: var(--common-white);
+  --tw-border-opacity: 1;
+  border-color: var(--teal-500);
+}
