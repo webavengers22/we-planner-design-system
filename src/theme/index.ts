@@ -22,7 +22,5 @@ const themeCss = {
   typographyCss,
   styleCss,
 };
-
-console.log(themeCss);
 export type themesKey = typeof themes;
 export { themes, themeCss, paletteColorList };
