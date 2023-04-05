@@ -52,9 +52,9 @@ const status = {
 } as const;
 
 export const baseColor: IBaseColorObject = {
-  common: { ...common },
-  orange: { ...orange },
-  teal: { ...teal },
-  gray: { ...gray },
-  status: { ...status },
+  common: common,
+  orange: orange,
+  teal: teal,
+  gray: gray,
+  status: status,
 };

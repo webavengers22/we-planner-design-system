@@ -1,1 +1,1 @@
-export const cssVar = (name: string) => `var(--${name.replace(/_/g, '-')})`;
+export const cssVar = (name: string) => `var(--${name.replace(/-/g, '-')})`;

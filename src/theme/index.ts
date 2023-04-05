@@ -1,7 +1,6 @@
 import {
   generateColorCss as colorCss,
   themePalette as color,
-  paletteColorList,
 } from '../styles/colors/index';
 import {
   themeCssTypography as typographyCss,
@@ -11,6 +10,7 @@ import {
   themeStyleCss as styleCss,
   themeStyle as style,
 } from '../styles/style';
+
 const themes = {
   color,
   font,
@@ -22,5 +22,6 @@ const themeCss = {
   typographyCss,
   styleCss,
 };
+
 export type themesKey = typeof themes;
-export { themes, themeCss, paletteColorList };
+export { themes, themeCss };

@@ -23,18 +23,9 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story, options) => (
+  (Story) => (
     <>
-      <StoryLayout
-        title={options.title}
-        description={options.story}
-        source={options.parameters.storySource.source
-          /* TODO: clean up all this string formatting/regex */
-          /* Removes the args arrow function */
-          .replace(/\(.*args.*\)\s*=>\s*\{\s*\n/, '')
-          /* Removes the last occurence of a closing bracket (from the lambda) */
-          .replace(/}([^}]*)$/, '$1')}
-      >
+      <StoryLayout>
         <Story />
       </StoryLayout>
     </>

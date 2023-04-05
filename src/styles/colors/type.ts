@@ -31,20 +31,24 @@ type ColorListProperty = {
 };
 type PickThemeColor = Pick<PalletteType, keyof ThemeColorType>;
 
-/** Color Data  */
+/** Color Data Type  */
 type BaseColor = typeof baseColor;
 type VariantColor = typeof darkColor | typeof lightColor;
 type PaletteColor = typeof paletteColor;
 
+/** Css generate className */
 type BaseColorList = GetColorList<BaseColor>;
 type VariantColorList = GetColorList<VariantColor>;
 type ColorObjectList = BaseColorList | VariantColorList;
-
 type PickPalletteKeys = {
   [key in BaseColorList | VariantColorList]: Color;
 };
+
 type ThemePalette = Record<keyof PickPalletteKeys, string>;
-export type ColorToken = `${ColorObjectList}` | 'outline' | (string & Record<never, never>);
+export type ColorToken =
+  | `${ColorObjectList}`
+  | 'outline'
+  | (string & Record<never, never>);
 
 export type {
   //컬러 타입

@@ -17,7 +17,7 @@ const generateFont = Object.fromEntries(
   Object.entries(fontStyle).map(([key, getObject]) => {
     const themeColor = Object.keys(getObject).reduce<Record<string, Font>>(
       (obj, secondKey) => {
-        obj[`${key}_${secondKey}`] = getObject[secondKey];
+        obj[`${key}-${secondKey}`] = getObject[secondKey];
         return obj;
       },
       {},

@@ -22,8 +22,8 @@ const storybook = {
 };
 
 export const darkColor: IVariantColorObject = {
-  button: { ...button },
-  background: { ...background },
-  text: { ...text },
-  storybook: { ...storybook },
+  button: button,
+  background: background,
+  text: text,
+  storybook: storybook,
 } as const;

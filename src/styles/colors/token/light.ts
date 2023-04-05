@@ -9,7 +9,7 @@ const button = {
 
 const background = {
   default: baseColor.gray[200],
-};
+} as const;
 
 const text = {
   default: baseColor.common.black,
@@ -22,8 +22,8 @@ const storybook = {
 };
 
 export const lightColor: IVariantColorObject = {
-  button: { ...button },
-  background: { ...background },
-  text: { ...text },
-  storybook: { ...storybook },
+  button: button,
+  background: background,
+  text: text,
+  storybook: storybook,
 } as const;

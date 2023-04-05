@@ -1,2 +1,2 @@
-export * from './consts'
-export * from './useGlobalTheme'
+export * from './constants';
+export * from './useGlobalTheme';

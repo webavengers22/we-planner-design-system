@@ -6,10 +6,7 @@ const generateFontCss = Object.fromEntries(
   Object.entries(generateFont).map(([themeType, fontGroup]) => {
     const themeFont = Object.keys(fontGroup).reduce(
       (acc, fontKey) =>
-        acc.concat(
-          `--${fontKey.replace(/_/g, '-')}: ${fontGroup[fontKey]};`,
-          '\n',
-        ),
+        acc.concat(`--${fontKey}: ${fontGroup[fontKey]};`, '\n'),
       '',
     );
     return [themeType, themeFont];
