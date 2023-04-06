@@ -1,3 +1,3 @@
-type ThemeMode = 'light' | 'dark';
+type ColorTheme = 'light' | 'dark' | 'default';
 
-export type { ThemeMode };
+export type { ColorTheme };

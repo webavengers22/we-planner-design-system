@@ -7,6 +7,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    'storybook-dark-mode-v7',
   ],
   framework: '@storybook/react',
   core: {
@@ -21,6 +22,6 @@ module.exports = {
     });
   },
   docs: {
-    autodocs: true,
+    autodocs: 'tag',
   },
 };

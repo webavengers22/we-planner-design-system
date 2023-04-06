@@ -1,6 +1,6 @@
-import { addons } from '@storybook/addons'
-import theme from './theme.cjs'
+import { addons } from '@storybook/addons';
+import Theme from './theme.cjs';
 
 addons.setConfig({
-  theme: theme,
-})
+  theme: Theme,
+});

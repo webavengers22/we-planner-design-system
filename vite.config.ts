@@ -7,7 +7,27 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigpaths(), VitePluginHtmlEnv(), svgr()],
+  build: {
+    sourcemap: true,
+  },
+  plugins: [
+    react({
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: [
+          '@emotion/babel-plugin',
+          {
+            autoLabel: 'dev-only',
+            labelFormat: '[dirname]--[filename]--[local]___',
+          },
+        ],
+      },
+    }),
+    ,
+    tsconfigpaths(),
+    VitePluginHtmlEnv(),
+    svgr(),
+  ],
   resolve: {
     alias: [
       { find: '@', replacement: resolve(__dirname, 'src') },

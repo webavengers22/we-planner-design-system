@@ -16,7 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "sourceMap": true,
-    "types": ["vite-plugin-svgr/client"],
+    "types": ["vite-plugin-svgr/client", "@emotion/react/types/css-prop"],
     "baseUrl": ".",
     "jsxImportSource": "@emotion/react",
     "paths": {
@@ -35,6 +35,6 @@
       "@stories/*": ["src/stories/*"]
     }
   },
-  "include": ["src", "types"],
+  "include": ["custom.d.ts", "src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

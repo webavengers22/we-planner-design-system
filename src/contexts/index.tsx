@@ -1,17 +1,20 @@
 import React from 'react';
-import { ThemeContextProvider } from '@/contexts/ThemeContext';
-import { LinkContextProvider } from '@/contexts/linkContextProvider';
+import { ThemeProvider } from '@/contexts/ThemeProvider';
+import { LinkProvider } from '@/contexts/LinkProvider';
+import { ColorTheme } from '@/types';
 
 export function WePlanProvider({
   children,
   initLink,
+  initialTheme,
 }: {
-  children: React.ReactElement;
+  children: React.ReactNode;
+  initialTheme: ColorTheme;
   initLink?: React.ElementType<any>;
 }) {
   return (
-    <ThemeContextProvider>
-      <LinkContextProvider initLink={initLink}>{children}</LinkContextProvider>
-    </ThemeContextProvider>
+    <ThemeProvider initialTheme={initialTheme}>
+      <LinkProvider initLink={initLink}>{children}</LinkProvider>
+    </ThemeProvider>
   );
 }
