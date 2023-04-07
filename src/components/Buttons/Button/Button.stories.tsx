@@ -1,67 +1,24 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import Button from './Button';
-
-import { ButtonProps } from '..';
+import { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
 
 export default {
-  title: 'Component/Button',
+  title: 'component/Button',
   component: Button,
-  argTypes: {
-    startIcon: {
-      control: false,
-    },
-    endIcon: {
-      control: false,
-    },
+  args: {
+    disabled: false,
+    size: 'md',
+    children: 'Default',
   },
-} as Meta;
+} as Meta<typeof Button>;
 
-const Template: Story<ButtonProps> = (args) => {
-  return <Button {...args} />;
-};
-export const Default = Template.bind({});
-Default.args = {
-  children: 'Button',
-};
+type Template = StoryObj<typeof Button>;
+export const Template: Template = {};
 
-export const Colors: Story<ButtonProps> = (args) => {
-  return (
-    <div>
-      <div>
-        <Button {...args}>Default</Button>
-        <Button {...args} color="primary">
-          Primary
-        </Button>
-        <Button {...args} color="secondary">
-          Secondary
-        </Button>
-      </div>
-      <div>
-        <Button {...args} color="accent">
-          accent
-        </Button>
-        <Button {...args} color="off">
-          off
-        </Button>
-      </div>
-    </div>
-  );
-};
-Colors.args = {
-  className: 'm-1',
-};
-
-export const Variants: Story<ButtonProps> = (args) => {
-  return (
-    <div className="flex gap-x-2">
-      <Button {...args}>Default</Button>
-      <Button {...args} variant="outline">
-        Outline
-      </Button>
-      <Button {...args} variant="link">
-        Link
-      </Button>
-    </div>
-  );
+export const Basic: Template = {};
+Basic.args = {
+  type: 'primary',
+  variant: 'default',
+  size: 'md',
+  disabled: false,
+  isFullWidth: false,
 };

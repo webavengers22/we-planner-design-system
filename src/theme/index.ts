@@ -3,24 +3,23 @@ import {
   themePalette as color,
 } from '../styles/colors/index';
 import {
-  themeCssTypography as typographyCss,
-  themeTypography as font,
+  generateTypographyCss as typographyCss,
+  themeTypography as typography,
 } from '../styles/fonts';
 import {
-  themeStyleCss as styleCss,
+  generateStyleCss as styleCss,
   themeStyle as style,
 } from '../styles/style';
 
 const themes = {
   color,
-  font,
+  typography,
   style,
 };
 
 const themeCss = {
   colorCss,
-  typographyCss,
-  styleCss,
+  buildCss: typographyCss + styleCss,
 };
 
 export type themesKey = typeof themes;

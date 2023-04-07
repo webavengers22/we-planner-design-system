@@ -46,7 +46,6 @@ export function ThemeProvider({ children, initialTheme = 'default' }: Props) {
   useIsomorphicEffect(() => {
     if (theme === 'default') return;
     document.body.dataset.theme = theme;
-    console.log(theme);
   }, [theme]);
 
   useEffect(() => {

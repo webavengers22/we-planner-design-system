@@ -3,18 +3,14 @@ import { style } from './token/style';
 import { Style } from './type';
 
 /**
- * 스타일 별 css 반환
+ * 스타일 요소  => style Css key로 data 커스터 마이징 fun
+ * breakpoints-lg: 1200
  */
 const generateStyle = Object.fromEntries(
-  Object.entries(style).map(([key, getObject]) => {
-    const themeStyle = Object.keys(getObject).reduce<Record<string, Style>>(
-      (obj, secondKey) => {
-        obj[`${key}_${secondKey}`] = getObject[secondKey];
-        return obj;
-      },
-      {},
-    );
-    return [key, themeStyle];
+  Object.entries(style).flatMap(([key, getObject]) => {
+    return Object.entries(getObject).map(([secondKey, value]) => {
+      return [`${key}-${secondKey}`, value];
+    });
   }),
 );
 

@@ -11,6 +11,7 @@ const paletteColor = {
  * ThemeColor & BaseColor colorCode key => style Css key로 data 커스터 마이징 fun
  * background-default:"#4A453C"
  */
+
 const generateColor = Object.fromEntries(
   Object.entries(paletteColor).map(([themeType, getData]) => {
     const colorGroup = Object.entries(getData).reduce<

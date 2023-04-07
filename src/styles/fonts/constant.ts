@@ -7,22 +7,20 @@ import { ITypography } from './interface';
 /*
  * {@link https://github.com/orioncactus/pretendard#html-1}
  */
-const PRETENDARD_FONT_FAMILY = 'Pretendard sans-serif';
-
+const PRETENDARD_FONT_FAMILY = 'Pretendard Variable';
 /**
  * Typography 스타일 별 css 반환
  */
 
+/**
+ * ThemeColor & BaseColor colorCode key => style Css key로 data 커스터 마이징 fun
+ * weight-bold:"700
+ */
 const generateFont = Object.fromEntries(
-  Object.entries(fontStyle).map(([key, getObject]) => {
-    const themeColor = Object.keys(getObject).reduce<Record<string, Font>>(
-      (obj, secondKey) => {
-        obj[`${key}-${secondKey}`] = getObject[secondKey];
-        return obj;
-      },
-      {},
-    );
-    return [key, themeColor];
+  Object.entries(fontStyle).flatMap(([key, getObject]) => {
+    return Object.entries(getObject).map(([secondKey, value]) => {
+      return [`${key}-${secondKey}`, value];
+    });
   }),
 );
 

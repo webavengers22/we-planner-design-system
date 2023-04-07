@@ -1,42 +1,45 @@
-import { CommonColorType } from '@/styles/colors';
 import { themes } from '@/theme';
-import { ComponentColor } from '@/types';
-import { keyframes, css, CSSObject } from '@emotion/react';
-import { CSSProperties } from 'react';
+import { getCSSVarValue } from '@/utils';
+import { lighten, darken } from 'polished';
+import type { ButtonColorScheme, ButtonProps, ButtonType } from './types';
+
 const { color } = themes;
-export const BUTTON_SIZES = {
-  sm: 1,
-  md: 1.3,
-  lg: 1.7,
-} as const;
+export const schemes: Record<ButtonType, ButtonColorScheme> = {
+  primary: {
+    background: color['orange-500'],
+    hover: getCSSVarValue(color['orange-500']),
+    active: getCSSVarValue(color['orange-500']),
+    text: color['common-white'],
+  },
+  secondary: {
+    background: color['teal-500'],
+    hover: getCSSVarValue(color['teal-500']),
+    active: getCSSVarValue(color['teal-500']),
+    text: color['common-white'],
+  },
+  tertiary: {
+    background: color['common-black'],
+    hover: getCSSVarValue(color['common-black']),
+    active: getCSSVarValue(color['common-black']),
+    text: color['common-white'],
+  },
+  quinary: {
+    background: color['gray-300'],
+    hover: getCSSVarValue(color['gray-300']),
+    active: getCSSVarValue(color['gray-300']),
+    text: color['common-white'],
+  },
+};
+console.log(schemes);
 
-export const BUTTON_FSIZES = {
-  sm: 1.2,
-  md: 1.4,
-  lg: 1.7,
-} as const;
-export const BUTTON_COLORS = {
-  primary: css`
-    border: 1px solid ${color['orange-500']};
-    background: ${color['orange-500']};
-    color: ${color['common-white']};
-    :hover,
-    :active {
-      border: 1px solid ${color['orange-500']};
-      background-color: ${color['orange-500']};
-    }
-
-    :disabled {
-      border: 1px solid ${color['orange-500']};
-      background-color: ${color['orange-500']};
-      color: ${color['common-white']};
-      pointer-events: none;
-    }
-  `,
-  secondary: css`
-    background: ${color['common-black']};
-    color: ${color['common-white']};
-  `,
-  off: css``,
-  accent: css``,
+export const sizeSets = {
+  sm: {
+    height: '1.5rem',
+  },
+  md: {
+    height: '2.5rem',
+  },
+  lg: {
+    height: '3rem',
+  },
 };

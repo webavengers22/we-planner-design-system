@@ -2,44 +2,27 @@ import { generateStyle } from '../style';
 import { cssVar } from '../../utils';
 import { PickThemeStyle, Style, ThemeStyle } from './type';
 
-const generateStyleCss = Object.fromEntries(
-  Object.entries(generateStyle).map(([themeType, fontGroup]) => {
-    const themeFont = Object.keys(fontGroup).reduce(
-      (acc, fontKey) =>
-        acc.concat(
-          `--${fontKey.replace(/_/g, '-')}: ${fontGroup[fontKey]};`,
-          '\n',
-        ),
-      '',
-    );
-    return [themeType, themeFont];
-  }),
-) as PickThemeStyle;
-
-const generateThemeStyle = Object.fromEntries(
-  Object.entries(generateStyle).map(([themeType, colorGroup]) => {
-    const themeColor = Object.keys(colorGroup).reduce<Record<string, Style>>(
-      (acc, colorKey) => {
-        acc[colorKey] = cssVar(colorKey);
-        return acc;
-      },
-      {},
-    ) as ThemeStyle;
-    return [themeType, themeColor];
-  }),
+/**
+ * Style 요소들 모두 css로 variable 커스터마이징 concat
+ * --background-default:#4A453C;\n
+ */
+const generateStyleCss = Object.keys(generateStyle).reduce(
+  (acc, styleKey) =>
+    acc.concat(`--${styleKey}: ${generateStyle[styleKey]};`, '\n'),
+  '',
 );
 
-const themeStyle: ThemeStyle = {
-  ...generateThemeStyle.breakpoints,
-  ...generateThemeStyle.radius,
-  ...generateThemeStyle.spacing,
-  ...generateThemeStyle.transition,
-};
+/**
+ * Style 요소들 =>style variable로 data 커스터 마이징 fun
+ * background_default:"var(--${themeType}-${title})"
+ */
+const generateThemeStyle = Object.keys(generateStyle).reduce<
+  Record<string, Style>
+>((acc, colorKey) => {
+  acc[colorKey] = cssVar(colorKey);
+  return acc;
+}, {}) as ThemeStyle;
 
-const themeStyleCss: string = `
-${generateStyleCss.breakpoints}
-${generateStyleCss.radius}
-${generateStyleCss.transition}
-${generateStyleCss.spacing}`;
+const themeStyle: ThemeStyle = generateThemeStyle;
 
-export { themeStyleCss, generateThemeStyle, themeStyle };
+export { generateStyleCss, themeStyle };

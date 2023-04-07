@@ -10,10 +10,8 @@ interface Props {
 function StorybookThemeWrapper({ children }: Props) {
   const darkTheme = useDarkMode();
   const { setTheme } = useTheme();
-  console.log(useDarkMode());
   useEffect(() => {
     setTheme(darkTheme ? 'dark' : 'light');
-    console.log(darkTheme);
   }, [darkTheme, setTheme]);
 
   return <>{children}</>;

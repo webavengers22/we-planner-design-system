@@ -1,8 +1,8 @@
-import '@styles/fonts/css/pretendardvariable-dynamic-subset.css';
+import '@styles/fonts/css/pretendardvariable.css';
 import emotionNormalize from 'emotion-normalize';
 import { css } from '@emotion/react';
 import { themes, themeCss } from '@/theme';
-const { colorCss } = themeCss;
+const { colorCss, buildCss } = themeCss;
 
 const GlobalStyles = css`
   ${emotionNormalize}
@@ -14,8 +14,8 @@ const GlobalStyles = css`
     -webkit-tap-highlight-color: transparent;
   }
   :root {
+    ${buildCss}
     ${colorCss.standard}
-    ${colorCss.dark}
     transition: 0.125s all ease-in;
     scroll-padding-top: 64px;
     text-rendering: optimizeLegibility;

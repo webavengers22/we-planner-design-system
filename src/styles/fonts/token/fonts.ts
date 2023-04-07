@@ -3,7 +3,7 @@ import { FontStyleType } from '../type';
 
 /** 기본 font data 정의 */
 const common = {
-  family: 'Pretendard sans-serif',
+  family: 'Pretendard Variable',
   display: 'swap',
 } as const;
 
