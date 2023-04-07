@@ -1,6 +1,5 @@
 import { themes } from '@/theme';
 import { getCSSVarValue } from '@/utils';
-import { lighten, darken } from 'polished';
 import type { ButtonColorScheme, ButtonProps, ButtonType } from './types';
 
 const { color } = themes;
@@ -30,16 +29,18 @@ export const schemes: Record<ButtonType, ButtonColorScheme> = {
     text: color['common-white'],
   },
 };
-console.log(schemes);
 
 export const sizeSets = {
   sm: {
-    height: '1.5rem',
+    size: '1.5rem',
+    padding: '0.25rem 1rem',
   },
   md: {
-    height: '2.5rem',
+    size: '2.5rem',
+    padding: '0.5rem 1rem',
   },
   lg: {
-    height: '3rem',
+    size: '3rem',
+    padding: '1rem',
   },
 };

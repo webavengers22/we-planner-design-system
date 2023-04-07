@@ -8,33 +8,36 @@ import {
   iconWrapperStyle,
   takeFullWidth,
   resetLinkStyle,
+  shapeStyle,
 } from './styles';
 // import { Spinner } from 'components/Common/Spinner';
 import { LoadingDots } from '@/components/Buttons/loadingDots';
 import { schemes } from './constants';
 import { css } from '@emotion/react';
 import { getCSSVarValue } from '@/utils';
+import { Typography } from '@/components/Typography/typography';
 
 export function Button({
   children,
+  shape = 'circle',
   type = 'primary',
   variant = 'default',
   size = 'md',
   isFullWidth,
-  isStickIconToEnd,
+  isIconLocatedEnd,
   iconPosition = 'left',
   icon,
   asLink,
   htmlType,
   href,
   marginTop,
-  isSquare,
   ...rest
 }: ButtonProps) {
   const scheme = schemes[type];
 
   const styles = [
-    buttonStyle(size, isSquare),
+    buttonStyle(size),
+    shapeStyle(shape),
     variant === 'default' && defaultStyle(scheme),
     variant === 'outline' && outlineStyle(scheme),
     variant === 'ghost' && ghostStyle(getCSSVarValue(scheme.background)),
@@ -48,11 +51,11 @@ export function Button({
   const contents = (
     <>
       {icon && iconPosition === 'left' && (
-        <div css={iconWrapperStyle('left', isStickIconToEnd)}>{icon}</div>
+        <span css={iconWrapperStyle('left', isIconLocatedEnd)}>{icon}</span>
       )}
-      {isStickIconToEnd ? <div css={takeFullWidth}>{children}</div> : children}
+      {isIconLocatedEnd ? <div css={takeFullWidth}>{children}</div> : children}
       {icon && iconPosition === 'right' && (
-        <div css={iconWrapperStyle('right', isStickIconToEnd)}>{icon}</div>
+        <span css={iconWrapperStyle('right', isIconLocatedEnd)}>{icon}</span>
       )}
     </>
   );

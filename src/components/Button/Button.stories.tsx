@@ -8,6 +8,9 @@ export default {
     disabled: false,
     size: 'md',
     children: 'Default',
+    type: 'primary',
+    shape: 'circle',
+    variant: 'default',
   },
 } as Meta<typeof Button>;
 

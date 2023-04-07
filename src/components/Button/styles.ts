@@ -1,35 +1,30 @@
 import { safelyAlterColor } from '@/utils';
 import { keyframes, css } from '@emotion/react';
-import { ButtonColorScheme, Size } from './types';
+import { ButtonColorScheme, ButtonShape } from './types';
 import { rgba } from 'polished';
 import { sizeSets } from './constants';
+import { type } from 'os';
+import { CommSize } from '@/types';
 
-const buttonStyle = (size: Size, isSquare?: boolean) => css`
+const buttonStyle = (size: CommSize) => css`
   border: none;
   outline: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0.25rem;
   cursor: pointer;
-  height: ${sizeSets[size].height};
+  min-width: ${sizeSets[size].size};
+  height: ${sizeSets[size].size};
+  padding: ${sizeSets[size].padding};
   &:disabled {
     filter: grayscale(15%);
     cursor: not-allowed;
     opacity: 0.6;
   }
-
   &:focus-visible {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
   }
-
   transition: 0.1s background ease-in, 0.1s color ease-in;
-
-  ${isSquare &&
-  css`
-    padding: 0;
-    width: 2.5em;
-  `}
 `;
 
 const defaultStyle = (scheme: ButtonColorScheme) => css`
@@ -41,6 +36,23 @@ const defaultStyle = (scheme: ButtonColorScheme) => css`
   &:active:enabled {
     background: ${scheme.active};
   }
+`;
+
+const shapeStyle = (shape: ButtonShape) => css`
+  ${shape === 'circle' &&
+  css`
+    border-radius: 30px;
+  `}
+  ${shape === 'round' &&
+  css`
+    border-radius: 10px;
+  `}
+
+  ${shape === 'square' &&
+  css`
+    padding: 0;
+    width: 2.5em;
+  `}
 `;
 
 const outlineStyle = (scheme: ButtonColorScheme) => css`
@@ -110,6 +122,7 @@ const resetLinkStyle = css`
 export {
   defaultStyle,
   outlineStyle,
+  shapeStyle,
   ghostStyle,
   fullWidthStyle,
   buttonStyle,

@@ -1,4 +1,3 @@
-import { DataTheme } from '.';
 interface ChildrenProps {
   children?: React.ReactNode;
 }
@@ -26,10 +25,6 @@ interface CommonAttrProps {
 }
 interface LabelProps {
   label?: string;
-}
-
-export interface IComponentBaseProps {
-  dataTheme?: DataTheme;
 }
 
 export type {
