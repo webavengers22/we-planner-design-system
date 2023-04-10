@@ -1,25 +1,25 @@
 import { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { useEffect, useState } from 'react';
-import { Checkbox } from './CheckBox';
-import { CheckboxProps } from './types';
+import { Radio } from './Radio';
+import { RadioProps } from './types';
 
 export default {
-  title: 'component/Checkbox',
-  component: Checkbox,
+  title: 'component/Radio',
+  component: Radio,
   args: {
     size: 'md',
     children: 'Default',
     type: 'primary',
     checked: false,
   },
-} satisfies Meta<CheckboxProps>;
-type Template = StoryObj<typeof Checkbox>;
+} satisfies Meta<RadioProps>;
+type Template = StoryObj<typeof Radio>;
 export const Basic: Template = {};
 Basic.args = {
   type: 'primary',
   size: 'md',
 };
-export const Default: StoryFn<CheckboxProps> = (args) => {
+export const Default: StoryFn<RadioProps> = (args) => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const Default: StoryFn<CheckboxProps> = (args) => {
   }, [args.checked]);
 
   return (
-    <Checkbox
+    <Radio
       {...args}
       checked={checked}
       onToggle={() => {

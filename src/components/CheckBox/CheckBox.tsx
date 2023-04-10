@@ -10,7 +10,7 @@ export function Checkbox({
   size = 'md',
   type = 'primary',
   disabled,
-  label = 'Check me',
+  children = 'Check me',
 }: CheckboxProps) {
   const scheme = schemes[type];
 
@@ -27,7 +27,7 @@ export function Checkbox({
         {checked && <Icon name="Check" />}
       </span>
 
-      <span css={textStyle}>{label}</span>
+      <span css={textStyle}>{children}</span>
     </label>
   );
 }
