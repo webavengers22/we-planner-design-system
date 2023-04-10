@@ -1,36 +1,23 @@
 import { CommSize } from '@/types';
 import { css } from '@emotion/react';
-import { sizeSets } from './constants';
-import { CheckBoxType } from './types';
-
-const wrapper = (type: CheckBoxType, size: CommSize, disabled?: boolean) => css`
+import { sizeSets, CheckBoxColorScheme } from './constants';
+import { themes } from '@/theme';
+const { color } = themes;
+const wrapper = (
+  schemes: CheckBoxColorScheme,
+  size: CommSize,
+  disabled?: boolean,
+) => css`
   position: relative;
   display: inline-flex;
   align-items: center;
-
   font-size: ${sizeSets[size]};
-  ${disabled
-    ? css`
-        span:first-of-type {
-          border-color: ${'accent-4'};
-          background: ${'accent-3'};
-        }
-        span:nth-of-type(2) {
-          color: ${'accent-6'};
-        }
-        cursor: not-allowed;
-        svg {
-          color: ${'accent-6'};
-        }
-      `
-    : css`
-        cursor: pointer;
-        &:hover {
-          span:first-of-type {
-            border-color: ${color};
-          }
-        }
-      `}
+  cursor: pointer;
+  &:hover {
+    span:first-of-type {
+      border-color: ${schemes.background};
+    }
+  }
 `;
 const invisibleCheckbox = css`
   position: absolute;
@@ -41,14 +28,14 @@ const invisibleCheckbox = css`
   top: 0;
 `;
 
-const box = (checked: boolean, color: string) => css`
+const box = (checked: boolean, schemes: CheckBoxColorScheme) => css`
   align-items: center;
   justify-content: center;
   display: block;
   width: 1.125em;
   height: 1.125em;
   border-radius: 0.25rem;
-  border: 1px solid ${'accent-6'};
+  border: 1px solid ${schemes.background};
   margin-right: 0.5em;
   position: relative;
   svg {
@@ -57,14 +44,15 @@ const box = (checked: boolean, color: string) => css`
     position: absolute;
     transform: translate(-50%, -50%);
     display: block;
-    width: 0.625em;
-    height: 0.625em;
+    width: 1em;
+    height: 1em;
+    fill: ${color['common-white']};
   }
 
   ${checked &&
   css`
-    border-color: ${color};
-    background: ${color};
+    border-color: ${schemes.background};
+    background: ${schemes.background};
     color: ${'element-text'};
   `}
 `;
@@ -72,7 +60,6 @@ const box = (checked: boolean, color: string) => css`
 const textStyle = () => css`
   font-size: 1em;
   line-height: 1;
-  color: ${'accent-9'};
 `;
 
 export { wrapper, invisibleCheckbox, box, textStyle };

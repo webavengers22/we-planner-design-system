@@ -1,28 +1,37 @@
-import React, { SVGProps } from 'react'
-import * as vectors from './vectors'
+import { fIconList, fIconType, sIconList, sIconType } from './vectors';
 
-type IconName = keyof typeof vectors
-
-interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'css'> {
-  name: IconName
+interface IconProps extends React.SVGProps<SVGSVGElement> {
+  name: fIconType | sIconType; // fIconList와 sIconList의 key 값들
+  solid?: boolean;
+  size?: 12 | 14 | 16 | 18 | 20 | 24;
+  color?: string;
 }
 
-/**
- * Shows vector icon registered to the project.
- *
- * It accepts all the native props of `svg` element.
- *
- * You can set `width` and `height` to resize the icon.
- * You can set `color` to change the color of the icon.
- * Or, you can also use `className` or `style` to set the size or color.
- */
-export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
-  ({ name, ...rest }, ref) => {
-    return React.createElement(vectors[name], {
-      ...rest,
-      ref,
-    })
+const Icon: React.FC<IconProps> = ({
+  name,
+  size = 24,
+  color = 'currentColor',
+  solid,
+  ...props
+}) => {
+  const IconComponent = solid
+    ? sIconList[name as sIconType]
+    : fIconList[name as fIconType];
+  if (!IconComponent) {
+    return null;
   }
-)
 
-Icon.displayName = 'Icon'
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill={color || 'currentColor'}
+    >
+      {IconComponent}
+    </svg>
+  );
+};
+
+export default Icon;

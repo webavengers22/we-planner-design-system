@@ -1,5 +1,5 @@
 import { lightColor, darkColor, baseColor } from './token';
-import { ThemeMode as ThemeColorType } from '@/types/themeType';
+import { ColorTheme as ThemeColorType } from '@/types/themeType';
 import { paletteColor } from './constant';
 import { GetColorList } from '@/types';
 
@@ -8,7 +8,18 @@ type Color = string | undefined;
 /** Base color 하위 TYPE  */
 type CommonType = 'white' | 'black';
 type StatusType = 'success' | 'info' | 'warning' | 'error';
-type ColorRange = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+type ColorRange =
+  | 50
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 750
+  | 800
+  | 900;
 type AllBaseColorType = CommonType & StatusType & ColorRange;
 
 /** Variant color 하위 TYPE  */

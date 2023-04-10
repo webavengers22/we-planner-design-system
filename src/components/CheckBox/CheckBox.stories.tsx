@@ -5,12 +5,10 @@ export default {
   title: 'component/Checkbox',
   component: Checkbox,
   args: {
-    disabled: false,
     size: 'md',
     children: 'Default',
     type: 'primary',
-    shape: 'circle',
-    variant: 'default',
+    checked: false,
   },
 } as Meta<typeof Checkbox>;
 
@@ -21,5 +19,4 @@ export const Basic: Template = {};
 Basic.args = {
   type: 'primary',
   size: 'md',
-  disabled: false,
 };

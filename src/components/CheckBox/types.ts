@@ -10,4 +10,5 @@ export interface CheckboxProps
   checked: boolean;
   disabled?: boolean;
   onToggle(): void;
+  label?: string;
 }

@@ -11,7 +11,6 @@ import {
   shapeStyle,
 } from './styles';
 // import { Spinner } from 'components/Common/Spinner';
-import { LoadingDots } from '@/components/Buttons/loadingDots';
 import { schemes } from './constants';
 import { css } from '@emotion/react';
 import { getCSSVarValue } from '@/utils';

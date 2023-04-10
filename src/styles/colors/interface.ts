@@ -24,10 +24,10 @@ interface IBaseColorObject {
     [key in Exclude<ColorRange, 50>]: Color;
   };
   orange: {
-    [key in Exclude<ColorRange, 800 | 900>]: Color;
+    [key in Exclude<ColorRange, 750 | 800 | 900>]: Color;
   };
   teal: {
-    [key in Exclude<ColorRange, 800 | 900>]: Color;
+    [key in Exclude<ColorRange, 750 | 800 | 900>]: Color;
   };
   status: {
     [key in StatusType]: Color;
