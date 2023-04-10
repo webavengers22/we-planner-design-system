@@ -1,3 +1,5 @@
+import Icon from '../Icon/Icon';
+import { schemes } from './constants';
 import { box, invisibleCheckbox, textStyle, wrapper } from './styles';
 import { CheckboxProps } from './types';
 
@@ -5,12 +7,15 @@ export function Checkbox({
   className,
   checked,
   onToggle,
-  size = 'sm',
+  size = 'md',
   type = 'primary',
   disabled,
+  label = 'Check me',
 }: CheckboxProps) {
+  const scheme = schemes[type];
+
   return (
-    <label css={wrapper(type, size, disabled)} className={className}>
+    <label css={wrapper(scheme, size, disabled)} className={className}>
       <input
         type="checkbox"
         css={invisibleCheckbox}
@@ -18,11 +23,11 @@ export function Checkbox({
         onChange={onToggle}
         disabled={disabled}
       />
-      <span css={box(checked, type)} className="box">
-        {checked && <Icon name="check" />}
+      <span css={box(checked, scheme)} className="box">
+        {checked && <Icon name="Check" />}
       </span>
 
-      <span css={textStyle}>Check me</span>
+      <span css={textStyle}>{label}</span>
     </label>
   );
 }
