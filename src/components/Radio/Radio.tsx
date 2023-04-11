@@ -1,41 +1,31 @@
-import { useState } from 'react';
-import Icon from '../Icon/Icon';
-import { schemes } from './constants';
-import { box, invisibleRadio, textStyle, wrapper } from './styles';
+import { RadioLabel, RadioInput } from './styles';
 import { RadioProps } from './types';
 
-export function Radio({
-  children,
-  size = 'sm',
-  checked,
+const Radio: React.FC<RadioProps> = ({
+  value = 'value',
+  label = '',
+  size = 'md',
+  checked = false,
   onChange,
   type = 'primary',
-  ...rest
-}: RadioProps) {
-  const scheme = schemes[type];
-  const [focused, setFocused] = useState(false);
-  const isChecked = checked || value === rest.value;
+  ...props
+}) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange && onChange(e);
+  };
+
   return (
-    <label css={wrapper(size, color)}>
-      <input
+    <RadioLabel>
+      <RadioInput
         type="radio"
-        {...rest}
-        onChange={(e) => {
-          onChange?.(e);
-          onChangeValue?.(e.target.value);
-        }}
-        checked={isChecked}
-        onFocus={(e) => {
-          setFocused(true);
-        }}
-        onBlur={(e) => {
-          setFocused(false);
-        }}
+        value={value}
+        checked={checked}
+        onChange={handleChange}
+        size={size}
       />
-      <span css={circle(!!isChecked, focused, themeColor)}>
-        <span css={smallDot(isChecked)}></span>
-      </span>
-      <span>{children}</span>
-    </label>
+      {label}
+    </RadioLabel>
   );
-}
+};
+
+export default Radio;

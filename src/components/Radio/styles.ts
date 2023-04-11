@@ -1,65 +1,43 @@
 import { CommSize } from '@/types';
-import { css } from '@emotion/react';
-import { sizeSets, RadioColorScheme } from './constants';
-import { themes } from '@/theme';
-const { color } = themes;
-const wrapper = (
-  schemes: RadioColorScheme,
-  size: CommSize,
-  disabled?: boolean,
-) => css`
-  position: relative;
-  display: inline-flex;
+import styled from '@emotion/styled';
+import { sizeSets } from './constants';
+
+const RadioLabel = styled.label`
+  display: flex;
   align-items: center;
-  font-size: ${sizeSets[size]};
-  cursor: pointer;
-  &:hover {
-    span:first-of-type {
-      border-color: ${schemes.background};
-    }
-  }
-`;
-const invisibleRadio = css`
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  left: 0;
-  top: 0;
+  margin-right: 12px;
 `;
 
-const box = (checked: boolean, schemes: RadioColorScheme) => css`
-  align-items: center;
-  justify-content: center;
-  display: block;
-  width: 1.125em;
-  height: 1.125em;
-  border-radius: 0.25rem;
-  border: 1px solid ${schemes.background};
-  margin-right: 0.5em;
+export interface StyledProps {
+  size: CommSize;
+}
+
+const RadioInput = styled.input<StyledProps>`
+  appearance: none;
+  display: inline-block;
+  width: ${(props) => sizeSets[props.size].inner};
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  margin-right: 8px;
   position: relative;
-  svg {
-    left: 50%;
-    top: 50%;
+  top: 2px;
+  &:before {
+    content: '';
     position: absolute;
-    transform: translate(-50%, -50%);
-    display: block;
-    width: 1em;
-    height: 1em;
-    fill: ${color['common-white']};
+    width: 8px;
+    height: 8px;
+    background-color: #000;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s ease-in-out;
   }
 
-  ${checked &&
-  css`
-    border-color: ${schemes.background};
-    background: ${schemes.background};
-    color: ${'element-text'};
-  `}
+  &:checked:before {
+    transform: translate(-50%, -50%) scale(1);
+  }
 `;
 
-const textStyle = () => css`
-  font-size: 1em;
-  line-height: 1;
-`;
-
-export { wrapper, invisibleRadio, box, textStyle };
+export { RadioLabel, RadioInput };

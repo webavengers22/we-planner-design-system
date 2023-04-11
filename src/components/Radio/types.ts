@@ -6,12 +6,12 @@ export interface RadioProps
   /** 색상 타입 */
   type?: RadioType;
   /** 사이즈 */
-  size?: CommSize;
+  size: CommSize;
   className?: string;
   /** onchange  */
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   /** checked 상태 */
   checked: boolean;
-  /** 자식 요소 */
-  children?: React.ReactNode;
+  value: string | number;
+  label?: string;
 }

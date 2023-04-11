@@ -2,9 +2,18 @@ import { themes } from '@/theme';
 import { RadioType } from './types';
 const { color } = themes;
 export const sizeSets = {
-  sm: '1rem',
-  md: '1.25rem',
-  lg: '1.5rem',
+  sm: {
+    outer: '1rem',
+    inner: '1rem',
+  },
+  md: {
+    outer: '1.25rem',
+    inner: '1.25rem',
+  },
+  lg: {
+    outer: '1.5rem',
+    inner: '1.5rem',
+  },
 };
 
 export interface RadioColorScheme {
